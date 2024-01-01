@@ -5,12 +5,9 @@ class_name ShogiState
 export var _c_Shogi_Data = 0
 export var hitbox_register = {}
 export var bounce_frame = -1
-<<<<<<< Updated upstream
 export var y_modifier = "0.7"
 export var x_modifier = "1.0"
-=======
 export var can_conquer = false
->>>>>>> Stashed changes
 
 var last_vel = {}
 
