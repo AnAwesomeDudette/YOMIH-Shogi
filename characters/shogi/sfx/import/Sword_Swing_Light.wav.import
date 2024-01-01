@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Sword_Swing_Light.wav-7462bb0ed476c3b4480037ed5a222379.sample"
+path="res://.import/Sword_Swing_Light.wav-6eea29c3f90aa36721826cc5122e3833.sample"
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sfx/import/Sword_Swing_Light.wav"
-dest_files=[ "res://.import/Sword_Swing_Light.wav-7462bb0ed476c3b4480037ed5a222379.sample" ]
+source_file="res://_Shogi/characters/shogi/sfx/import/Sword_Swing_Light.wav"
+dest_files=[ "res://.import/Sword_Swing_Light.wav-6eea29c3f90aa36721826cc5122e3833.sample" ]
 
 [params]
 

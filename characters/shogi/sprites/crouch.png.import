@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crouch.png-f4de9dce4538e58d20fccfd1a9803be5.stex"
+path="res://.import/crouch.png-f1c87b5c03924bace614bb0acbf51c4a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sprites/crouch.png"
-dest_files=[ "res://.import/crouch.png-f4de9dce4538e58d20fccfd1a9803be5.stex" ]
+source_file="res://_Shogi/characters/shogi/sprites/crouch.png"
+dest_files=[ "res://.import/crouch.png-f1c87b5c03924bace614bb0acbf51c4a.stex" ]
 
 [params]
 

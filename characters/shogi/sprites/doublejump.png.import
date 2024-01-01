@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/doublejump.png-d254d534785b10d5decc4cd45c304d5a.stex"
+path="res://.import/doublejump.png-c27f58a1e273deec5d62e252db453215.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sprites/doublejump.png"
-dest_files=[ "res://.import/doublejump.png-d254d534785b10d5decc4cd45c304d5a.stex" ]
+source_file="res://_Shogi/characters/shogi/sprites/doublejump.png"
+dest_files=[ "res://.import/doublejump.png-c27f58a1e273deec5d62e252db453215.stex" ]
 
 [params]
 

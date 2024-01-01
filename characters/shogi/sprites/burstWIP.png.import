@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/burstWIP.png-b7ee09d1d31666cf2a64fba849ed255e.stex"
+path="res://.import/burstWIP.png-ed163590464048b1402d61d98ba29301.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sprites/burstWIP.png"
-dest_files=[ "res://.import/burstWIP.png-b7ee09d1d31666cf2a64fba849ed255e.stex" ]
+source_file="res://_Shogi/characters/shogi/sprites/burstWIP.png"
+dest_files=[ "res://.import/burstWIP.png-ed163590464048b1402d61d98ba29301.stex" ]
 
 [params]
 

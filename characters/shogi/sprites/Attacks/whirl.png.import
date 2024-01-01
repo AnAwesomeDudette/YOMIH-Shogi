@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/whirl.png-5eca00ca4328c203b9d681384a6f3616.stex"
+path="res://.import/whirl.png-37957661ee7043646458240d82b15b96.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sprites/Attacks/whirl.png"
-dest_files=[ "res://.import/whirl.png-5eca00ca4328c203b9d681384a6f3616.stex" ]
+source_file="res://_Shogi/characters/shogi/sprites/Attacks/whirl.png"
+dest_files=[ "res://.import/whirl.png-37957661ee7043646458240d82b15b96.stex" ]
 
 [params]
 

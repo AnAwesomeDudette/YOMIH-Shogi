@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/balletAir.png-f4f34a5989151207115bf7d676f33594.stex"
+path="res://.import/balletAir.png-af94418dc05a5d31aab7fe8982d1a1ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sprites/Attacks/balletAir.png"
-dest_files=[ "res://.import/balletAir.png-f4f34a5989151207115bf7d676f33594.stex" ]
+source_file="res://_Shogi/characters/shogi/sprites/Attacks/balletAir.png"
+dest_files=[ "res://.import/balletAir.png-af94418dc05a5d31aab7fe8982d1a1ef.stex" ]
 
 [params]
 

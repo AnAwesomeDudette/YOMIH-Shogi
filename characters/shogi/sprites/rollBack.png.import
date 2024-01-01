@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rollBack.png-3cd33f08252e8dbd2d0c64a018bc675e.stex"
+path="res://.import/rollBack.png-f8e68701dbde17d4cedf408eb4a39f78.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sprites/rollBack.png"
-dest_files=[ "res://.import/rollBack.png-3cd33f08252e8dbd2d0c64a018bc675e.stex" ]
+source_file="res://_Shogi/characters/shogi/sprites/rollBack.png"
+dest_files=[ "res://.import/rollBack.png-f8e68701dbde17d4cedf408eb4a39f78.stex" ]
 
 [params]
 

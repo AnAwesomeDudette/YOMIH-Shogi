@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pommelNew.png-ae555e622608d5a13d167c717c879767.stex"
+path="res://.import/pommelNew.png-f11630e1184824bfcf4ba6e19ab39bd4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sprites/Attacks/pommelNew.png"
-dest_files=[ "res://.import/pommelNew.png-ae555e622608d5a13d167c717c879767.stex" ]
+source_file="res://_Shogi/characters/shogi/sprites/Attacks/pommelNew.png"
+dest_files=[ "res://.import/pommelNew.png-f11630e1184824bfcf4ba6e19ab39bd4.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hustleWIP.png-f7b57c5a21c00a2c7d8b4bd643999069.stex"
+path="res://.import/hustleWIP.png-abdddd3aeddf9d90b28823cc7500d901.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sprites/hustleWIP.png"
-dest_files=[ "res://.import/hustleWIP.png-f7b57c5a21c00a2c7d8b4bd643999069.stex" ]
+source_file="res://_Shogi/characters/shogi/sprites/hustleWIP.png"
+dest_files=[ "res://.import/hustleWIP.png-abdddd3aeddf9d90b28823cc7500d901.stex" ]
 
 [params]
 

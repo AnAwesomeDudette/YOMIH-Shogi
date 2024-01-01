@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/punch.png-2a6243880420daa2745d151970d45cd1.stex"
+path="res://.import/punch.png-768344dc4e3c603327f3e38d5c762866.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shogi/characters/shogi/sprites/Attacks/punch.png"
-dest_files=[ "res://.import/punch.png-2a6243880420daa2745d151970d45cd1.stex" ]
+source_file="res://_Shogi/characters/shogi/sprites/Attacks/punch.png"
+dest_files=[ "res://.import/punch.png-768344dc4e3c603327f3e38d5c762866.stex" ]
 
 [params]
 
