@@ -1,4 +1,4 @@
-extends "res://_Shogi/characters/Shogi/states/ShogiState.gd"
+extends "res://_Shogi/characters/shogi/states/ShogiState.gd"
 
 func _frame_4():
 	if host.is_grounded():

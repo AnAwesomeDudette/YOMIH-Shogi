@@ -1,4 +1,4 @@
-extends "res://_Shogi/characters/Shogi/states/ShogiState.gd"
+extends "res://_Shogi/characters/shogi/states/ShogiState.gd"
 
 onready var flurry1 = $Flurry1
 onready var flurry2 = $Flurry2

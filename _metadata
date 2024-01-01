@@ -1,0 +1,12 @@
+{
+  "name": "Shogi",
+  "friendly_name": "Shogi",
+  "description": "Not Niflheim.",
+  "author": "TrinityLatte, Brooje, Tsutsuji/AnAwesomeDudette",
+  "version": "0.1",
+  "link": "",
+  "id": "654525252145477",
+  "requires": ["char_loader"],
+  "overwrites": false,
+  "priority": 0
+}

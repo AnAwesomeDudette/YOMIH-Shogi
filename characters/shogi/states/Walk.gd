@@ -96,8 +96,7 @@ func _frame_7():
 		host.end_throw_invulnerability()
 
 func _tick():
-	if not host.has_projectile_armor:
-		host.has_projectile_armor = true
+	host.has_projectile_armor = true
 	host.apply_x_fric(fric)
 	host.apply_grav()
 	if charged:

@@ -1,4 +1,4 @@
-extends "res://_Shogi/characters/Shogi/states/ShogiState.gd"
+extends "res://_Shogi/characters/shogi/states/ShogiState.gd"
 
 onready var a1 = $A1
 onready var a2 = $A2

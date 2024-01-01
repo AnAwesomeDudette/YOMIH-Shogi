@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -30,6 +30,9 @@
 [ext_resource path="res://_Shogi/characters/shogi/ShogiExtra.tscn" type="PackedScene" id=28]
 [ext_resource path="res://_Shogi/characters/shogi/states/Split.gd" type="Script" id=29]
 [ext_resource path="res://_Shogi/characters/shogi/ShogiInfo.tscn" type="PackedScene" id=30]
+[ext_resource path="res://_Shogi/characters/shogi/states/Windmill.gd" type="Script" id=31]
+[ext_resource path="res://ui/ActionSelector/StateIcons/throw_forward.png" type="Texture" id=32]
+[ext_resource path="res://_Shogi/characters/shogi/states/Stomp.gd" type="Script" id=33]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -60,13 +63,16 @@ dropped_this_turn
 can_bounce"
 player_info_scene = ExtResource( 30 )
 player_extra_params_scene = ExtResource( 28 )
+damage_taken_modifier = "0.9"
+use_extra_color_1 = true
+extra_color_1 = Color( 1, 0, 0.435294, 1 )
+use_extra_color_2 = true
+extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "Pommel"
-frame = 7
-speed_scale = 3.0
+animation = "Windmill"
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
@@ -122,6 +128,9 @@ __meta__ = {
 sprite_anim_length = 5
 ticks_per_frame = 3
 loop_animation = false
+
+[node name="ChargeDash" parent="StateMachine" index="31"]
+show_in_menu = false
 
 [node name="DoubleJump" parent="StateMachine" index="33"]
 script = ExtResource( 10 )
@@ -182,6 +191,55 @@ grounded_hit_state = "HurtAerial"
 knockdown = true
 active_ticks = 1
 
+[node name="BackThrow" parent="StateMachine" index="48"]
+__meta__ = {
+"_editor_description_": ""
+}
+anim_length = 25
+ticks_per_frame = 3
+flip_frame = 1
+button_texture = ExtResource( 32 )
+release_frame = 13
+release_throw_pos_y = 0
+hitstun_ticks = 21
+knockback = "8.0"
+dir_y = "2.0"
+grounded_hit_state = "HurtGrounded"
+reverse = false
+ground_bounce = false
+force_grounded = true
+minimum_grounded_frames = 10
+damage_proration = 3
+
+[node name="Bouncebox" type="Node2D" parent="StateMachine/BackThrow" index="0"]
+z_index = 1000
+script = ExtResource( 12 )
+x = 8
+y = -19
+width = 2
+height = 2
+hitstun_ticks = 20
+hitlag_ticks = 0
+victim_hitlag = 0
+scale_combo = false
+combo_scaling_amount = 0
+cancellable = false
+increment_combo = false
+hits_otg = true
+can_counter_hit = false
+ignore_armor = true
+force_grounded = true
+can_clash = false
+block_cancel_allowed = false
+screenshake_amount = 9
+hit_sound = ExtResource( 13 )
+dir_x = "1.4"
+dir_y = "2.2"
+knockback = "8.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+active_ticks = 1
+
 [node name="Ballet" type="Node2D" parent="StateMachine" index="52"]
 script = ExtResource( 14 )
 __meta__ = {
@@ -195,9 +253,7 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "3.0"
 title = "Ballet"
 type = 1
-flip_with_facing = true
 air_type = 2
-land_cancel = true
 iasa_at = 18
 interrupt_from_string = "GroundedAttack
 Grounded
@@ -239,7 +295,96 @@ knockdown_extends_hitstun = false
 start_tick = 5
 active_ticks = 4
 
-[node name="GodsFavoriteAntiair" type="Node2D" parent="StateMachine" index="53"]
+[node name="Stomp" type="Node2D" parent="StateMachine" index="53"]
+script = ExtResource( 33 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_fric = true
+apply_grav = true
+apply_custom_grav = true
+custom_grav = "0.02"
+anim_length = 13
+title = "Stomp"
+type = 1
+air_type = 1
+interrupt_from_string = "AerialAttack
+Aerial
+"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+change_stance_to = "Normal"
+
+[node name="Hitbox" type="Node2D" parent="StateMachine/Stomp" index="0"]
+z_index = 1000
+script = ExtResource( 12 )
+x = 2
+y = -3
+width = 10
+height = 16
+damage = 65
+minimum_damage = 5
+chip_damage_modifier = "1.2"
+hitstun_ticks = 15
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+parry_meter_gain = 125
+block_cancel_allowed = false
+hit_height = 0
+priority = 8
+screenshake_amount = 9
+hit_sound = ExtResource( 13 )
+hit_sound_volume = -4.0
+dir_x = "0.5"
+dir_y = "5.0"
+knockback = "3.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+ground_bounce = false
+start_tick = 5
+active_ticks = 2
+
+[node name="HitboxOTG" type="Node2D" parent="StateMachine/Stomp" index="1"]
+z_index = 1000
+script = ExtResource( 12 )
+x = 2
+y = -1
+width = 16
+height = 8
+damage = 65
+minimum_damage = 5
+chip_damage_modifier = "1.2"
+hitstun_ticks = 15
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+hits_otg = true
+hits_vs_standing = false
+hits_vs_aerial = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+hit_height = 0
+priority = 8
+screenshake_amount = 9
+hit_sound = ExtResource( 13 )
+hit_sound_volume = -4.0
+dir_x = "0.5"
+dir_y = "5.0"
+knockback = "3.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 5
+active_ticks = 2
+
+[node name="GodsFavoriteAntiair" type="Node2D" parent="StateMachine" index="54"]
 script = ExtResource( 16 )
 __meta__ = {
 "_editor_description_": ""
@@ -257,7 +402,6 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "5.0"
 title = "Headbutt"
 type = 1
-flip_with_facing = true
 air_type = 2
 land_cancel = true
 iasa_at = 13
@@ -339,7 +483,7 @@ grounded_hit_state = "HurtAerial"
 start_tick = 6
 active_ticks = 2
 
-[node name="GodsWorstMidrange" type="Node2D" parent="StateMachine" index="54"]
+[node name="GodsWorstMidrange" type="Node2D" parent="StateMachine" index="55"]
 script = ExtResource( 18 )
 __meta__ = {
 "_editor_description_": ""
@@ -353,7 +497,6 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "8.5"
 title = "Pommel"
 type = 1
-flip_with_facing = true
 land_cancel = true
 iasa_at = 17
 interrupt_from_string = "GroundedAttack
@@ -394,7 +537,7 @@ knockdown = true
 start_tick = 7
 active_ticks = 3
 
-[node name="Punch" type="Node2D" parent="StateMachine" index="55"]
+[node name="Punch" type="Node2D" parent="StateMachine" index="56"]
 script = ExtResource( 19 )
 __meta__ = {
 "_editor_description_": ""
@@ -412,7 +555,6 @@ enter_force_dir_y = "-0.01"
 enter_force_speed = "3.0"
 title = "Punch"
 type = 1
-flip_with_facing = true
 air_type = 1
 land_cancel = true
 min_land_cancel_frame = 8
@@ -459,7 +601,7 @@ knockdown_extends_hitstun = false
 start_tick = 5
 active_ticks = 3
 
-[node name="StormDrain" type="Node2D" parent="StateMachine" index="56"]
+[node name="StormDrain" type="Node2D" parent="StateMachine" index="57"]
 script = ExtResource( 23 )
 __meta__ = {
 "_editor_description_": ""
@@ -479,7 +621,6 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "50.0"
 title = "Storm Drain"
 type = 2
-flip_with_facing = true
 air_type = 2
 reversible = false
 interrupt_from_string = "GroundedSpecial
@@ -492,7 +633,8 @@ allowed_stances_string = "All"
 change_stance_to = "Normal"
 no_collision_start_frame = 6
 no_collision_end_frame = 19
-bounce_frame = 17
+bounce_frame = 15
+x_modifier = "0.7"
 
 [node name="SHitbox1" type="Node2D" parent="StateMachine/StormDrain" index="0"]
 z_index = 1000
@@ -506,7 +648,7 @@ width = 16
 height = 16
 damage = 35
 minimum_damage = 5
-chip_damage_modifier = "1.2"
+chip_damage_modifier = "2.0"
 hitstun_ticks = 10
 hitlag_ticks = 6
 victim_hitlag = 13
@@ -544,7 +686,7 @@ width = 16
 height = 16
 damage = 35
 minimum_damage = 5
-chip_damage_modifier = "1.2"
+chip_damage_modifier = "2.0"
 hitstun_ticks = 10
 hitlag_ticks = 6
 victim_hitlag = 13
@@ -581,7 +723,7 @@ width = 64
 height = 28
 damage = 35
 minimum_damage = 5
-chip_damage_modifier = "1.2"
+chip_damage_modifier = "2.0"
 hitlag_ticks = 6
 victim_hitlag = 7
 damage_proration = 1
@@ -603,6 +745,7 @@ hit_sound_volume = -4.0
 dir_x = "0.0"
 dir_y = "0.0"
 knockback = "5.0"
+block_pushback_modifier = "-1.0"
 grounded_hit_state = "HurtAerial"
 minimum_grounded_frames = 8
 knockdown = true
@@ -613,7 +756,7 @@ looping = true
 loop_active_ticks = 1
 loop_inactive_ticks = 1
 
-[node name="Whirl" type="Node2D" parent="StateMachine" index="57"]
+[node name="Whirl" type="Node2D" parent="StateMachine" index="58"]
 script = ExtResource( 25 )
 __meta__ = {
 "_editor_description_": ""
@@ -628,11 +771,9 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "6.0"
 title = "Whirl"
 type = 2
-flip_with_facing = true
 air_type = 2
 iasa_on_hit = 20
 iasa_on_hit_on_block = false
-reversible = false
 interrupt_from_string = "GroundedAttack
 Grounded
 "
@@ -753,7 +894,7 @@ wall_slam = true
 start_tick = 20
 active_ticks = 2
 
-[node name="Split" type="Node2D" parent="StateMachine" index="58"]
+[node name="Split" type="Node2D" parent="StateMachine" index="59"]
 script = ExtResource( 29 )
 __meta__ = {
 "_editor_description_": ""
@@ -776,7 +917,6 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "2.0"
 title = "Split"
 type = 2
-flip_with_facing = true
 iasa_on_hit = 18
 interrupt_from_string = "GroundedSpecial
 Grounded
@@ -973,3 +1113,1171 @@ start_tick = 12
 active_ticks = 2
 to_x = 36
 to_y = -23
+
+[node name="Windmill" type="Node2D" parent="StateMachine" index="60"]
+script = ExtResource( 31 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_fric = true
+apply_grav = true
+sprite_animation = "Windmill"
+anim_length = 30
+title = "Windmill"
+type = 2
+air_type = 1
+land_cancel = true
+min_land_cancel_frame = 18
+iasa_on_hit = 19
+interrupt_from_string = "GroundedSpecial
+Grounded
+AerialSpecial
+Aerial"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+change_stance_to = "Normal"
+bounce_frame = 19
+y_modifier = "0.5"
+x_modifier = "0.8"
+
+[node name="A1" type="Node2D" parent="StateMachine/Windmill" index="0"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -7
+y = -71
+width = 8
+height = 8
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 40
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 6
+active_ticks = 2
+to_x = 27
+to_y = 9
+
+[node name="A2" type="Node2D" parent="StateMachine/Windmill" index="1"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 14
+y = -31
+width = 4
+height = 4
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 40
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 6
+active_ticks = 2
+to_x = 10
+to_y = -33
+
+[node name="A3" type="Node2D" parent="StateMachine/Windmill" index="2"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 2
+y = -63
+width = 12
+height = 16
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 40
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 6
+active_ticks = 2
+to_x = -42
+to_y = 26
+
+[node name="B1" type="Node2D" parent="StateMachine/Windmill" index="3"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 12
+y = -61
+width = 12
+height = 16
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 38
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 8
+active_ticks = 2
+to_x = 27
+to_y = 18
+
+[node name="B2" type="Node2D" parent="StateMachine/Windmill" index="4"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 13
+y = -7
+width = 4
+height = 4
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 38
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 8
+active_ticks = 2
+to_x = 36
+to_y = 10
+
+[node name="B3" type="Node2D" parent="StateMachine/Windmill" index="5"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 45
+y = -27
+width = 16
+height = 24
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 38
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 8
+active_ticks = 2
+
+[node name="C1" type="Node2D" parent="StateMachine/Windmill" index="6"]
+position = Vector2( 1, 0 )
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -10
+y = -7
+width = 12
+height = 4
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 36
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 10
+active_ticks = 2
+to_x = -10
+to_y = 38
+
+[node name="C2" type="Node2D" parent="StateMachine/Windmill" index="7"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -5
+y = 26
+width = 12
+height = 16
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 36
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 10
+active_ticks = 2
+to_x = 25
+to_y = -7
+
+[node name="C3" type="Node2D" parent="StateMachine/Windmill" index="8"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 26
+y = 23
+width = 10
+height = 8
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 36
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 10
+active_ticks = 2
+to_x = 20
+to_y = -31
+
+[node name="D1" type="Node2D" parent="StateMachine/Windmill" index="9"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -26
+y = -28
+width = 4
+height = 15
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 34
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 12
+active_ticks = 2
+to_x = -39
+to_y = -9
+
+[node name="D2" type="Node2D" parent="StateMachine/Windmill" index="10"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -62
+y = -19
+width = 12
+height = 23
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 34
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 12
+active_ticks = 2
+
+[node name="D3" type="Node2D" parent="StateMachine/Windmill" index="11"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -35
+y = 21
+width = 12
+height = 8
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 34
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 12
+active_ticks = 2
+to_x = -22
+to_y = -22
+
+[node name="E1" type="Node2D" parent="StateMachine/Windmill" index="12"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -7
+y = -86
+width = 8
+height = 8
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 32
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 14
+active_ticks = 2
+to_x = 27
+to_y = 9
+
+[node name="E2" type="Node2D" parent="StateMachine/Windmill" index="13"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 19
+y = -46
+width = 4
+height = 4
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 32
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 14
+active_ticks = 2
+to_x = 7
+to_y = -33
+
+[node name="E3" type="Node2D" parent="StateMachine/Windmill" index="14"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 2
+y = -79
+width = 12
+height = 16
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 32
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 14
+active_ticks = 2
+to_x = -42
+to_y = 26
+
+[node name="WindmillG" type="Node2D" parent="StateMachine" index="61"]
+script = ExtResource( 31 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_fric = true
+apply_grav = true
+sprite_animation = "Windmill"
+anim_length = 30
+force_dir_x = "2.5"
+force_dir_y = "-3.7"
+force_speed = "1.5"
+force_tick = 2
+earliest_hitbox = 8
+title = "Windmill"
+type = 2
+land_cancel = true
+min_land_cancel_frame = 18
+iasa_on_hit = 19
+interrupt_from_string = "GroundedSpecial
+Grounded
+AerialSpecial
+Aerial"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+change_stance_to = "Normal"
+bounce_frame = 19
+y_modifier = "0.5"
+x_modifier = "0.8"
+
+[node name="A1" type="Node2D" parent="StateMachine/WindmillG" index="0"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -7
+y = -71
+width = 8
+height = 8
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 40
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 6
+active_ticks = 2
+to_x = 27
+to_y = 9
+
+[node name="A2" type="Node2D" parent="StateMachine/WindmillG" index="1"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 14
+y = -31
+width = 4
+height = 4
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 40
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 6
+active_ticks = 2
+to_x = 10
+to_y = -33
+
+[node name="A3" type="Node2D" parent="StateMachine/WindmillG" index="2"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 2
+y = -63
+width = 12
+height = 16
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 40
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 6
+active_ticks = 2
+to_x = -42
+to_y = 26
+
+[node name="B1" type="Node2D" parent="StateMachine/WindmillG" index="3"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 12
+y = -61
+width = 12
+height = 16
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 38
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 8
+active_ticks = 2
+to_x = 27
+to_y = 18
+
+[node name="B2" type="Node2D" parent="StateMachine/WindmillG" index="4"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 13
+y = -7
+width = 4
+height = 4
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 38
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 8
+active_ticks = 2
+to_x = 36
+to_y = 10
+
+[node name="B3" type="Node2D" parent="StateMachine/WindmillG" index="5"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 45
+y = -27
+width = 16
+height = 24
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 38
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 8
+active_ticks = 2
+
+[node name="C1" type="Node2D" parent="StateMachine/WindmillG" index="6"]
+position = Vector2( 1, 0 )
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -10
+y = -7
+width = 12
+height = 4
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 36
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 10
+active_ticks = 2
+to_x = -10
+to_y = 38
+
+[node name="C2" type="Node2D" parent="StateMachine/WindmillG" index="7"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -5
+y = 26
+width = 12
+height = 16
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 36
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 10
+active_ticks = 2
+to_x = 25
+to_y = -7
+
+[node name="C3" type="Node2D" parent="StateMachine/WindmillG" index="8"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 26
+y = 23
+width = 10
+height = 8
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 36
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 10
+active_ticks = 2
+to_x = 20
+to_y = -31
+
+[node name="D1" type="Node2D" parent="StateMachine/WindmillG" index="9"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -26
+y = -28
+width = 4
+height = 15
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 34
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 12
+active_ticks = 2
+to_x = -39
+to_y = -9
+
+[node name="D2" type="Node2D" parent="StateMachine/WindmillG" index="10"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -62
+y = -19
+width = 12
+height = 23
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 34
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 12
+active_ticks = 2
+
+[node name="D3" type="Node2D" parent="StateMachine/WindmillG" index="11"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -35
+y = 21
+width = 12
+height = 8
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 34
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 12
+active_ticks = 2
+to_x = -22
+to_y = -22
+
+[node name="E1" type="Node2D" parent="StateMachine/WindmillG" index="12"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -7
+y = -86
+width = 8
+height = 8
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 32
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 14
+active_ticks = 2
+to_x = 27
+to_y = 9
+
+[node name="E2" type="Node2D" parent="StateMachine/WindmillG" index="13"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 19
+y = -46
+width = 4
+height = 4
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 32
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 14
+active_ticks = 2
+to_x = 7
+to_y = -33
+
+[node name="E3" type="Node2D" parent="StateMachine/WindmillG" index="14"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 2
+y = -79
+width = 12
+height = 16
+damage = 95
+minimum_damage = 10
+chip_damage_modifier = "1.2"
+hitstun_ticks = 32
+hitlag_ticks = 9
+victim_hitlag = 10
+damage_proration = 1
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -1
+priority = 8
+screenshake_amount = 13
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "1.5"
+dir_y = "-0.5"
+knockback = "5.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 14
+active_ticks = 2
+to_x = -42
+to_y = 26

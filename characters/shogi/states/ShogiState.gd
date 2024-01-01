@@ -1,10 +1,12 @@
 extends CharacterState
 
-#class_name ShogiState
+class_name ShogiState
 
 export var _c_Shogi_Data = 0
 export var hitbox_register = {}
 export var bounce_frame = -1
+export var y_modifier = "0.7"
+export var x_modifier = "1.0"
 
 var last_vel = {}
 
@@ -18,8 +20,6 @@ func _add(hitbox, hits, ticks):
 var x_speed_preserved = "0.25"
 var speed = "25.0"
 var BASE_JUMP_SPEED = "0.5"
-var y_modifier = "0.7"
-var x_modifier = "1.0"
 const GLOBAL_JUMP_MODIFIER = "0.85"
 
 func jump():

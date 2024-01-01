@@ -1,4 +1,4 @@
-extends "res://_Shogi/characters/Shogi/states/ShogiState.gd"
+extends "res://_Shogi/characters/shogi/states/ShogiState.gd"
 
 onready var hitbox1 = $SHitbox1
 onready var hitbox2 = $SHitbox2
