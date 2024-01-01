@@ -1,6 +1,6 @@
 extends CharacterState
 
-class_name ShogiState
+#class_name ShogiState
 
 export var _c_Shogi_Data = 0
 export var hitbox_register = {}
