@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi_Git/YOMIH-Shogi/_Shogi/characters/Shogi/Shogi.gd" type="Script" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://characters/swordandgun/sounds/swing4.wav" type="AudioStream" id=27]
 [ext_resource path="res://_Shogi_Git/YOMIH-Shogi/_Shogi/characters/Shogi/ShogiExtra.tscn" type="PackedScene" id=28]
 [ext_resource path="res://_Shogi_Git/YOMIH-Shogi/_Shogi/characters/Shogi/states/Split.gd" type="Script" id=29]
+[ext_resource path="res://_Shogi_Git/YOMIH-Shogi/_Shogi/characters/Shogi/ShogiInfo.tscn" type="PackedScene" id=30]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -57,6 +58,7 @@ extra_state_variables = "no_escape
 do_drop
 dropped_this_turn
 can_bounce"
+player_info_scene = ExtResource( 30 )
 player_extra_params_scene = ExtResource( 28 )
 
 [node name="Sprite" parent="Flip" index="0"]
