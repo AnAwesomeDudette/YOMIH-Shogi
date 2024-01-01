@@ -4,6 +4,7 @@ var no_escape = 0
 var do_drop = false
 var dropped_this_turn = false
 var can_bounce = 0
+var current_conquer_tier = 0
 
 func init(pos = null):
 	.init(pos)
@@ -34,6 +35,8 @@ func process_extra(extra):
 			
 	if extra.has("drop_enabled") and extra.drop_enabled and can_drop:
 		do_drop = true
+	if extra.has("conquer_tier"):
+		current_conquer_tier = extra.conquer_tier
 
 func tick():
 	.tick()

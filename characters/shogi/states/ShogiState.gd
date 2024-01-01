@@ -7,11 +7,32 @@ export var hitbox_register = {}
 export var bounce_frame = -1
 export var y_modifier = "0.7"
 export var x_modifier = "1.0"
+export var can_conquer = false
 
 var last_vel = {}
 
+var windup = 0
+
+func conquer_tier_1():
+	windup = 5
+
+func conquer_tier_2():
+	windup = 7
+
+func conquer_tier_3():
+	windup = 9
+	
+
 func _enter():
 	hitbox_register = {}
+	if can_conquer:
+		if host.current_conquer_tier == 1:
+			conquer_tier_1()
+		if host.current_conquer_tier == 2:
+			conquer_tier_2()
+		if host.current_conquer_tier == 3:
+			conquer_tier_3()
+	
 	#._enter()
 	
 func _add(hitbox, hits, ticks):
@@ -74,8 +95,48 @@ func track(strength, keep_ground = true):
 	
 	host.apply_force_relative(force.x, force.y)
 	
+	
 func _tick():
-	._tick()
+	if windup <= 0:
+		._tick()
+		
+func _tick_after():
+	if windup <= 0:
+		._tick_after()
+
+
+		
+func _tick_shared():
+	if windup > 0:
+		current_tick = 0
+		windup -= 1
+		update_sprite_frame()
+			
+		if apply_fric:
+			host.apply_fric()
+		if apply_grav:
+			host.apply_grav()
+		if apply_custom_x_fric:
+			host.apply_x_fric(custom_x_fric)
+		if apply_custom_y_fric:
+			host.apply_y_fric(custom_y_fric)
+		if apply_custom_grav:
+			host.apply_grav_custom(custom_grav, custom_grav_max_fall_speed)
+		if apply_forces:
+			if apply_forces_no_limit:
+				host.apply_forces_no_limit()
+			
+			elif apply_custom_limits:
+				if host.is_grounded():
+					host.limit_x_speed(custom_max_ground_speed)
+				else :
+					host.limit_x_speed(custom_max_air_speed)
+				host.apply_forces_no_limit()
+			else :
+				host.apply_forces()
+		return
+	
+	._tick_shared()
 	
 	var con1 = current_tick < bounce_frame
 	var con2 = host.can_bounce == 1 and bounce_frame != 0
