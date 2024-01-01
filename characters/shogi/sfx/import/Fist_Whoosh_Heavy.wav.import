@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Fist_Whoosh_Heavy.wav-91441e7e73e8b8e9d2862f4dcf395a6b.sample"
+path="res://.import/Fist_Whoosh_Heavy.wav-0c1867edfa4f59353846aa95592c251c.sample"
 
 [deps]
 
-source_file="res://characters/shogi/sfx/import/Fist_Whoosh_Heavy.wav"
-dest_files=[ "res://.import/Fist_Whoosh_Heavy.wav-91441e7e73e8b8e9d2862f4dcf395a6b.sample" ]
+source_file="res://shogi/characters/shogi/sfx/import/Fist_Whoosh_Heavy.wav"
+dest_files=[ "res://.import/Fist_Whoosh_Heavy.wav-0c1867edfa4f59353846aa95592c251c.sample" ]
 
 [params]
 

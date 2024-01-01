@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/throw.png-fcda048ed814b3558cf32b89002316c6.stex"
+path="res://.import/throw.png-12237f626d0be9f83706102f98a1073b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/Attacks/throw.png"
-dest_files=[ "res://.import/throw.png-fcda048ed814b3558cf32b89002316c6.stex" ]
+source_file="res://shogi/characters/shogi/sprites/Attacks/throw.png"
+dest_files=[ "res://.import/throw.png-12237f626d0be9f83706102f98a1073b.stex" ]
 
 [params]
 

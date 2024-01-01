@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/headbuttAerial.png-4d43a5ab73f79a0be502569baa91b1fb.stex"
+path="res://.import/headbuttAerial.png-c51bcc49ab3f3639b721d6668a18e06c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/Attacks/headbuttAerial.png"
-dest_files=[ "res://.import/headbuttAerial.png-4d43a5ab73f79a0be502569baa91b1fb.stex" ]
+source_file="res://shogi/characters/shogi/sprites/Attacks/headbuttAerial.png"
+dest_files=[ "res://.import/headbuttAerial.png-c51bcc49ab3f3639b721d6668a18e06c.stex" ]
 
 [params]
 

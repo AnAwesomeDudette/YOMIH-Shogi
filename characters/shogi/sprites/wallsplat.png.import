@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wallsplat.png-560cf3a448c37cee433cd55341f250db.stex"
+path="res://.import/wallsplat.png-0e34b3382c89c5c3cd288693e671a51c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/wallsplat.png"
-dest_files=[ "res://.import/wallsplat.png-560cf3a448c37cee433cd55341f250db.stex" ]
+source_file="res://shogi/characters/shogi/sprites/wallsplat.png"
+dest_files=[ "res://.import/wallsplat.png-0e34b3382c89c5c3cd288693e671a51c.stex" ]
 
 [params]
 

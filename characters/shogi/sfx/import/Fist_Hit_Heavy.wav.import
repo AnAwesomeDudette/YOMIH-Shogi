@@ -6,7 +6,7 @@ valid=false
 
 [deps]
 
-source_file="res://characters/shogi/sfx/import/Fist_Hit_Heavy.wav"
+source_file="res://shogi/characters/shogi/sfx/import/Fist_Hit_Heavy.wav"
 [params]
 
 force/8_bit=false

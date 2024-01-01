@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Slash_HitLight.wav-3d5c5a3394b05451242606af2de9955e.sample"
+path="res://.import/Slash_HitLight.wav-ae034f28746ff7668ee5ca0eed7a9773.sample"
 
 [deps]
 
-source_file="res://characters/shogi/sfx/import/Slash_HitLight.wav"
-dest_files=[ "res://.import/Slash_HitLight.wav-3d5c5a3394b05451242606af2de9955e.sample" ]
+source_file="res://shogi/characters/shogi/sfx/import/Slash_HitLight.wav"
+dest_files=[ "res://.import/Slash_HitLight.wav-ae034f28746ff7668ee5ca0eed7a9773.sample" ]
 
 [params]
 

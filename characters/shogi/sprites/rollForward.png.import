@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rollForward.png-cc6b91ce803fe310858598b5510263e9.stex"
+path="res://.import/rollForward.png-8c0001d1877ee395951602b4257003b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/rollForward.png"
-dest_files=[ "res://.import/rollForward.png-cc6b91ce803fe310858598b5510263e9.stex" ]
+source_file="res://shogi/characters/shogi/sprites/rollForward.png"
+dest_files=[ "res://.import/rollForward.png-8c0001d1877ee395951602b4257003b4.stex" ]
 
 [params]
 

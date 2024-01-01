@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/split.png-742cf9e33090a1d118b1a55493c65d13.stex"
+path="res://.import/split.png-b4ce6816dc8948b3afd2211e8dcaa00b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/Attacks/split.png"
-dest_files=[ "res://.import/split.png-742cf9e33090a1d118b1a55493c65d13.stex" ]
+source_file="res://shogi/characters/shogi/sprites/Attacks/split.png"
+dest_files=[ "res://.import/split.png-b4ce6816dc8948b3afd2211e8dcaa00b.stex" ]
 
 [params]
 

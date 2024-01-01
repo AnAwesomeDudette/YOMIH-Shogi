@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blockLow.png-87a16b785aef4c3c9c78560dd9966170.stex"
+path="res://.import/blockLow.png-c9055056c270d18b13bcafefa099d312.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/blockLow.png"
-dest_files=[ "res://.import/blockLow.png-87a16b785aef4c3c9c78560dd9966170.stex" ]
+source_file="res://shogi/characters/shogi/sprites/blockLow.png"
+dest_files=[ "res://.import/blockLow.png-c9055056c270d18b13bcafefa099d312.stex" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Dash_General.wav-14d29b5c4709c91f6af7540ea913de3d.sample"
+path="res://.import/Dash_General.wav-8dc7f534f41e05e6fc55ff6cdb804095.sample"
 
 [deps]
 
-source_file="res://characters/shogi/sfx/import/Dash_General.wav"
-dest_files=[ "res://.import/Dash_General.wav-14d29b5c4709c91f6af7540ea913de3d.sample" ]
+source_file="res://shogi/characters/shogi/sfx/import/Dash_General.wav"
+dest_files=[ "res://.import/Dash_General.wav-8dc7f534f41e05e6fc55ff6cdb804095.sample" ]
 
 [params]
 

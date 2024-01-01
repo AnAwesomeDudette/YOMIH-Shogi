@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/walk.png-874b7391ab1a38fa1f6fc01163685c82.stex"
+path="res://.import/walk.png-5a82ddd5d8f7a18a34e27328e1fce750.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/walk.png"
-dest_files=[ "res://.import/walk.png-874b7391ab1a38fa1f6fc01163685c82.stex" ]
+source_file="res://shogi/characters/shogi/sprites/walk.png"
+dest_files=[ "res://.import/walk.png-5a82ddd5d8f7a18a34e27328e1fce750.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knockdown.png-e7ffb43a83a58e7ab49755d345bbe9e9.stex"
+path="res://.import/knockdown.png-9d4fe35a8c545a8ae9c72de24cb925ed.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/knockdown.png"
-dest_files=[ "res://.import/knockdown.png-e7ffb43a83a58e7ab49755d345bbe9e9.stex" ]
+source_file="res://shogi/characters/shogi/sprites/knockdown.png"
+dest_files=[ "res://.import/knockdown.png-9d4fe35a8c545a8ae9c72de24cb925ed.stex" ]
 
 [params]
 

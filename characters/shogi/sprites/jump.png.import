@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jump.png-1b3705ad5743a90460b6c171c8662489.stex"
+path="res://.import/jump.png-f5f3119192af81cb2a930817c29b0037.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/jump.png"
-dest_files=[ "res://.import/jump.png-1b3705ad5743a90460b6c171c8662489.stex" ]
+source_file="res://shogi/characters/shogi/sprites/jump.png"
+dest_files=[ "res://.import/jump.png-f5f3119192af81cb2a930817c29b0037.stex" ]
 
 [params]
 

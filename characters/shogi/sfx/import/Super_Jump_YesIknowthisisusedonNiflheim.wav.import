@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Super_Jump_YesIknowthisisusedonNiflheim.wav-40756ab17daadc058227a7da114e036a.sample"
+path="res://.import/Super_Jump_YesIknowthisisusedonNiflheim.wav-7a11efa7c6cd3503b79447e82c044c85.sample"
 
 [deps]
 
-source_file="res://characters/shogi/sfx/import/Super_Jump_YesIknowthisisusedonNiflheim.wav"
-dest_files=[ "res://.import/Super_Jump_YesIknowthisisusedonNiflheim.wav-40756ab17daadc058227a7da114e036a.sample" ]
+source_file="res://shogi/characters/shogi/sfx/import/Super_Jump_YesIknowthisisusedonNiflheim.wav"
+dest_files=[ "res://.import/Super_Jump_YesIknowthisisusedonNiflheim.wav-7a11efa7c6cd3503b79447e82c044c85.sample" ]
 
 [params]
 

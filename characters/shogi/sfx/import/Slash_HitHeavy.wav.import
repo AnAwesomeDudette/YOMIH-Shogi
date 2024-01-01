@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Slash_HitHeavy.wav-7c93e18c7325231f13813be30350e3fb.sample"
+path="res://.import/Slash_HitHeavy.wav-22076c6d3c1c6ab4f9eec4fa81dd6415.sample"
 
 [deps]
 
-source_file="res://characters/shogi/sfx/import/Slash_HitHeavy.wav"
-dest_files=[ "res://.import/Slash_HitHeavy.wav-7c93e18c7325231f13813be30350e3fb.sample" ]
+source_file="res://shogi/characters/shogi/sfx/import/Slash_HitHeavy.wav"
+dest_files=[ "res://.import/Slash_HitHeavy.wav-22076c6d3c1c6ab4f9eec4fa81dd6415.sample" ]
 
 [params]
 

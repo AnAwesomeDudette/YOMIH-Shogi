@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Sword_Swing_Heavy1.wav-05c55dd6d71e02b64578a472edd96796.sample"
+path="res://.import/Sword_Swing_Heavy1.wav-83fc1244f0730584ca9949383ceb02b4.sample"
 
 [deps]
 
-source_file="res://characters/shogi/sfx/import/Sword_Swing_Heavy1.wav"
-dest_files=[ "res://.import/Sword_Swing_Heavy1.wav-05c55dd6d71e02b64578a472edd96796.sample" ]
+source_file="res://shogi/characters/shogi/sfx/import/Sword_Swing_Heavy1.wav"
+dest_files=[ "res://.import/Sword_Swing_Heavy1.wav-83fc1244f0730584ca9949383ceb02b4.sample" ]
 
 [params]
 

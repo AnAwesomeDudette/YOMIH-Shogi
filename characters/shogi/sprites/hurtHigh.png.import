@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hurtHigh.png-2c8b5204f0dde38e4699692d1f19bcb4.stex"
+path="res://.import/hurtHigh.png-5feb9ecf3fc6cab2dd3e7483dbbee0a2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/hurtHigh.png"
-dest_files=[ "res://.import/hurtHigh.png-2c8b5204f0dde38e4699692d1f19bcb4.stex" ]
+source_file="res://shogi/characters/shogi/sprites/hurtHigh.png"
+dest_files=[ "res://.import/hurtHigh.png-5feb9ecf3fc6cab2dd3e7483dbbee0a2.stex" ]
 
 [params]
 

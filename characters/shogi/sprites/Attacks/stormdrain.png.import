@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stormdrain.png-450cd49214e43bd3692f68194d3c86cc.stex"
+path="res://.import/stormdrain.png-d4b89c40e126631f2dad54564a724e67.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/Attacks/stormdrain.png"
-dest_files=[ "res://.import/stormdrain.png-450cd49214e43bd3692f68194d3c86cc.stex" ]
+source_file="res://shogi/characters/shogi/sprites/Attacks/stormdrain.png"
+dest_files=[ "res://.import/stormdrain.png-d4b89c40e126631f2dad54564a724e67.stex" ]
 
 [params]
 

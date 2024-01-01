@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle.png-1ac1fddaa9496ea0de696b4f954b0086.stex"
+path="res://.import/idle.png-732a6803349af275398aaf6998fbb0d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/shogi/sprites/idle.png"
-dest_files=[ "res://.import/idle.png-1ac1fddaa9496ea0de696b4f954b0086.stex" ]
+source_file="res://shogi/characters/shogi/sprites/idle.png"
+dest_files=[ "res://.import/idle.png-732a6803349af275398aaf6998fbb0d7.stex" ]
 
 [params]
 
