@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/ActionSelector/PlayerExtra.tscn" type="PackedScene" id=1]
+[ext_resource path="res://_Shogi/characters/Shogi/ShogiExtra.gd" type="Script" id=2]
+[ext_resource path="res://_Shogi/characters/Shogi/icons/dropthingy.png" type="Texture" id=3]
+
+[node name="ShogiExtra" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": ""
+}
+
+[node name="DropButton" type="CheckButton" parent="." index="0"]
+unique_name_in_owner = true
+modulate = Color( 1, 0, 0.435294, 1 )
+margin_right = 159.0
+margin_bottom = 40.0
+size_flags_vertical = 0
+text = "Plummet"
+icon = ExtResource( 3 )
