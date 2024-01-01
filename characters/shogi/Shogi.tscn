@@ -60,7 +60,8 @@ max_fall_speed = "13"
 extra_state_variables = "no_escape
 do_drop
 dropped_this_turn
-can_bounce"
+can_bounce
+current_conquer_tier"
 player_info_scene = ExtResource( 30 )
 player_extra_params_scene = ExtResource( 28 )
 damage_taken_modifier = "0.9"
@@ -634,7 +635,6 @@ change_stance_to = "Normal"
 no_collision_start_frame = 6
 no_collision_end_frame = 19
 bounce_frame = 15
-x_modifier = "0.7"
 
 [node name="SHitbox1" type="Node2D" parent="StateMachine/StormDrain" index="0"]
 z_index = 1000
@@ -782,6 +782,7 @@ Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
 bounce_frame = 20
+can_conquer = true
 
 [node name="Flurry1" type="Node2D" parent="StateMachine/Whirl" index="0"]
 z_index = 1000
@@ -929,6 +930,7 @@ Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
 bounce_frame = 15
+can_conquer = true
 
 [node name="A1" type="Node2D" parent="StateMachine/Split" index="0"]
 z_index = 1000
