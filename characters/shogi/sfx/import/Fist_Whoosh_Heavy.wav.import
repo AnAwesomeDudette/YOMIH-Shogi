@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Fist_Whoosh_Heavy.wav-91441e7e73e8b8e9d2862f4dcf395a6b.sample"
+
+[deps]
+
+source_file="res://characters/shogi/sfx/import/Fist_Whoosh_Heavy.wav"
+dest_files=[ "res://.import/Fist_Whoosh_Heavy.wav-91441e7e73e8b8e9d2862f4dcf395a6b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
