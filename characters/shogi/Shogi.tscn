@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/states/Windmill.gd" type="Script" id=31]
 [ext_resource path="res://ui/ActionSelector/StateIcons/throw_forward.png" type="Texture" id=32]
 [ext_resource path="res://_Shogi/characters/shogi/states/Stomp.gd" type="Script" id=33]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/hustleWIP.png" type="Texture" id=34]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -61,6 +62,7 @@ extra_state_variables = "no_escape
 do_drop
 dropped_this_turn
 can_bounce"
+character_portrait = ExtResource( 34 )
 player_info_scene = ExtResource( 30 )
 player_extra_params_scene = ExtResource( 28 )
 damage_taken_modifier = "0.9"
@@ -72,7 +74,7 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "Windmill"
+animation = "Taunt"
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
