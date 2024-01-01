@@ -1,7 +1,7 @@
 extends PlayerExtra
 
 func _ready():
-	$"%DropButton".connect("item_selected", self, "emit_signal", ["data_changed"])
+	$"%DropButton".connect("pressed", self, "emit_signal", ["data_changed"])
 	$"%ConquerSelect".connect("data_changed", self, "emit_signal", ["data_changed"])
 	
 

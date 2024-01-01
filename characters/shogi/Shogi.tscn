@@ -61,7 +61,8 @@ max_fall_speed = "13"
 extra_state_variables = "no_escape
 do_drop
 dropped_this_turn
-can_bounce"
+can_bounce
+current_conquer_tier"
 character_portrait = ExtResource( 34 )
 player_info_scene = ExtResource( 30 )
 player_extra_params_scene = ExtResource( 28 )
@@ -320,6 +321,10 @@ hit_cancel_into_string = "Grounded
 Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
+min_bounce_frame = 5
+bounce_frame = 8
+y_modifier = "0.6"
+x_modifier = "0.6"
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/Stomp" index="0"]
 z_index = 1000
@@ -405,8 +410,7 @@ enter_force_speed = "5.0"
 title = "Headbutt"
 type = 1
 air_type = 2
-land_cancel = true
-iasa_at = 13
+iasa_at = 14
 interrupt_from_string = "GroundedAttack
 Grounded
 "

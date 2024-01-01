@@ -4,6 +4,7 @@ extends CharacterState
 
 export var _c_Shogi_Data = 0
 export var hitbox_register = {}
+export var min_bounce_frame = -1
 export var bounce_frame = -1
 export var y_modifier = "0.7"
 export var x_modifier = "1.0"
@@ -138,7 +139,7 @@ func _tick_shared():
 	
 	._tick_shared()
 	
-	var con1 = current_tick < bounce_frame
+	var con1 = current_tick < bounce_frame and current_tick > min_bounce_frame
 	var con2 = host.can_bounce == 1 and bounce_frame != 0
 	var con3 = started_in_air
 	var con4 = host.is_grounded()
