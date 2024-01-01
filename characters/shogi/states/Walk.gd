@@ -96,6 +96,8 @@ func _frame_7():
 		host.end_throw_invulnerability()
 
 func _tick():
+	if not host.has_projectile_armor:
+		host.has_projectile_armor = true
 	host.apply_x_fric(fric)
 	host.apply_grav()
 	if charged:
@@ -119,6 +121,11 @@ func _tick():
 			host.update_facing()
 			updated = true
 			host.set_vel(fixed.mul(fixed.abs(vel.x), str(host.get_opponent_dir())), vel.y)
+
+func _exit():
+	._exit()
+	if host.has_projectile_armor:
+		host.has_projectile_armor = false
 
 var rate = 4
 var total_frames = 6
