@@ -4,11 +4,13 @@ extends CharacterState
 
 export var _c_Shogi_Data = 0
 export var hitbox_register = {}
+export var hitbox_frame = {}
 export var min_bounce_frame = -1
 export var bounce_frame = -1
 export var y_modifier = "0.7"
 export var x_modifier = "1.0"
 export var can_conquer = false
+export (PackedScene) var shogi_hit_particle
 
 var last_vel = {}
 
@@ -26,6 +28,7 @@ func conquer_tier_3():
 
 func _enter():
 	hitbox_register = {}
+	hitbox_frame = {}
 	if can_conquer:
 		if host.current_conquer_tier == 1:
 			conquer_tier_1()
@@ -38,6 +41,9 @@ func _enter():
 	
 func _add(hitbox, hits, ticks):
 	hitbox_register[hitbox] = {"Hits":hits, "Ticks":ticks}
+	
+func _add_f(hitbox, frame):
+	hitbox_frame[hitbox] = frame
 	
 var x_speed_preserved = "0.25"
 var speed = "25.0"
@@ -171,6 +177,40 @@ func _tick_shared():
 						continue
 					if(hitbox.overlaps(o.hurtbox)):
 						host.attempt_consume(o, consume_amount, tick_amount)
+
+
+"""
+func _on_hit_something(obj, _hitbox):
+	._on_hit_something(obj, _hitbox)
+	host.spawn_particle_effect(preload("res://_Neru/Characters/Neru/particles/Small Slash.tscn"), host.opponent.position)
+"""
+
+func _on_hit_something(obj, hitbox):
+	._on_hit_something(obj, hitbox)
+	if shogi_hit_particle:
+		var dir = hitbox.get_dir_float(true)
+		var location = hitbox.get_overlap_center_float(obj.hurtbox)
+		var location_alt = host.opponent.get_pos_visual()
+		if hitbox.grounded_hit_state is String and hitbox.grounded_hit_state == "HurtGrounded" and obj.is_grounded():
+				dir.y *= 0
+		var par = host._spawn_particle_effect(shogi_hit_particle, location, dir)
+		"""
+		if not host.is_ghost:
+			par.material = host.sprite.material
+			par.get_material().set_shader_param("is_particle", true)
+			for child_node in par.get_children():
+				if child_node is CPUParticles2D:
+					child_node.set_color_ramp(preload("res://_Shogi/characters/shogi/particles/ShogiHitGradient.tres"))
+		"""
+		var frame = host.randi_range(0, 5)
+		if hitbox_frame.has(hitbox):
+			frame = hitbox_frame[hitbox]
+		par.get_children()[2].texture.set_region(Rect2(frame*128, 0, 128, 128)) #//I LOVE CODE
+		
+		#host.spawn_particle_effect(shogi_hit_particle, hitbox.get_overlap_center_float(obj.hurtbox))#, dir)
+		#host.spawn_particle_effect(preload("res://_Neru/Characters/Neru/particles/Small Slash.tscn"), host.opponent.position, dir)
+		#//print("Should spawn hit particle!")
+
 
 func _exit():
 	if bounce_frame > 0:

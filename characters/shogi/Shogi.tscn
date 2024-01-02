@@ -1,8 +1,8 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
-[ext_resource path="res://characters/BaseChar.gdshader" type="Shader" id=3]
+[ext_resource path="res://_Shogi/characters/shogi/Shogi.gdshader" type="Shader" id=3]
 [ext_resource path="res://ui/ActionSelector/StateIcons/dash.png" type="Texture" id=4]
 [ext_resource path="res://sound/common/whiff1.wav" type="AudioStream" id=5]
 [ext_resource path="res://_Shogi/characters/shogi/ui/WalkActionUIData.tscn" type="PackedScene" id=6]
@@ -34,20 +34,25 @@
 [ext_resource path="res://ui/ActionSelector/StateIcons/throw_forward.png" type="Texture" id=32]
 [ext_resource path="res://_Shogi/characters/shogi/states/Stomp.gd" type="Script" id=33]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/hustleWIP.png" type="Texture" id=34]
+[ext_resource path="res://_Shogi/characters/shogi/particles/ShogiHit.tscn" type="PackedScene" id=35]
+[ext_resource path="res://_Shogi/characters/shogi/states/Sacrifice.gd" type="Script" id=36]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 3 )
 shader_param/use_extra_color_1 = false
 shader_param/use_extra_color_2 = false
+shader_param/use_extra_color_3 = true
 shader_param/extra_replace_color_1 = Color( 1, 0, 1, 1 )
 shader_param/extra_replace_color_2 = Color( 1, 0, 1, 1 )
+shader_param/extra_replace_color_3 = Color( 0.455, 0, 0.247, 1 )
 shader_param/color = Color( 1, 1, 1, 1 )
 shader_param/extra_color_1 = Color( 1, 1, 1, 1 )
 shader_param/extra_color_2 = Color( 1, 1, 1, 1 )
 shader_param/max_color_distance = 0.01
 shader_param/super_dim = false
 shader_param/use_outline = false
+shader_param/is_particle = false
 shader_param/outline_color = Color( 0, 0, 0, 1 )
 
 [node name="Shogi" instance=ExtResource( 1 )]
@@ -62,7 +67,8 @@ extra_state_variables = "no_escape
 do_drop
 dropped_this_turn
 can_bounce
-current_conquer_tier"
+current_conquer_tier
+sacrifices"
 character_portrait = ExtResource( 34 )
 player_info_scene = ExtResource( 30 )
 player_extra_params_scene = ExtResource( 28 )
@@ -75,7 +81,8 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "Taunt"
+animation = "Sacrifice"
+frame = 14
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
@@ -324,7 +331,7 @@ change_stance_to = "Normal"
 min_bounce_frame = 5
 bounce_frame = 8
 y_modifier = "0.6"
-x_modifier = "0.6"
+x_modifier = "1.1"
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/Stomp" index="0"]
 z_index = 1000
@@ -639,8 +646,10 @@ allowed_stances_string = "All"
 change_stance_to = "Normal"
 no_collision_start_frame = 6
 no_collision_end_frame = 19
+min_bounce_frame = 3
 bounce_frame = 15
 x_modifier = "0.7"
+shogi_hit_particle = ExtResource( 35 )
 
 [node name="SHitbox1" type="Node2D" parent="StateMachine/StormDrain" index="0"]
 z_index = 1000
@@ -667,6 +676,7 @@ block_cancel_allowed = false
 plus_frames = 2
 priority = 8
 screenshake_amount = 9
+replace_hit_particle = true
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "0.0"
@@ -705,6 +715,7 @@ block_cancel_allowed = false
 plus_frames = 2
 priority = 8
 screenshake_amount = 9
+replace_hit_particle = true
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "0.0"
@@ -745,6 +756,7 @@ plus_frames = 2
 priority = 8
 group = 1
 screenshake_amount = 9
+replace_hit_particle = true
 whiff_sound = ExtResource( 20 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -761,6 +773,8 @@ active_ticks = 7
 looping = true
 loop_active_ticks = 1
 loop_inactive_ticks = 1
+to_x = 1
+to_y = 1
 
 [node name="Whirl" type="Node2D" parent="StateMachine" index="58"]
 script = ExtResource( 25 )
@@ -787,7 +801,9 @@ interrupt_into_string = "Grounded
 Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
+min_bounce_frame = 7
 bounce_frame = 20
+shogi_hit_particle = ExtResource( 35 )
 
 [node name="Flurry1" type="Node2D" parent="StateMachine/Whirl" index="0"]
 z_index = 1000
@@ -809,8 +825,10 @@ sdi_modifier = "0.0"
 parry_meter_gain = 25
 guard_break = true
 block_cancel_allowed = false
+plus_frames = 1
 hit_height = 0
 priority = 8
+replace_hit_particle = true
 whiff_sound = ExtResource( 26 )
 hit_sound = ExtResource( 13 )
 hit_sound_volume = -4.0
@@ -847,8 +865,10 @@ sdi_modifier = "0.0"
 parry_meter_gain = 25
 guard_break = true
 block_cancel_allowed = false
+plus_frames = 1
 hit_height = 0
 priority = 8
+replace_hit_particle = true
 whiff_sound = ExtResource( 26 )
 hit_sound = ExtResource( 13 )
 hit_sound_volume = -4.0
@@ -874,7 +894,7 @@ width = 36
 height = 43
 damage = 150
 minimum_damage = 75
-chip_damage_modifier = "1.2"
+chip_damage_modifier = "2.2"
 hitstun_ticks = 26
 hitlag_ticks = 13
 victim_hitlag = 12
@@ -885,10 +905,12 @@ sdi_modifier = "0.8"
 parry_meter_gain = 125
 guard_break = true
 block_cancel_allowed = false
+plus_frames = 1
 hit_height = 0
 priority = 8
 group = 1
 screenshake_amount = 19
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 24 )
 hit_sound_volume = -4.0
@@ -935,6 +957,7 @@ Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
 bounce_frame = 15
+shogi_hit_particle = ExtResource( 35 )
 
 [node name="A1" type="Node2D" parent="StateMachine/Split" index="0"]
 z_index = 1000
@@ -959,6 +982,7 @@ block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -995,6 +1019,7 @@ block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1031,6 +1056,7 @@ block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1061,12 +1087,14 @@ chip_damage_modifier = "1.7"
 hitlag_ticks = 12
 victim_hitlag = 13
 cancellable = false
+hits_otg = true
 parry_meter_gain = 125
 guard_break = true
 block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1105,6 +1133,7 @@ block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1130,6 +1159,7 @@ apply_fric = true
 apply_grav = true
 sprite_animation = "Windmill"
 anim_length = 30
+particle_scene = ExtResource( 35 )
 title = "Windmill"
 type = 2
 air_type = 1
@@ -1146,9 +1176,11 @@ hit_cancel_into_string = "Grounded
 Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
+min_bounce_frame = 3
 bounce_frame = 19
 y_modifier = "0.5"
 x_modifier = "0.8"
+shogi_hit_particle = ExtResource( 35 )
 
 [node name="A1" type="Node2D" parent="StateMachine/Windmill" index="0"]
 z_index = 1000
@@ -1173,6 +1205,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1210,6 +1243,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1247,6 +1281,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1284,11 +1319,12 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
-dir_y = "-0.5"
+dir_y = "2.5"
 knockback = "5.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
@@ -1321,11 +1357,12 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
-dir_y = "-0.5"
+dir_y = "2.5"
 knockback = "5.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
@@ -1358,17 +1395,20 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
-dir_y = "-0.5"
+dir_y = "2.5"
 knockback = "5.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
 knockdown_extends_hitstun = false
 start_tick = 8
 active_ticks = 2
+to_x = 1
+to_y = 1
 
 [node name="C1" type="Node2D" parent="StateMachine/Windmill" index="6"]
 position = Vector2( 1, 0 )
@@ -1394,6 +1434,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1431,6 +1472,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1468,6 +1510,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1505,6 +1548,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1542,6 +1586,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1553,6 +1598,8 @@ knockdown = true
 knockdown_extends_hitstun = false
 start_tick = 12
 active_ticks = 2
+to_x = 1
+to_y = 1
 
 [node name="D3" type="Node2D" parent="StateMachine/Windmill" index="11"]
 z_index = 1000
@@ -1577,6 +1624,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1614,6 +1662,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1651,6 +1700,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1688,6 +1738,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1716,6 +1767,7 @@ force_dir_x = "2.5"
 force_dir_y = "-3.7"
 force_speed = "1.5"
 force_tick = 2
+particle_scene = ExtResource( 35 )
 earliest_hitbox = 8
 title = "Windmill"
 type = 2
@@ -1735,6 +1787,7 @@ change_stance_to = "Normal"
 bounce_frame = 19
 y_modifier = "0.5"
 x_modifier = "0.8"
+shogi_hit_particle = ExtResource( 35 )
 
 [node name="A1" type="Node2D" parent="StateMachine/WindmillG" index="0"]
 z_index = 1000
@@ -1759,6 +1812,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1796,6 +1850,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1833,6 +1888,7 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
+replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
@@ -1870,11 +1926,12 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
-dir_y = "-0.5"
+dir_y = "2.5"
 knockback = "5.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
@@ -1907,11 +1964,12 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
-dir_y = "-0.5"
+dir_y = "2.5"
 knockback = "5.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
@@ -1944,17 +2002,20 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
-dir_y = "-0.5"
+dir_y = "2.5"
 knockback = "5.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
 knockdown_extends_hitstun = false
 start_tick = 8
 active_ticks = 2
+to_x = 1
+to_y = 1
 
 [node name="C1" type="Node2D" parent="StateMachine/WindmillG" index="6"]
 position = Vector2( 1, 0 )
@@ -1980,7 +2041,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2017,7 +2079,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2054,7 +2117,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2091,7 +2155,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2128,7 +2193,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2139,6 +2205,8 @@ knockdown = true
 knockdown_extends_hitstun = false
 start_tick = 12
 active_ticks = 2
+to_x = 1
+to_y = 1
 
 [node name="D3" type="Node2D" parent="StateMachine/WindmillG" index="11"]
 z_index = 1000
@@ -2163,7 +2231,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2200,7 +2269,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2237,7 +2307,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2274,7 +2345,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
+replace_hit_particle = true
+whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2287,3 +2359,67 @@ start_tick = 14
 active_ticks = 2
 to_x = -42
 to_y = 26
+
+[node name="Sacrifice" type="Node2D" parent="StateMachine" index="62"]
+script = ExtResource( 36 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_fric = true
+apply_grav = true
+anim_length = 16
+state_screenshake_tick = 8
+state_screenshake_amount = 8
+timed_particle_scene = ExtResource( 35 )
+timed_particle_position = Vector2( 0, -18 )
+timed_spawn_particle_tick = 8
+sfx = ExtResource( 24 )
+sfx_tick = 8
+sfx_volume = -5.0
+title = "Sacrifice"
+type = 2
+iasa_on_hit = 12
+iasa_on_hit_on_block = false
+reversible = false
+can_feint_if_possible = false
+interrupt_from_string = "GroundedSpecial
+Grounded
+"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+change_stance_to = "Normal"
+velocity_forward_meter_gain_multiplier = "0.0"
+whiff_meter_gain_multiplier = "0.0"
+
+[node name="Hitbox" type="Node2D" parent="StateMachine/Sacrifice" index="0"]
+z_index = 1000
+script = ExtResource( 12 )
+x = -8
+y = -21
+width = 4
+height = 4
+damage = 60
+minimum_damage = 2
+chip_damage_modifier = "2.0"
+hitlag_ticks = 2
+victim_hitlag = 3
+damage_proration = -1
+parry_meter_gain = 300
+ignore_armor = true
+block_cancel_allowed = false
+priority = 8
+whiff_sound = null
+hit_sound = null
+hit_sound_volume = -4.0
+dir_x = "-1.0"
+dir_y = "1.0"
+knockback = "100.0"
+knockdown = true
+knockdown_extends_hitstun = false
+wall_slam = true
+start_tick = 9
+active_ticks = 3

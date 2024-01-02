@@ -59,3 +59,12 @@ func _tick():
 		startup_lag -= 1
 		current_tick = 1
 	._tick()
+
+"""
+func _on_hit_something(obj, hitbox):
+	._on_hit_something(obj, hitbox)
+	if obj is Fighter:
+		var par = host._spawn_particle_effect(particle_scene, Vector2(hitbox.x * host.get_facing_int(), hitbox.y), Vector2())
+		var random_angle = host.randi_range(0, 361)
+		par.rotation_degrees = random_angle
+"""

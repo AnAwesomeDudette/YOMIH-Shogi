@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=268 format=2]
+[gd_resource type="SpriteFrames" load_steps=275 format=2]
 
 [ext_resource path="res://_Shogi/characters/shogi/sprites/idle.png" type="Texture" id=1]
 [ext_resource path="res://characters/stickman/sprites/stickman35.png" type="Texture" id=2]
@@ -88,6 +88,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/sprites/jump.png" type="Texture" id=86]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Attacks/windmill.png" type="Texture" id=87]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/hustleWIP.png" type="Texture" id=88]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/sacrifice.png" type="Texture" id=89]
 
 [sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 42 )
@@ -452,6 +453,30 @@ region = Rect2( 256, 512, 256, 256 )
 [sub_resource type="AtlasTexture" id=95]
 atlas = ExtResource( 57 )
 region = Rect2( 512, 512, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=199]
+atlas = ExtResource( 89 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=200]
+atlas = ExtResource( 89 )
+region = Rect2( 256, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=201]
+atlas = ExtResource( 89 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=203]
+atlas = ExtResource( 89 )
+region = Rect2( 256, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=202]
+atlas = ExtResource( 89 )
+region = Rect2( 0, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=204]
+atlas = ExtResource( 89 )
+region = Rect2( 512, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=150]
 atlas = ExtResource( 85 )
@@ -1025,6 +1050,11 @@ animations = [ {
 "frames": [ ExtResource( 68 ), ExtResource( 68 ), ExtResource( 68 ), ExtResource( 68 ) ],
 "loop": true,
 "name": "RollForward",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 199 ), SubResource( 199 ), SubResource( 199 ), SubResource( 200 ), SubResource( 200 ), SubResource( 200 ), SubResource( 200 ), SubResource( 201 ), SubResource( 203 ), SubResource( 203 ), SubResource( 203 ), SubResource( 202 ), SubResource( 202 ), SubResource( 204 ), SubResource( 204 ) ],
+"loop": true,
+"name": "Sacrifice",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 150 ), SubResource( 151 ), SubResource( 152 ), SubResource( 153 ), SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ), SubResource( 159 ), SubResource( 159 ), SubResource( 160 ), SubResource( 160 ), SubResource( 161 ), SubResource( 161 ), SubResource( 162 ), SubResource( 162 ), SubResource( 163 ) ],

@@ -13,6 +13,10 @@ func _enter():
 	_add(flurry1, 1, 0)
 	_add(flurry2, 1, 0)
 	_add(ender, 3, 6)
+	
+	_add_f(flurry1, 0)
+	_add_f(flurry2, 0)
+	_add_f(ender, 5)
 	"""
 	hitbox_register = {
 		flurry1: {"Hits":1, "Ticks":3},

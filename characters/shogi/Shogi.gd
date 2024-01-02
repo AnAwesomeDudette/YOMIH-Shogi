@@ -5,6 +5,8 @@ var do_drop = false
 var dropped_this_turn = false
 var can_bounce = 0
 var current_conquer_tier = 0
+var sacrifices = 0 #7 uses
+var raid = 0
 
 func init(pos = null):
 	.init(pos)

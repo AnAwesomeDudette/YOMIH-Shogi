@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://fx/ParticleEffect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/BaseChar.gdshader" type="Shader" id=2]
+[ext_resource path="res://_Shogi/characters/shogi/particles/ShogiHitGradient.tres" type="Gradient" id=3]
+[ext_resource path="res://_Shogi/characters/shogi/particles/ShogiHitAnim.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://_Shogi/characters/shogi/particles/ShogiHitAtlas.tres" type="Texture" id=5]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Particles/diamond but epic.png" type="Texture" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/use_extra_color_1 = false
+shader_param/use_extra_color_2 = false
+shader_param/extra_replace_color_1 = Color( 1, 0, 1, 1 )
+shader_param/extra_replace_color_2 = Color( 1, 0, 1, 1 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/extra_color_1 = Color( 1, 1, 1, 1 )
+shader_param/extra_color_2 = Color( 1, 1, 1, 1 )
+shader_param/max_color_distance = 0.01
+shader_param/super_dim = false
+shader_param/use_outline = false
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Curve" id=2]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, -120.849 ), 0.0, 0.0, 0, 0, Vector2( 0.970297, -193.576 ), 0.0, 0.0, 0, 0 ]
+
+[node name="ParticleEffect" instance=ExtResource( 1 )]
+material = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+frames = ExtResource( 4 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="2"]
+unique_name_in_owner = true
+z_index = -4
+amount = 1
+speed_scale = 2.2
+texture = ExtResource( 5 )
+emission_shape = 2
+emission_rect_extents = Vector2( 0, 0 )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+angle = 13.2
+scale_amount = 0.8
+scale_amount_random = 1.0
+color_ramp = ExtResource( 3 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." index="3"]
+amount = 12
+lifetime = 0.8
+speed_scale = 2.2
+explosiveness = 0.83
+texture = ExtResource( 6 )
+direction = Vector2( 1, -0.8 )
+spread = 43.35
+gravity = Vector2( 0, 0 )
+initial_velocity = 202.49
+linear_accel = -100.0
+linear_accel_curve = SubResource( 2 )
+angle = -224.6
+color_ramp = ExtResource( 3 )
