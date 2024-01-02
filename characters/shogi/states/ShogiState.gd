@@ -11,22 +11,42 @@ export var y_modifier = "0.7"
 export var x_modifier = "1.0"
 export var can_conquer = false
 export (PackedScene) var shogi_hit_particle
+var damage_multiplier = 1
+
+var original_hitbox_plus_frames = {}
+
+func init():
+	.init()
+	for hitbox in all_hitbox_nodes:
+		original_hitbox_plus_frames[hitbox] = hitbox.plus_frames
 
 var last_vel = {}
 
 var windup = 0
 
+func add_plus_frames(frames):
+	for hitbox in all_hitbox_nodes:
+		hitbox.plus_frames += frames
+
 func conquer_tier_1():
 	windup = 5
+	add_plus_frames(3)
+	host.armor_hits_remaining = 1
 
 func conquer_tier_2():
 	windup = 7
+	add_plus_frames(3)
+	host.armor_hits_remaining = 2
 
 func conquer_tier_3():
 	windup = 9
+	add_plus_frames(3)
+	host.armor_hits_remaining = 4
 	
 
 func _enter():
+	for hitbox in all_hitbox_nodes:
+		hitbox.plus_frames = original_hitbox_plus_frames[hitbox]
 	hitbox_register = {}
 	hitbox_frame = {}
 	if can_conquer:
@@ -104,17 +124,24 @@ func track(strength, keep_ground = true):
 	
 	
 func _tick():
-	if windup <= 0:
+	if windup < 0:
 		._tick()
 		
 func _tick_after():
-	if windup <= 0:
+	if windup < 0:
 		._tick_after()
 
 
 		
 func _tick_shared():
-	if windup > 0:
+	if windup >= 0:
+		damage_multiplier = 0.95
+		if current_tick == -1:
+			if spawn_particle_on_enter and particle_scene:
+				var pos = particle_position
+				pos.x *= host.get_facing_int()
+				spawn_particle_relative(particle_scene, pos, Vector2.RIGHT * host.get_facing_int())
+			apply_enter_force()
 		current_tick = 0
 		windup -= 1
 		update_sprite_frame()
@@ -141,8 +168,10 @@ func _tick_shared():
 				host.apply_forces_no_limit()
 			else :
 				host.apply_forces()
-		return
+		if (windup >= 0):
+			return
 	
+	damage_multiplier = 1
 	._tick_shared()
 	
 	var con1 = current_tick < bounce_frame and current_tick > min_bounce_frame

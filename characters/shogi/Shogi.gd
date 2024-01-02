@@ -5,14 +5,32 @@ var do_drop = false
 var dropped_this_turn = false
 var can_bounce = 0
 var current_conquer_tier = 0
+var armor_hits_remaining = 0
 var sacrifices = 0 #7 uses
 var raid = 0
 var dedication = {"x":0, "y":0}
 var dedication_delay = -1
+var got_hit = false # whether Shogi was hit this tick
+
+func take_damage(damage:int, minimum = 0, meter_gain_modifier = "1.0", combo_scaling_offset = 0, damage_taken_meter_gain_modifier = "1.0"):
+	if current_state() is preload("res://_Shogi/characters/shogi/states/ShogiState.gd"):
+		damage *= current_state().damage_multiplier
+	.take_damage(damage, minimum ,meter_gain_modifier, combo_scaling_offset, damage_taken_meter_gain_modifier)
+
+	
 
 func init(pos = null):
 	.init(pos)
 	HOLD_RESTARTS.append("Walk")
+
+func _on_state_exited(state):
+	._on_state_exited(state)
+	armor_hits_remaining = 0
+
+
+func on_state_interruptable(state = null):
+	.on_state_interruptable(state)
+	armor_hits_remaining = 0
 
 func on_got_parried():
 	.on_got_parried()
@@ -42,6 +60,11 @@ func process_extra(extra):
 	if extra.has("conquer_tier"):
 		current_conquer_tier = extra.conquer_tier
 
+
+func on_got_hit_by_fighter():
+	if armor_hits_remaining > 0:
+		got_hit = true
+
 func tick():
 	.tick()
 	
@@ -55,6 +78,9 @@ func tick():
 	if do_drop:
 		apply_drop()
 		do_drop = false
+	if (got_hit):
+		armor_hits_remaining -= 1
+		got_hit = false
 
 func apply_dedication(x, y):
 	
@@ -106,5 +132,10 @@ func attempt_consume(obj, hits = 1, ticks = 0):
 				obj.fizzle()
 	#elif true:
 	#	pass
+	
+func has_armor():
+	return armor_hits_remaining > 0 and not (current_state() is CharacterHurtState)
+	
+
 
 #fast fall bounce thingymajigoo

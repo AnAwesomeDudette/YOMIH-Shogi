@@ -74,7 +74,8 @@ do_drop
 dropped_this_turn
 can_bounce
 current_conquer_tier
-sacrifices"
+sacrifices
+armor_hits_remaining"
 character_portrait = ExtResource( 34 )
 player_info_scene = ExtResource( 30 )
 player_extra_params_scene = ExtResource( 28 )
@@ -982,6 +983,7 @@ allowed_stances_string = "All"
 change_stance_to = "Normal"
 min_bounce_frame = 7
 bounce_frame = 20
+can_conquer = true
 shogi_hit_particle = ExtResource( 35 )
 
 [node name="Flurry1" type="Node2D" parent="StateMachine/Whirl" index="0"]
@@ -1136,6 +1138,7 @@ Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
 bounce_frame = 15
+can_conquer = true
 shogi_hit_particle = ExtResource( 35 )
 
 [node name="A1" type="Node2D" parent="StateMachine/Split" index="0"]
@@ -2104,7 +2107,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2142,7 +2144,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2180,7 +2181,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2219,7 +2219,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2257,7 +2256,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2295,7 +2293,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2333,7 +2330,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2371,7 +2367,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2409,7 +2404,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2447,7 +2441,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2485,7 +2478,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
@@ -2523,7 +2515,6 @@ plus_frames = -1
 priority = 8
 screenshake_amount = 13
 replace_hit_particle = true
-whiff_sound = null
 hit_sound = ExtResource( 21 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
