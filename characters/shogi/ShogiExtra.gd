@@ -21,10 +21,9 @@ func show_options():
 		$"%DropButton".show()
 
 func _process(delta):
-	if not (selected_move is preload("res://_Shogi/characters/Shogi/states/ShogiState.gd")):
+	if not (selected_move is preload("res://_Shogi/characters/shogi/states/ShogiState.gd")):
 		$"%ConquerSelect".hide()
 	else:
-		print(selected_move.can_conquer)
 		if not selected_move.can_conquer:
 			$"%ConquerSelect".hide()
 			$"%ConquerSelect".selected = 0
