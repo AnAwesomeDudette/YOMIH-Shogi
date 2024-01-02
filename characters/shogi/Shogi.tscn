@@ -1,43 +1,43 @@
 [gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
-[ext_resource path="res://characters/BaseChar.gdshader" type="Shader" id=3]
-[ext_resource path="res://ui/ActionSelector/StateIcons/dash.png" type="Texture" id=4]
-[ext_resource path="res://sound/common/whiff1.wav" type="AudioStream" id=5]
-[ext_resource path="res://_Shogi/characters/shogi/ui/WalkActionUIData.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fx/DashFloorParticle.tscn" type="PackedScene" id=7]
-[ext_resource path="res://_Shogi/characters/shogi/states/Walk.gd" type="Script" id=8]
-[ext_resource path="res://_Shogi/characters/shogi/shogispriteframes.tres" type="SpriteFrames" id=9]
-[ext_resource path="res://_Shogi/characters/shogi/states/CustomJump.gd" type="Script" id=10]
-[ext_resource path="res://_Shogi/characters/shogi/states/FThrow.gd" type="Script" id=11]
-[ext_resource path="res://mechanics/Hitbox.gd" type="Script" id=12]
-[ext_resource path="res://sound/common/explosion2.wav" type="AudioStream" id=13]
-[ext_resource path="res://_Shogi/characters/shogi/states/Ballet.gd" type="Script" id=14]
-[ext_resource path="res://sound/common/explosion3.wav" type="AudioStream" id=15]
+[ext_resource path="res://_Shogi/characters/shogi/states/Ballet.gd" type="Script" id=2]
+[ext_resource path="res://_Shogi/characters/shogi/states/FThrow.gd" type="Script" id=3]
+[ext_resource path="res://_Shogi/characters/shogi/states/CustomJump.gd" type="Script" id=4]
+[ext_resource path="res://fx/DashFloorParticle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/BaseChar.gdshader" type="Shader" id=6]
+[ext_resource path="res://sound/common/whiff1.wav" type="AudioStream" id=7]
+[ext_resource path="res://_Shogi/characters/shogi/states/Stomp.gd" type="Script" id=8]
+[ext_resource path="res://_Shogi/characters/shogi/states/Split.gd" type="Script" id=9]
+[ext_resource path="res://_Shogi/characters/shogi/states/Windmill.gd" type="Script" id=10]
+[ext_resource path="res://_Shogi/characters/shogi/states/Punch.gd" type="Script" id=11]
+[ext_resource path="res://_Shogi/characters/shogi/states/StormDrain.gd" type="Script" id=12]
+[ext_resource path="res://_Shogi/characters/shogi/states/Whirl.gd" type="Script" id=13]
+[ext_resource path="res://_Shogi/characters/shogi/states/Pommel.gd" type="Script" id=14]
+[ext_resource path="res://mechanics/Hitbox.gd" type="Script" id=15]
 [ext_resource path="res://_Shogi/characters/shogi/states/Headbutt.gd" type="Script" id=16]
-[ext_resource path="res://sound/common/hit3.wav" type="AudioStream" id=17]
-[ext_resource path="res://_Shogi/characters/shogi/states/Pommel.gd" type="Script" id=18]
-[ext_resource path="res://_Shogi/characters/shogi/states/Punch.gd" type="Script" id=19]
-[ext_resource path="res://sound/common/explosion4.wav" type="AudioStream" id=20]
-[ext_resource path="res://sound/common/slash4.wav" type="AudioStream" id=21]
-[ext_resource path="res://mechanics/SweptHitbox.gd" type="Script" id=22]
-[ext_resource path="res://_Shogi/characters/shogi/states/StormDrain.gd" type="Script" id=23]
-[ext_resource path="res://sound/common/explosion6.wav" type="AudioStream" id=24]
-[ext_resource path="res://_Shogi/characters/shogi/states/Whirl.gd" type="Script" id=25]
-[ext_resource path="res://characters/swordandgun/sounds/swing2_old.wav" type="AudioStream" id=26]
-[ext_resource path="res://characters/swordandgun/sounds/swing4.wav" type="AudioStream" id=27]
-[ext_resource path="res://_Shogi/characters/shogi/ShogiExtra.tscn" type="PackedScene" id=28]
-[ext_resource path="res://_Shogi/characters/shogi/states/Split.gd" type="Script" id=29]
-[ext_resource path="res://_Shogi/characters/shogi/ShogiInfo.tscn" type="PackedScene" id=30]
-[ext_resource path="res://_Shogi/characters/shogi/states/Windmill.gd" type="Script" id=31]
-[ext_resource path="res://ui/ActionSelector/StateIcons/throw_forward.png" type="Texture" id=32]
-[ext_resource path="res://_Shogi/characters/shogi/states/Stomp.gd" type="Script" id=33]
-[ext_resource path="res://_Shogi/characters/shogi/sprites/hustleWIP.png" type="Texture" id=34]
+[ext_resource path="res://sound/common/explosion6.wav" type="AudioStream" id=17]
+[ext_resource path="res://sound/common/explosion4.wav" type="AudioStream" id=18]
+[ext_resource path="res://sound/common/slash4.wav" type="AudioStream" id=19]
+[ext_resource path="res://_Shogi/characters/shogi/states/Walk.gd" type="Script" id=20]
+[ext_resource path="res://mechanics/SweptHitbox.gd" type="Script" id=21]
+[ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=22]
+[ext_resource path="res://ui/ActionSelector/StateIcons/dash.png" type="Texture" id=23]
+[ext_resource path="res://sound/common/explosion2.wav" type="AudioStream" id=24]
+[ext_resource path="res://ui/ActionSelector/StateIcons/throw_forward.png" type="Texture" id=25]
+[ext_resource path="res://sound/common/explosion3.wav" type="AudioStream" id=26]
+[ext_resource path="res://sound/common/hit3.wav" type="AudioStream" id=27]
+[ext_resource path="res://_Shogi/characters/shogi/ui/WalkActionUIData.tscn" type="PackedScene" id=28]
+[ext_resource path="res://_Shogi/characters/shogi/ShogiInfo.tscn" type="PackedScene" id=29]
+[ext_resource path="res://_Shogi/characters/shogi/ShogiExtra.tscn" type="PackedScene" id=30]
+[ext_resource path="res://_Shogi/characters/shogi/shogispriteframes.tres" type="SpriteFrames" id=31]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/hustleWIP.png" type="Texture" id=32]
+[ext_resource path="res://characters/swordandgun/sounds/swing4.wav" type="AudioStream" id=33]
+[ext_resource path="res://characters/swordandgun/sounds/swing2_old.wav" type="AudioStream" id=34]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
-shader = ExtResource( 3 )
+shader = ExtResource( 6 )
 shader_param/use_extra_color_1 = false
 shader_param/use_extra_color_2 = false
 shader_param/extra_replace_color_1 = Color( 1, 0, 1, 1 )
@@ -51,7 +51,7 @@ shader_param/use_outline = false
 shader_param/outline_color = Color( 0, 0, 0, 1 )
 
 [node name="Shogi" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+script = ExtResource( 22 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -63,9 +63,9 @@ do_drop
 dropped_this_turn
 can_bounce
 current_conquer_tier"
-character_portrait = ExtResource( 34 )
-player_info_scene = ExtResource( 30 )
-player_extra_params_scene = ExtResource( 28 )
+character_portrait = ExtResource( 32 )
+player_info_scene = ExtResource( 29 )
+player_extra_params_scene = ExtResource( 30 )
 damage_taken_modifier = "0.9"
 use_extra_color_1 = true
 extra_color_1 = Color( 1, 0, 0.435294, 1 )
@@ -74,7 +74,7 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
-frames = ExtResource( 9 )
+frames = ExtResource( 31 )
 animation = "Taunt"
 __meta__ = {
 "_edit_group_": true,
@@ -87,7 +87,7 @@ sprite_animation = "Fall"
 loop_animation = false
 
 [node name="Walk" type="Node2D" parent="StateMachine" index="24"]
-script = ExtResource( 8 )
+script = ExtResource( 20 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -95,12 +95,12 @@ reset_momentum = true
 anim_length = 15
 ticks_per_frame = 4
 loop_animation = true
-particle_scene = ExtResource( 7 )
-enter_sfx = ExtResource( 5 )
+particle_scene = ExtResource( 5 )
+enter_sfx = ExtResource( 7 )
 enter_sfx_volume = -10.0
 title = "Walk"
-data_ui_scene = ExtResource( 6 )
-button_texture = ExtResource( 4 )
+data_ui_scene = ExtResource( 28 )
+button_texture = ExtResource( 23 )
 flip_with_facing = true
 iasa_at = 10
 interruptible_on_opponent_turn = true
@@ -124,7 +124,7 @@ show_in_menu = false
 show_in_menu = false
 
 [node name="Jump" parent="StateMachine" index="30"]
-script = ExtResource( 10 )
+script = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -136,7 +136,7 @@ loop_animation = false
 show_in_menu = false
 
 [node name="DoubleJump" parent="StateMachine" index="33"]
-script = ExtResource( 10 )
+script = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -148,7 +148,7 @@ loop_animation = false
 show_in_menu = false
 
 [node name="ForwardThrow" parent="StateMachine" index="47"]
-script = ExtResource( 11 )
+script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -167,7 +167,7 @@ damage_proration = 3
 
 [node name="Bouncebox" type="Node2D" parent="StateMachine/ForwardThrow" index="0"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 8
 y = -19
 width = 2
@@ -186,7 +186,7 @@ force_grounded = true
 can_clash = false
 block_cancel_allowed = false
 screenshake_amount = 9
-hit_sound = ExtResource( 13 )
+hit_sound = ExtResource( 24 )
 dir_x = "1.4"
 dir_y = "2.2"
 knockback = "8.0"
@@ -201,7 +201,7 @@ __meta__ = {
 anim_length = 25
 ticks_per_frame = 3
 flip_frame = 1
-button_texture = ExtResource( 32 )
+button_texture = ExtResource( 25 )
 release_frame = 13
 release_throw_pos_y = 0
 hitstun_ticks = 21
@@ -216,7 +216,7 @@ damage_proration = 3
 
 [node name="Bouncebox" type="Node2D" parent="StateMachine/BackThrow" index="0"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 8
 y = -19
 width = 2
@@ -235,7 +235,7 @@ force_grounded = true
 can_clash = false
 block_cancel_allowed = false
 screenshake_amount = 9
-hit_sound = ExtResource( 13 )
+hit_sound = ExtResource( 24 )
 dir_x = "1.4"
 dir_y = "2.2"
 knockback = "8.0"
@@ -244,7 +244,7 @@ knockdown = true
 active_ticks = 1
 
 [node name="Ballet" type="Node2D" parent="StateMachine" index="52"]
-script = ExtResource( 14 )
+script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -270,7 +270,7 @@ change_stance_to = "Normal"
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/Ballet" index="0"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 12
 y = -14
 width = 16
@@ -289,7 +289,7 @@ plus_frames = -1
 hit_height = 2
 priority = 8
 screenshake_amount = 9
-hit_sound = ExtResource( 13 )
+hit_sound = ExtResource( 24 )
 hit_sound_volume = -4.0
 dir_y = "-0.3"
 knockback = "3.0"
@@ -299,7 +299,7 @@ start_tick = 5
 active_ticks = 4
 
 [node name="Stomp" type="Node2D" parent="StateMachine" index="53"]
-script = ExtResource( 33 )
+script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -328,7 +328,7 @@ x_modifier = "0.6"
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/Stomp" index="0"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 2
 y = -3
 width = 10
@@ -345,7 +345,7 @@ block_cancel_allowed = false
 hit_height = 0
 priority = 8
 screenshake_amount = 9
-hit_sound = ExtResource( 13 )
+hit_sound = ExtResource( 24 )
 hit_sound_volume = -4.0
 dir_x = "0.5"
 dir_y = "5.0"
@@ -359,7 +359,7 @@ active_ticks = 2
 
 [node name="HitboxOTG" type="Node2D" parent="StateMachine/Stomp" index="1"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 2
 y = -1
 width = 16
@@ -380,7 +380,7 @@ block_cancel_allowed = false
 hit_height = 0
 priority = 8
 screenshake_amount = 9
-hit_sound = ExtResource( 13 )
+hit_sound = ExtResource( 24 )
 hit_sound_volume = -4.0
 dir_x = "0.5"
 dir_y = "5.0"
@@ -423,7 +423,7 @@ change_stance_to = "Normal"
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/GodsFavoriteAntiair" index="0"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 3
 y = -32
 width = 24
@@ -445,7 +445,7 @@ plus_frames = 1
 hit_height = 0
 priority = 8
 screenshake_amount = 10
-hit_sound = ExtResource( 15 )
+hit_sound = ExtResource( 26 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-2.9"
@@ -457,7 +457,7 @@ active_ticks = 2
 
 [node name="HitboxAerial" type="Node2D" parent="StateMachine/GodsFavoriteAntiair" index="1"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 13
 y = -28
 width = 18
@@ -479,7 +479,7 @@ plus_frames = 1
 hit_height = 0
 priority = 8
 screenshake_amount = 10
-hit_sound = ExtResource( 15 )
+hit_sound = ExtResource( 26 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-2.9"
@@ -490,7 +490,7 @@ start_tick = 6
 active_ticks = 2
 
 [node name="GodsWorstMidrange" type="Node2D" parent="StateMachine" index="55"]
-script = ExtResource( 18 )
+script = ExtResource( 14 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -517,7 +517,7 @@ change_stance_to = "Normal"
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/GodsWorstMidrange" index="0"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 33
 y = -25
 width = 16
@@ -535,7 +535,7 @@ plus_frames = 2
 hit_height = 0
 priority = 8
 screenshake_amount = 7
-hit_sound = ExtResource( 17 )
+hit_sound = ExtResource( 27 )
 hit_sound_volume = -4.0
 dir_y = "-0.3"
 knockback = "5.0"
@@ -544,7 +544,7 @@ start_tick = 7
 active_ticks = 3
 
 [node name="Punch" type="Node2D" parent="StateMachine" index="56"]
-script = ExtResource( 19 )
+script = ExtResource( 11 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -577,7 +577,7 @@ change_stance_to = "Normal"
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/Punch" index="0"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 8
 y = -32
 width = 12
@@ -608,7 +608,7 @@ start_tick = 5
 active_ticks = 3
 
 [node name="StormDrain" type="Node2D" parent="StateMachine" index="57"]
-script = ExtResource( 23 )
+script = ExtResource( 12 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -644,7 +644,7 @@ x_modifier = "0.7"
 
 [node name="SHitbox1" type="Node2D" parent="StateMachine/StormDrain" index="0"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -667,7 +667,7 @@ block_cancel_allowed = false
 plus_frames = 2
 priority = 8
 screenshake_amount = 9
-hit_sound = ExtResource( 21 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "0.0"
 dir_y = "0.5"
@@ -682,7 +682,7 @@ to_y = -8
 
 [node name="SHitbox2" type="Node2D" parent="StateMachine/StormDrain" index="1"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -705,7 +705,7 @@ block_cancel_allowed = false
 plus_frames = 2
 priority = 8
 screenshake_amount = 9
-hit_sound = ExtResource( 21 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "0.0"
 dir_y = "0.5"
@@ -720,7 +720,7 @@ to_y = -8
 
 [node name="Catch" type="Node2D" parent="StateMachine/StormDrain" index="2"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -745,8 +745,8 @@ plus_frames = 2
 priority = 8
 group = 1
 screenshake_amount = 9
-whiff_sound = ExtResource( 20 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 18 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "0.0"
 dir_y = "0.0"
@@ -763,7 +763,7 @@ loop_active_ticks = 1
 loop_inactive_ticks = 1
 
 [node name="Whirl" type="Node2D" parent="StateMachine" index="58"]
-script = ExtResource( 25 )
+script = ExtResource( 13 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -788,10 +788,11 @@ Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
 bounce_frame = 20
+can_conquer = true
 
 [node name="Flurry1" type="Node2D" parent="StateMachine/Whirl" index="0"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = -1
 y = -16
 width = 54
@@ -811,8 +812,8 @@ guard_break = true
 block_cancel_allowed = false
 hit_height = 0
 priority = 8
-whiff_sound = ExtResource( 26 )
-hit_sound = ExtResource( 13 )
+whiff_sound = ExtResource( 34 )
+hit_sound = ExtResource( 24 )
 hit_sound_volume = -4.0
 dir_x = "0.0"
 dir_y = "0.0"
@@ -829,7 +830,7 @@ loop_inactive_ticks = 1
 
 [node name="Flurry2" type="Node2D" parent="StateMachine/Whirl" index="1"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = -1
 y = -16
 width = 54
@@ -849,8 +850,8 @@ guard_break = true
 block_cancel_allowed = false
 hit_height = 0
 priority = 8
-whiff_sound = ExtResource( 26 )
-hit_sound = ExtResource( 13 )
+whiff_sound = ExtResource( 34 )
+hit_sound = ExtResource( 24 )
 hit_sound_volume = -4.0
 dir_x = "0.0"
 dir_y = "0.0"
@@ -867,7 +868,7 @@ loop_inactive_ticks = 1
 
 [node name="Ender" type="Node2D" parent="StateMachine/Whirl" index="2"]
 z_index = 1000
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 x = 21
 y = -40
 width = 36
@@ -889,8 +890,8 @@ hit_height = 0
 priority = 8
 group = 1
 screenshake_amount = 19
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 24 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 17 )
 hit_sound_volume = -4.0
 dir_x = "0.5"
 dir_y = "-3.0"
@@ -901,7 +902,7 @@ start_tick = 20
 active_ticks = 2
 
 [node name="Split" type="Node2D" parent="StateMachine" index="59"]
-script = ExtResource( 29 )
+script = ExtResource( 9 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -935,10 +936,11 @@ Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
 bounce_frame = 15
+can_conquer = true
 
 [node name="A1" type="Node2D" parent="StateMachine/Split" index="0"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -959,8 +961,8 @@ block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "-1.0"
 dir_y = "-2.0"
@@ -975,7 +977,7 @@ to_y = -27
 
 [node name="A2" type="Node2D" parent="StateMachine/Split" index="1"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -995,8 +997,8 @@ block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "-1.0"
 dir_y = "-2.0"
@@ -1011,7 +1013,7 @@ to_y = -24
 
 [node name="A3" type="Node2D" parent="StateMachine/Split" index="2"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1031,8 +1033,8 @@ block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "-1.0"
 dir_y = "-2.0"
@@ -1047,7 +1049,7 @@ to_y = -15
 
 [node name="B1" type="Node2D" parent="StateMachine/Split" index="3"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1067,8 +1069,8 @@ block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "-0.5"
 dir_y = "5.0"
@@ -1084,7 +1086,7 @@ to_y = -30
 
 [node name="B2" type="Node2D" parent="StateMachine/Split" index="4"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1105,8 +1107,8 @@ block_punishable = true
 plus_frames = 2
 priority = 8
 screenshake_amount = 17
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "-0.5"
 dir_y = "5.0"
@@ -1121,7 +1123,7 @@ to_x = 36
 to_y = -23
 
 [node name="Windmill" type="Node2D" parent="StateMachine" index="60"]
-script = ExtResource( 31 )
+script = ExtResource( 10 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1152,7 +1154,7 @@ x_modifier = "0.8"
 
 [node name="A1" type="Node2D" parent="StateMachine/Windmill" index="0"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1173,8 +1175,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1189,7 +1191,7 @@ to_y = 9
 
 [node name="A2" type="Node2D" parent="StateMachine/Windmill" index="1"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1210,8 +1212,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1226,7 +1228,7 @@ to_y = -33
 
 [node name="A3" type="Node2D" parent="StateMachine/Windmill" index="2"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1247,8 +1249,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1263,7 +1265,7 @@ to_y = 26
 
 [node name="B1" type="Node2D" parent="StateMachine/Windmill" index="3"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1284,8 +1286,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1300,7 +1302,7 @@ to_y = 18
 
 [node name="B2" type="Node2D" parent="StateMachine/Windmill" index="4"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1321,8 +1323,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1337,7 +1339,7 @@ to_y = 10
 
 [node name="B3" type="Node2D" parent="StateMachine/Windmill" index="5"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1358,8 +1360,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1373,7 +1375,7 @@ active_ticks = 2
 [node name="C1" type="Node2D" parent="StateMachine/Windmill" index="6"]
 position = Vector2( 1, 0 )
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1394,8 +1396,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1410,7 +1412,7 @@ to_y = 38
 
 [node name="C2" type="Node2D" parent="StateMachine/Windmill" index="7"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1431,8 +1433,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1447,7 +1449,7 @@ to_y = -7
 
 [node name="C3" type="Node2D" parent="StateMachine/Windmill" index="8"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1468,8 +1470,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1484,7 +1486,7 @@ to_y = -31
 
 [node name="D1" type="Node2D" parent="StateMachine/Windmill" index="9"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1505,8 +1507,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1521,7 +1523,7 @@ to_y = -9
 
 [node name="D2" type="Node2D" parent="StateMachine/Windmill" index="10"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1542,8 +1544,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1556,7 +1558,7 @@ active_ticks = 2
 
 [node name="D3" type="Node2D" parent="StateMachine/Windmill" index="11"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1577,8 +1579,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1593,7 +1595,7 @@ to_y = -22
 
 [node name="E1" type="Node2D" parent="StateMachine/Windmill" index="12"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1614,8 +1616,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1630,7 +1632,7 @@ to_y = 9
 
 [node name="E2" type="Node2D" parent="StateMachine/Windmill" index="13"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1651,8 +1653,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1667,7 +1669,7 @@ to_y = -33
 
 [node name="E3" type="Node2D" parent="StateMachine/Windmill" index="14"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1688,8 +1690,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1703,7 +1705,7 @@ to_x = -42
 to_y = 26
 
 [node name="WindmillG" type="Node2D" parent="StateMachine" index="61"]
-script = ExtResource( 31 )
+script = ExtResource( 10 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1738,7 +1740,7 @@ x_modifier = "0.8"
 
 [node name="A1" type="Node2D" parent="StateMachine/WindmillG" index="0"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1759,8 +1761,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1775,7 +1777,7 @@ to_y = 9
 
 [node name="A2" type="Node2D" parent="StateMachine/WindmillG" index="1"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1796,8 +1798,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1812,7 +1814,7 @@ to_y = -33
 
 [node name="A3" type="Node2D" parent="StateMachine/WindmillG" index="2"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1833,8 +1835,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1849,7 +1851,7 @@ to_y = 26
 
 [node name="B1" type="Node2D" parent="StateMachine/WindmillG" index="3"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1870,8 +1872,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1886,7 +1888,7 @@ to_y = 18
 
 [node name="B2" type="Node2D" parent="StateMachine/WindmillG" index="4"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1907,8 +1909,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1923,7 +1925,7 @@ to_y = 10
 
 [node name="B3" type="Node2D" parent="StateMachine/WindmillG" index="5"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1944,8 +1946,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1959,7 +1961,7 @@ active_ticks = 2
 [node name="C1" type="Node2D" parent="StateMachine/WindmillG" index="6"]
 position = Vector2( 1, 0 )
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1980,8 +1982,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -1996,7 +1998,7 @@ to_y = 38
 
 [node name="C2" type="Node2D" parent="StateMachine/WindmillG" index="7"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -2017,8 +2019,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -2033,7 +2035,7 @@ to_y = -7
 
 [node name="C3" type="Node2D" parent="StateMachine/WindmillG" index="8"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -2054,8 +2056,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -2070,7 +2072,7 @@ to_y = -31
 
 [node name="D1" type="Node2D" parent="StateMachine/WindmillG" index="9"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -2091,8 +2093,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -2107,7 +2109,7 @@ to_y = -9
 
 [node name="D2" type="Node2D" parent="StateMachine/WindmillG" index="10"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -2128,8 +2130,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -2142,7 +2144,7 @@ active_ticks = 2
 
 [node name="D3" type="Node2D" parent="StateMachine/WindmillG" index="11"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -2163,8 +2165,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -2179,7 +2181,7 @@ to_y = -22
 
 [node name="E1" type="Node2D" parent="StateMachine/WindmillG" index="12"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -2200,8 +2202,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -2216,7 +2218,7 @@ to_y = 9
 
 [node name="E2" type="Node2D" parent="StateMachine/WindmillG" index="13"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -2237,8 +2239,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
@@ -2253,7 +2255,7 @@ to_y = -33
 
 [node name="E3" type="Node2D" parent="StateMachine/WindmillG" index="14"]
 z_index = 1000
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -2274,8 +2276,8 @@ block_cancel_allowed = false
 plus_frames = -1
 priority = 8
 screenshake_amount = 13
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 21 )
+whiff_sound = ExtResource( 33 )
+hit_sound = ExtResource( 19 )
 hit_sound_volume = -4.0
 dir_x = "1.5"
 dir_y = "-0.5"
