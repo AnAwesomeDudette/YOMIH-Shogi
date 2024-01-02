@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -36,6 +36,12 @@
 [ext_resource path="res://_Shogi/characters/shogi/sprites/hustleWIP.png" type="Texture" id=34]
 [ext_resource path="res://_Shogi/characters/shogi/particles/ShogiHit.tscn" type="PackedScene" id=35]
 [ext_resource path="res://_Shogi/characters/shogi/states/Sacrifice.gd" type="Script" id=36]
+[ext_resource path="res://_Shogi/characters/shogi/states/SwiftPunish.gd" type="Script" id=37]
+[ext_resource path="res://characters/swordandgun/sounds/lightningslice.wav" type="AudioStream" id=38]
+[ext_resource path="res://characters/swordandgun/sounds/1000cuts.wav" type="AudioStream" id=39]
+[ext_resource path="res://ui/ActionSelector/ActionUIData/AirGrabActionUIData.tscn" type="PackedScene" id=40]
+[ext_resource path="res://_Shogi/characters/shogi/states/Dedication.gd" type="Script" id=41]
+[ext_resource path="res://_Shogi/characters/shogi/ui/DedicationActionUIData.tscn" type="PackedScene" id=42]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -81,8 +87,7 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "Sacrifice"
-frame = 14
+animation = "Dedication"
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
@@ -154,6 +159,10 @@ loop_animation = false
 [node name="AirDash" parent="StateMachine" index="34"]
 show_in_menu = false
 
+[node name="Grab" parent="StateMachine" index="44"]
+data_ui_scene = ExtResource( 40 )
+down_throw_state = "GodsFavoriteGirliepop"
+
 [node name="ForwardThrow" parent="StateMachine" index="47"]
 script = ExtResource( 11 )
 __meta__ = {
@@ -195,7 +204,7 @@ block_cancel_allowed = false
 screenshake_amount = 9
 hit_sound = ExtResource( 13 )
 dir_x = "1.4"
-dir_y = "2.2"
+dir_y = "0.6"
 knockback = "8.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
@@ -212,8 +221,8 @@ button_texture = ExtResource( 32 )
 release_frame = 13
 release_throw_pos_y = 0
 hitstun_ticks = 21
-knockback = "8.0"
-dir_y = "2.0"
+knockback = "5.0"
+dir_y = "0.2"
 grounded_hit_state = "HurtGrounded"
 reverse = false
 ground_bounce = false
@@ -550,7 +559,177 @@ knockdown = true
 start_tick = 7
 active_ticks = 3
 
-[node name="Punch" type="Node2D" parent="StateMachine" index="56"]
+[node name="GodsFavoriteGirliepop" type="Node2D" parent="StateMachine" index="56"]
+script = ExtResource( 37 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_fric = true
+apply_grav = true
+sprite_animation = "SwiftPunish"
+anim_length = 60
+enter_force_dir_x = "1.0"
+enter_force_speed = "6.0"
+sfx = ExtResource( 38 )
+sfx_tick = 5
+sfx_volume = -5.0
+earliest_hitbox = 5
+title = "Swift Punish"
+type = 2
+iasa_at = 30
+iasa_on_hit = 24
+self_hit_cancellable = false
+self_interruptable = false
+reversible = false
+selectable = false
+interrupt_from_string = "GroundedSpecial
+Grounded
+"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+change_stance_to = "Normal"
+release_opponent_on_startup = true
+shogi_hit_particle = ExtResource( 35 )
+
+[node name="TheBeginning" type="Node2D" parent="StateMachine/GodsFavoriteGirliepop" index="0"]
+z_index = 1000
+script = ExtResource( 12 )
+x = 4
+y = -54
+width = 36
+height = 15
+damage = 100
+minimum_damage = 20
+chip_damage_modifier = "2.0"
+hitlag_ticks = 9
+victim_hitlag = 9
+damage_proration = 3
+cancellable = false
+hits_vs_grounded = false
+di_modifier = "0.0"
+sdi_modifier = "0.0"
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = -2
+hit_height = 0
+priority = 8
+screenshake_amount = 16
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 13 )
+hit_sound_volume = -4.0
+dir_x = "0.3"
+dir_y = "5.0"
+minimum_grounded_frames = 20
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 4
+active_ticks = 1
+
+[node name="TheTruth" type="Node2D" parent="StateMachine/GodsFavoriteGirliepop" index="1"]
+z_index = 1000
+script = ExtResource( 12 )
+x = 45
+y = -31
+width = 25
+height = 25
+damage = 100
+minimum_damage = 20
+chip_damage_modifier = "2.0"
+hitlag_ticks = 9
+victim_hitlag = 19
+damage_proration = 3
+cancellable = false
+di_modifier = "0.0"
+sdi_modifier = "0.0"
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = 4
+hit_height = 2
+priority = 8
+screenshake_amount = 16
+whiff_sound = null
+hit_sound = ExtResource( 13 )
+hit_sound_volume = -4.0
+dir_x = "0.3"
+dir_y = "5.0"
+minimum_grounded_frames = 20
+knockdown = true
+knockdown_extends_hitstun = false
+ground_bounce = false
+start_tick = 5
+active_ticks = 2
+
+[node name="TheResolution" type="Node2D" parent="StateMachine/GodsFavoriteGirliepop" index="2"]
+z_index = 1000
+script = ExtResource( 12 )
+x = 37
+y = 4
+height = 31
+damage = 40
+minimum_damage = 20
+chip_damage_modifier = "2.0"
+hitlag_ticks = 3
+victim_hitlag = 4
+damage_proration = 3
+cancellable = false
+di_modifier = "0.0"
+sdi_modifier = "0.0"
+parry_meter_gain = 125
+block_cancel_allowed = false
+plus_frames = 6
+hit_height = 0
+priority = 8
+group = 1
+screenshake_amount = 16
+whiff_sound = ExtResource( 39 )
+hit_sound = ExtResource( 24 )
+hit_sound_volume = -4.0
+dir_y = "-0.05"
+knockback = "20.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+ground_bounce = false
+start_tick = 11
+active_ticks = 1
+
+[node name="TheEnd" type="Node2D" parent="StateMachine/GodsFavoriteGirliepop" index="3"]
+z_index = 1000
+script = ExtResource( 12 )
+x = -2
+y = -43
+width = 68
+height = 38
+damage = 40
+minimum_damage = 20
+chip_damage_modifier = "2.0"
+hitlag_ticks = 20
+victim_hitlag = 19
+damage_proration = 3
+cancellable = false
+parry_meter_gain = 125
+block_cancel_allowed = false
+hit_height = 0
+priority = 8
+group = 2
+screenshake_amount = 16
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = -4.0
+dir_y = "-0.05"
+knockback = "20.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+ground_bounce = false
+start_tick = 12
+active_ticks = 2
+
+[node name="Punch" type="Node2D" parent="StateMachine" index="57"]
 script = ExtResource( 19 )
 __meta__ = {
 "_editor_description_": ""
@@ -614,7 +793,7 @@ knockdown_extends_hitstun = false
 start_tick = 5
 active_ticks = 3
 
-[node name="StormDrain" type="Node2D" parent="StateMachine" index="57"]
+[node name="StormDrain" type="Node2D" parent="StateMachine" index="58"]
 script = ExtResource( 23 )
 __meta__ = {
 "_editor_description_": ""
@@ -776,7 +955,7 @@ loop_inactive_ticks = 1
 to_x = 1
 to_y = 1
 
-[node name="Whirl" type="Node2D" parent="StateMachine" index="58"]
+[node name="Whirl" type="Node2D" parent="StateMachine" index="59"]
 script = ExtResource( 25 )
 __meta__ = {
 "_editor_description_": ""
@@ -922,7 +1101,7 @@ wall_slam = true
 start_tick = 20
 active_ticks = 2
 
-[node name="Split" type="Node2D" parent="StateMachine" index="59"]
+[node name="Split" type="Node2D" parent="StateMachine" index="60"]
 script = ExtResource( 29 )
 __meta__ = {
 "_editor_description_": ""
@@ -1090,9 +1269,7 @@ cancellable = false
 hits_otg = true
 parry_meter_gain = 125
 guard_break = true
-block_punishable = true
-plus_frames = 2
-priority = 8
+priority = 9
 screenshake_amount = 17
 replace_hit_particle = true
 whiff_sound = ExtResource( 27 )
@@ -1149,7 +1326,7 @@ active_ticks = 2
 to_x = 36
 to_y = -23
 
-[node name="Windmill" type="Node2D" parent="StateMachine" index="60"]
+[node name="Windmill" type="Node2D" parent="StateMachine" index="61"]
 script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
@@ -1753,7 +1930,7 @@ active_ticks = 2
 to_x = -42
 to_y = 26
 
-[node name="WindmillG" type="Node2D" parent="StateMachine" index="61"]
+[node name="WindmillG" type="Node2D" parent="StateMachine" index="62"]
 script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
@@ -2360,7 +2537,7 @@ active_ticks = 2
 to_x = -42
 to_y = 26
 
-[node name="Sacrifice" type="Node2D" parent="StateMachine" index="62"]
+[node name="Sacrifice" type="Node2D" parent="StateMachine" index="63"]
 script = ExtResource( 36 )
 __meta__ = {
 "_editor_description_": ""
@@ -2423,3 +2600,42 @@ knockdown_extends_hitstun = false
 wall_slam = true
 start_tick = 9
 active_ticks = 3
+
+[node name="Not Bankai" type="Node2D" parent="StateMachine" index="64"]
+script = ExtResource( 41 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_fric = true
+apply_custom_x_fric = true
+apply_custom_y_fric = true
+custom_x_fric = "0.05"
+custom_y_fric = "0.05"
+apply_custom_limits = true
+custom_max_air_speed = "30.0"
+custom_max_ground_speed = "30.0"
+sprite_animation = "Dedication"
+anim_length = 10
+title = "Dedication"
+type = 3
+data_ui_scene = ExtResource( 42 )
+air_type = 2
+iasa_at = 10
+next_state_on_hold_on_opponent_turn = true
+reversible = false
+interrupt_from_string = "GroundedSuper
+Grounded
+AerialSuper
+Aerial
+
+"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+change_stance_to = "Normal"
+super_level_ = 1
+super_freeze_ticks_ = 3
+super_effect_ = true

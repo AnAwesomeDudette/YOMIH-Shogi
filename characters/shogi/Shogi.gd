@@ -7,6 +7,8 @@ var can_bounce = 0
 var current_conquer_tier = 0
 var sacrifices = 0 #7 uses
 var raid = 0
+var dedication = {"x":0, "y":0}
+var dedication_delay = -1
 
 func init(pos = null):
 	.init(pos)
@@ -42,9 +44,42 @@ func process_extra(extra):
 
 func tick():
 	.tick()
+	
+	if dedication_delay > 0:
+		dedication_delay -= 1
+		if dedication_delay == 0:
+			dedication_delay = -1
+			#if dedication != {"x":0, "y":0}:
+			apply_dedication(dedication.x, dedication.y)
+	
 	if do_drop:
 		apply_drop()
 		do_drop = false
+
+func apply_dedication(x, y):
+	
+	var mult = fixed.div("100", str(max_air_speed))
+	var apply_x = fixed.div(str(x * get_facing_int()), mult)
+	var apply_y = fixed.div(str(y), mult)
+	
+	var x_mod = "1.5"
+	var y_mod = "1.5"
+	apply_x = fixed.mul(apply_x, x_mod)
+	apply_y = fixed.mul(apply_y, y_mod)
+	
+	if (sign(opponent.data.object_data.position_x - data.object_data.position_x) != sign(x)) and not opponent.is_in_hurt_state():
+		var penalty = int(fixed.round(fixed.abs(fixed.mul(apply_x, "2"))))
+		add_penalty(penalty)
+		apply_x = fixed.round(apply_x)
+	else:
+		apply_x = fixed.round(apply_x)
+		
+	if (int(fixed.round(apply_y)) > 0) and not opponent.is_in_hurt_state():
+		apply_y = fixed.round(fixed.mul(apply_y, "0.8"))
+	else:
+		apply_y = fixed.round(apply_y)
+	
+	apply_force_relative(apply_x, apply_y)
 
 func apply_drop():
 	apply_force_relative("0.0", "10.0")
