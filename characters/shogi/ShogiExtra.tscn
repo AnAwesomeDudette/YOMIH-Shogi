@@ -4,7 +4,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/ShogiExtra.gd" type="Script" id=2]
 [ext_resource path="res://_Shogi/characters/shogi/icons/dropthingy.png" type="Texture" id=3]
 [ext_resource path="res://theme.tres" type="Theme" id=4]
-[ext_resource path="res://ui/ActionSelector/ActionUIData/ActionUIDataOptionButton.gd" type="Script" id=5]
+[ext_resource path="res://ui/HorizSlider/HorizSlider.tscn" type="PackedScene" id=5]
 
 [node name="ShogiExtra" instance=ExtResource( 1 )]
 theme = ExtResource( 4 )
@@ -23,14 +23,24 @@ size_flags_vertical = 0
 text = "Plummet"
 icon = ExtResource( 3 )
 
-[node name="ConquerSelect" type="OptionButton" parent="." index="1"]
+[node name="Conquer" parent="." index="1" instance=ExtResource( 5 )]
 unique_name_in_owner = true
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 83.0
-margin_right = 154.0
-margin_bottom = 12.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "No Conquer"
-items = [ "No Conquer", null, false, 0, null, "Tier 1 (5f)", null, false, 1, null, "Tier 2 (7f)", null, false, 2, null, "Tier 3 (9f)", null, false, 3, null ]
-selected = 0
-script = ExtResource( 5 )
+margin_right = 143.0
+margin_bottom = 360.0
+max_value = 3
+
+[node name="Label" parent="Conquer" index="0"]
+margin_right = 60.0
+
+[node name="Direction" parent="Conquer" index="1"]
+margin_right = 60.0
+min_value = 0.0
+max_value = 3.0
+
+[node name="ValueLabel" parent="Conquer" index="2"]
+margin_right = 60.0
+
+[editable path="Conquer"]

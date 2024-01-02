@@ -2,13 +2,12 @@ extends PlayerExtra
 
 func _ready():
 	$"%DropButton".connect("pressed", self, "emit_signal", ["data_changed"])
-	$"%ConquerSelect".connect("data_changed", self, "emit_signal", ["data_changed"])
-	
+	$"%Conquer".connect("data_changed", self, "emit_signal", ["data_changed"])
 
 func get_extra():
 	return {
 		"drop_enabled":$"%DropButton".pressed,
-		"conquer_tier":$"%ConquerSelect".selected
+		"conquer_tier":$"%Conquer/Direction".value,
 	}
 
 func update_selected_move(move_state):
@@ -22,14 +21,14 @@ func show_options():
 
 func _process(delta):
 	if not (selected_move is preload("res://_Shogi/characters/shogi/states/ShogiState.gd")):
-		$"%ConquerSelect".hide()
+		$"%Conquer".hide()
 	else:
 		if not selected_move.can_conquer:
-			$"%ConquerSelect".hide()
-			$"%ConquerSelect".selected = 0
+			$"%Conquer".hide()
+			$"%Conquer/Direction".value = 0
 		else:
-			$"%ConquerSelect".show()
+			$"%Conquer".show()
 
 func reset():
 	$"%DropButton".set_pressed_no_signal(false)
-	$"%ConquerSelect".selected = 0
+	$"%Conquer/Direction".value = 0
