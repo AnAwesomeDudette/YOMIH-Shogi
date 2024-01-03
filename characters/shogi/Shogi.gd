@@ -11,13 +11,14 @@ var raid = 0
 var dedication = {"x":0, "y":0}
 var dedication_delay = -1
 var got_hit = false # whether Shogi was hit this tick
+var damage_multiplier = 1
+var queue_damage_multiplier = 1
+var reset_damage_multiplier = false
 
 func take_damage(damage:int, minimum = 0, meter_gain_modifier = "1.0", combo_scaling_offset = 0, damage_taken_meter_gain_modifier = "1.0"):
-	if current_state() is preload("res://_Shogi/characters/shogi/states/ShogiState.gd"):
-		damage *= current_state().damage_multiplier
-	.take_damage(damage, minimum ,meter_gain_modifier, combo_scaling_offset, damage_taken_meter_gain_modifier)
 
-	
+	damage *= damage_multiplier
+	.take_damage(damage, minimum ,meter_gain_modifier, combo_scaling_offset, damage_taken_meter_gain_modifier)
 
 func init(pos = null):
 	.init(pos)
@@ -25,12 +26,20 @@ func init(pos = null):
 
 func _on_state_exited(state):
 	._on_state_exited(state)
-	armor_hits_remaining = 0
+	if previous_state() != null:
+		armor_hits_remaining = 0
 
 
 func on_state_interruptable(state = null):
 	.on_state_interruptable(state)
 	armor_hits_remaining = 0
+
+func change_stance_to(stance):
+	.change_stance_to(stance)
+	if stance == "Conquer":
+		queue_damage_multiplier = 0.8
+	else:
+		queue_damage_multiplier = 1
 
 func on_got_parried():
 	.on_got_parried()
@@ -67,7 +76,10 @@ func on_got_hit_by_fighter():
 
 func tick():
 	.tick()
-	
+	if reset_damage_multiplier:
+		damage_multiplier = 1
+	if queue_damage_multiplier < damage_multiplier:
+		damage_multiplier = queue_damage_multiplier
 	if dedication_delay > 0:
 		dedication_delay -= 1
 		if dedication_delay == 0:

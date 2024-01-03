@@ -20,6 +20,7 @@ var updated = false
 var charged = false
 var auto = false
 var dash_force = "0"
+var damage_multiplier = 1
 
 var dist_ratio = "1.0"
 
@@ -45,6 +46,10 @@ func _frame_0():
 		host.start_throw_invulnerability()
 	if started_during_combo:
 		iasa_at -= 2
+	if title == "Shuffle":
+		iasa_at = 15
+	else:
+		host.queue_damage_multiplier = 0.92
 
 func _frame_1():
 	if data == host.get_facing_int():
@@ -133,9 +138,8 @@ func update_sprite_frame():
 	.update_sprite_frame()
 	host.sprite.frame = int(idle_anim/rate)%total_frames
 	var reverse = false
-	if not data is Dictionary:
-		if not data == host.get_facing_int():
-			reverse = true
+	if not data == host.get_facing_int():
+		reverse = true
 			
 	if reverse:
 		if idle_anim == 0:

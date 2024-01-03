@@ -12,8 +12,10 @@ export var x_modifier = "1.0"
 export var can_conquer = false
 export (PackedScene) var shogi_hit_particle
 var damage_multiplier = 1
-
 var original_hitbox_plus_frames = {}
+var end_with_awaken = false
+
+
 
 func init():
 	.init()
@@ -25,7 +27,7 @@ func init():
 
 var last_vel = {}
 
-var windup = 0
+var windup = -1
 
 func add_plus_frames(frames): 
 	for hitbox in all_hitbox_nodes:
@@ -50,10 +52,12 @@ func conquer_tier_2():
 func conquer_tier_3():
 	windup = 9
 	add_plus_frames(3)
+	end_with_awaken = true
 	host.armor_hits_remaining = 4
 	
 
 func _enter():
+	end_with_awaken = false
 	for hitbox in all_hitbox_nodes:
 		hitbox.plus_frames = original_hitbox_plus_frames[hitbox]
 	hitbox_register = {}
@@ -135,10 +139,12 @@ func _tick_after():
 		._tick_after()
 
 
+
 		
 func _tick_shared():
+
 	if windup >= 0:
-		damage_multiplier = 0.95
+		host.queue_damage_multiplier = 0.95
 		if current_tick == -1:
 			if spawn_particle_on_enter and particle_scene:
 				var pos = particle_position
@@ -146,7 +152,9 @@ func _tick_shared():
 				spawn_particle_relative(particle_scene, pos, Vector2.RIGHT * host.get_facing_int())
 			apply_enter_force()
 		current_tick = 0
+		
 		windup -= 1
+
 		update_sprite_frame()
 			
 		if apply_fric:
@@ -174,7 +182,7 @@ func _tick_shared():
 		if (windup >= 0):
 			return
 	
-	damage_multiplier = 1
+	host.reset_damage_multiplier = true
 	._tick_shared()
 	
 	var con1 = current_tick < bounce_frame and current_tick > min_bounce_frame
@@ -210,6 +218,9 @@ func _tick_shared():
 					if(hitbox.overlaps(o.hurtbox)):
 						host.attempt_consume(o, consume_amount, tick_amount)
 
+	if (current_tick == iasa_at and end_with_awaken):
+		next_state_on_hold = false
+		queue_state_change("Awaken")
 
 """
 func _on_hit_something(obj, _hitbox):

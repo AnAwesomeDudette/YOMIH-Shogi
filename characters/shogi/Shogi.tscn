@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -42,6 +42,11 @@
 [ext_resource path="res://ui/ActionSelector/ActionUIData/AirGrabActionUIData.tscn" type="PackedScene" id=40]
 [ext_resource path="res://_Shogi/characters/shogi/states/Dedication.gd" type="Script" id=41]
 [ext_resource path="res://_Shogi/characters/shogi/ui/DedicationActionUIData.tscn" type="PackedScene" id=42]
+[ext_resource path="res://_Shogi/characters/shogi/states/ShogiState.gd" type="Script" id=43]
+[ext_resource path="res://ui/ActionSelector/StateIcons/taunt.png" type="Texture" id=44]
+[ext_resource path="res://characters/states/Idle.gd" type="Script" id=45]
+[ext_resource path="res://ui/ActionSelector/StateIcons/wait.png" type="Texture" id=46]
+[ext_resource path="res://HurtboxState.gd" type="Script" id=47]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -79,7 +84,8 @@ sacrifices
 raid
 dedication
 dedication_delay
-got_hit"
+got_hit
+stance"
 character_portrait = ExtResource( 34 )
 player_info_scene = ExtResource( 30 )
 player_extra_params_scene = ExtResource( 28 )
@@ -92,8 +98,7 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "Dedication"
-frame = 2
+animation = "Awaken"
 speed_scale = 3.0
 __meta__ = {
 "_edit_group_": true,
@@ -121,14 +126,13 @@ title = "Walk"
 data_ui_scene = ExtResource( 6 )
 button_texture = ExtResource( 4 )
 flip_with_facing = true
-iasa_at = 10
+iasa_at = 15
 interruptible_on_opponent_turn = true
 reversible = false
 interrupt_from_string = "GroundedMovement
 Grounded
 Dash"
 interrupt_into_string = "Grounded"
-allowed_stances_string = "All"
 change_stance_to = "Normal"
 beats_backdash = true
 dash_speed = 12
@@ -2604,7 +2608,6 @@ __meta__ = {
 "_editor_description_": ""
 }
 apply_forces = true
-apply_fric = true
 reset_momentum = true
 sprite_animation = "Dedication"
 anim_length = 10
@@ -2630,3 +2633,77 @@ change_stance_to = "Normal"
 super_level_ = 1
 super_freeze_ticks_ = 7
 super_effect_ = true
+
+[node name="Awaken" type="Node2D" parent="StateMachine" index="68"]
+script = ExtResource( 43 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_fric = true
+apply_grav = true
+sprite_animation = "Awaken"
+anim_length = 45
+type = 4
+button_texture = ExtResource( 44 )
+interruptible_on_opponent_turn = true
+next_state_on_hold = false
+can_feint_if_possible = false
+selectable = false
+interrupt_from_string = "Grounded
+Aerial
+GroundedSuper
+AerialSuper
+Hustle"
+interrupt_into_string = "Grounded
+Aerial"
+change_stance_to = "Conquer"
+
+[node name="ConquerWait" type="Node2D" parent="StateMachine" index="69"]
+script = ExtResource( 45 )
+anim_length = 15
+title = "Wait"
+button_texture = ExtResource( 46 )
+interruptible_on_opponent_turn = true
+interrupt_from_string = "GroundedIdle
+Grounded
+Wait"
+interrupt_into_string = "Grounded
+Aerial"
+allowed_stances_string = "Conquer"
+
+[node name="Shuffle" type="Node2D" parent="StateMachine" index="70"]
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
+reset_momentum = true
+anim_length = 15
+ticks_per_frame = 4
+loop_animation = true
+particle_scene = ExtResource( 7 )
+enter_sfx = ExtResource( 5 )
+enter_sfx_volume = -10.0
+title = "Shuffle"
+data_ui_scene = ExtResource( 6 )
+button_texture = ExtResource( 4 )
+flip_with_facing = true
+iasa_at = 15
+interruptible_on_opponent_turn = true
+reversible = false
+interrupt_from_string = "GroundedMovement
+Grounded
+Dash"
+interrupt_into_string = "Grounded"
+allowed_stances_string = "Conquer"
+beats_backdash = true
+dash_speed = 12
+
+[node name="HurtboxState" type="Node2D" parent="StateMachine/Shuffle" index="0"]
+z_index = 999
+script = ExtResource( 47 )
+y = -16
+width = 14
+height = 12
+active_ticks = 5
+endless = true
