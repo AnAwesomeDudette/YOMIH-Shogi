@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=308 format=2]
+[gd_resource type="SpriteFrames" load_steps=309 format=2]
 
 [ext_resource path="res://_Shogi/characters/shogi/sprites/idle.png" type="Texture" id=1]
 [ext_resource path="res://characters/stickman/sprites/stickman35.png" type="Texture" id=2]
@@ -90,6 +90,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/sprites/hustleWIP.png" type="Texture" id=88]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/sacrifice.png" type="Texture" id=89]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Awaken.png" type="Texture" id=90]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Attacks/swiftpunish.png" type="Texture" id=91]
 
 [sub_resource type="AtlasTexture" id=225]
 atlas = ExtResource( 90 )
@@ -693,55 +694,72 @@ region = Rect2( 256, 768, 256, 256 )
 atlas = ExtResource( 83 )
 region = Rect2( 512, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=205]
+[sub_resource type="AtlasTexture" id=237]
+atlas = ExtResource( 91 )
 region = Rect2( 0, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=206]
+[sub_resource type="AtlasTexture" id=238]
+atlas = ExtResource( 91 )
 region = Rect2( 256, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=207]
+[sub_resource type="AtlasTexture" id=239]
+atlas = ExtResource( 91 )
 region = Rect2( 512, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=208]
+[sub_resource type="AtlasTexture" id=240]
+atlas = ExtResource( 91 )
 region = Rect2( 768, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=209]
+[sub_resource type="AtlasTexture" id=241]
+atlas = ExtResource( 91 )
 region = Rect2( 1024, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=210]
+[sub_resource type="AtlasTexture" id=242]
+atlas = ExtResource( 91 )
 region = Rect2( 0, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=211]
+[sub_resource type="AtlasTexture" id=243]
+atlas = ExtResource( 91 )
 region = Rect2( 256, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=212]
+[sub_resource type="AtlasTexture" id=244]
+atlas = ExtResource( 91 )
 region = Rect2( 512, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=213]
+[sub_resource type="AtlasTexture" id=245]
+atlas = ExtResource( 91 )
 region = Rect2( 768, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=214]
+[sub_resource type="AtlasTexture" id=246]
+atlas = ExtResource( 91 )
 region = Rect2( 1024, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=215]
+[sub_resource type="AtlasTexture" id=247]
+atlas = ExtResource( 91 )
 region = Rect2( 0, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=216]
+[sub_resource type="AtlasTexture" id=248]
+atlas = ExtResource( 91 )
 region = Rect2( 256, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=217]
+[sub_resource type="AtlasTexture" id=249]
+atlas = ExtResource( 91 )
 region = Rect2( 512, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=218]
+[sub_resource type="AtlasTexture" id=250]
+atlas = ExtResource( 91 )
 region = Rect2( 768, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=219]
+[sub_resource type="AtlasTexture" id=251]
+atlas = ExtResource( 91 )
 region = Rect2( 1024, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=220]
+[sub_resource type="AtlasTexture" id=252]
+atlas = ExtResource( 91 )
 region = Rect2( 0, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=221]
+[sub_resource type="AtlasTexture" id=253]
+atlas = ExtResource( 91 )
 region = Rect2( 256, 768, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=6]
@@ -1197,7 +1215,7 @@ animations = [ {
 "name": "StormDrain",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 205 ), SubResource( 206 ), SubResource( 207 ), SubResource( 208 ), SubResource( 209 ), SubResource( 209 ), SubResource( 210 ), SubResource( 210 ), SubResource( 211 ), SubResource( 211 ), SubResource( 212 ), SubResource( 213 ), SubResource( 213 ), SubResource( 214 ), SubResource( 214 ), SubResource( 215 ), SubResource( 215 ), SubResource( 216 ), SubResource( 216 ), SubResource( 217 ), SubResource( 217 ), SubResource( 218 ), SubResource( 219 ), SubResource( 220 ), SubResource( 220 ), SubResource( 221 ), SubResource( 221 ) ],
+"frames": [ SubResource( 237 ), SubResource( 238 ), SubResource( 239 ), SubResource( 240 ), SubResource( 241 ), SubResource( 242 ), SubResource( 243 ), SubResource( 244 ), SubResource( 245 ), SubResource( 246 ), SubResource( 247 ), SubResource( 248 ), SubResource( 249 ), SubResource( 250 ), SubResource( 251 ), SubResource( 252 ), SubResource( 253 ) ],
 "loop": true,
 "name": "SwiftPunish",
 "speed": 5.0

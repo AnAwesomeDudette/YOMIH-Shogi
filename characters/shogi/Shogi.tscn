@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -39,7 +39,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/states/SwiftPunish.gd" type="Script" id=37]
 [ext_resource path="res://characters/swordandgun/sounds/lightningslice.wav" type="AudioStream" id=38]
 [ext_resource path="res://characters/swordandgun/sounds/1000cuts.wav" type="AudioStream" id=39]
-[ext_resource path="res://ui/ActionSelector/ActionUIData/AirGrabActionUIData.tscn" type="PackedScene" id=40]
+[ext_resource path="res://characters/states/Grab.gd" type="Script" id=40]
 [ext_resource path="res://_Shogi/characters/shogi/states/Dedication.gd" type="Script" id=41]
 [ext_resource path="res://_Shogi/characters/shogi/ui/DedicationActionUIData.tscn" type="PackedScene" id=42]
 [ext_resource path="res://_Shogi/characters/shogi/states/ShogiState.gd" type="Script" id=43]
@@ -47,6 +47,14 @@
 [ext_resource path="res://characters/states/Idle.gd" type="Script" id=45]
 [ext_resource path="res://ui/ActionSelector/StateIcons/wait.png" type="Texture" id=46]
 [ext_resource path="res://HurtboxState.gd" type="Script" id=47]
+[ext_resource path="res://characters/UsableRequirement.gd" type="Script" id=48]
+[ext_resource path="res://characters/states/ThrowState.gd" type="Script" id=49]
+[ext_resource path="res://ui/ActionSelector/StateIcons/throw_down.png" type="Texture" id=50]
+[ext_resource path="res://sound/common/swipe1.wav" type="AudioStream" id=51]
+[ext_resource path="res://characters/ThrowBox.gd" type="Script" id=52]
+[ext_resource path="res://_Shogi/characters/shogi/ui/ConquerGrabActionUIData.tscn" type="PackedScene" id=53]
+[ext_resource path="res://sound/common/catch.wav" type="AudioStream" id=54]
+[ext_resource path="res://ui/ActionSelector/StateIcons/grab.png" type="Texture" id=55]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -171,8 +179,9 @@ loop_animation = false
 show_in_menu = false
 
 [node name="Grab" parent="StateMachine" index="44"]
-data_ui_scene = ExtResource( 40 )
-down_throw_state = "GodsFavoriteGirliepop"
+position = Vector2( 0, 1 )
+throw_techable = false
+allowed_stances_string = "Normal"
 
 [node name="ForwardThrow" parent="StateMachine" index="47"]
 script = ExtResource( 11 )
@@ -181,6 +190,7 @@ __meta__ = {
 }
 anim_length = 24
 ticks_per_frame = 3
+change_stance_to = "Normal"
 release_frame = 13
 release_throw_pos_y = 0
 hitstun_ticks = 21
@@ -229,6 +239,7 @@ anim_length = 25
 ticks_per_frame = 3
 flip_frame = 1
 button_texture = ExtResource( 32 )
+change_stance_to = "Normal"
 release_frame = 13
 release_throw_pos_y = 0
 hitstun_ticks = 21
@@ -269,6 +280,15 @@ knockback = "8.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
 active_ticks = 1
+
+[node name="AirForwardThrow" parent="StateMachine" index="49"]
+change_stance_to = "Normal"
+
+[node name="AirBackThrow" parent="StateMachine" index="50"]
+change_stance_to = "Normal"
+
+[node name="AirDownThrow" parent="StateMachine" index="51"]
+change_stance_to = "Normal"
 
 [node name="Ballet" type="Node2D" parent="StateMachine" index="52"]
 script = ExtResource( 14 )
@@ -2616,6 +2636,7 @@ type = 3
 data_ui_scene = ExtResource( 42 )
 air_type = 2
 iasa_at = 9
+interruptible_on_opponent_turn = true
 next_state_on_hold_on_opponent_turn = true
 reversible = false
 interrupt_from_string = "GroundedSuper
@@ -2633,6 +2654,10 @@ change_stance_to = "Normal"
 super_level_ = 1
 super_freeze_ticks_ = 7
 super_effect_ = true
+
+[node name="UsableRequirement" type="Node" parent="StateMachine/Not Bankai" index="0"]
+script = ExtResource( 48 )
+method = "has_dedication"
 
 [node name="Awaken" type="Node2D" parent="StateMachine" index="68"]
 script = ExtResource( 43 )
@@ -2702,8 +2727,83 @@ dash_speed = 12
 [node name="HurtboxState" type="Node2D" parent="StateMachine/Shuffle" index="0"]
 z_index = 999
 script = ExtResource( 47 )
-y = -16
+y = -14
 width = 14
-height = 12
+height = 14
 active_ticks = 5
 endless = true
+
+[node name="DownThrow" type="Node2D" parent="StateMachine" index="71"]
+script = ExtResource( 49 )
+apply_forces = true
+apply_fric = true
+apply_grav = true
+sprite_animation = "ForwardThrow"
+anim_length = 16
+title = "Down Throw"
+type = 1
+button_texture = ExtResource( 50 )
+flip_with_facing = true
+air_type = 2
+reversible = false
+interrupt_from_string = "GroundedThrow"
+interrupt_into_string = "Aerial
+Grounded"
+allowed_stances_string = "Conquer"
+change_stance_to = "Normal"
+release = true
+release_frame = 10
+start_throw_pos_y = 12
+release_throw_pos_x = 16
+release_throw_pos_y = -10
+hitstun_ticks = 30
+knockback = "10.0"
+dir_x = "0.10"
+dir_y = "1.0"
+knockdown_extends_hitstun = false
+grounded_hit_state = "HurtAerial"
+damage = 150
+damage_in_combo = 90
+screenshake_amount = 10
+screenshake_frames = 5
+damage_proration = 2
+release_sfx = ExtResource( 51 )
+release_sfx_volume = -7.0
+
+[node name="ConquerGrab" type="Node2D" parent="StateMachine" index="72"]
+position = Vector2( 0, 1 )
+script = ExtResource( 40 )
+__meta__ = {
+"_editor_description_": ""
+}
+sprite_animation = "Grab"
+anim_length = 15
+title = "Throw"
+type = 1
+data_ui_scene = ExtResource( 53 )
+button_texture = ExtResource( 55 )
+instant_cancellable = false
+can_feint_if_possible = false
+interrupt_from_string = "Grounded
+GroundedAttack
+GroundedGrab"
+interrupt_into_string = "Grounded"
+allowed_stances_string = "Conquer"
+change_stance_to = "Normal"
+whiff_meter_gain_multiplier = "0.0"
+down_throw_state = "GodsFavoriteGirliepop"
+
+[node name="ThrowBox" type="Node2D" parent="StateMachine/ConquerGrab" index="0"]
+z_index = 1000
+script = ExtResource( 52 )
+x = 14
+y = -18
+width = 15
+height = 12
+increment_combo = false
+hits_vs_aerial = false
+block_cancel_allowed = null
+hit_sound = ExtResource( 54 )
+start_tick = 3
+active_ticks = 3
+throw_state = "ForwardThrow"

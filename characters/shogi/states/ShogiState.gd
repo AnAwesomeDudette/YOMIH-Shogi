@@ -13,6 +13,7 @@ export var can_conquer = false
 export (PackedScene) var shogi_hit_particle
 var damage_multiplier = 1
 var original_hitbox_plus_frames = {}
+var original_fallback_state = fallback_state
 var end_with_awaken = false
 
 
@@ -53,10 +54,12 @@ func conquer_tier_3():
 	windup = 9
 	add_plus_frames(3)
 	end_with_awaken = true
+	fallback_state = "Awaken"
 	host.armor_hits_remaining = 4
 	
 
 func _enter():
+	fallback_state = original_fallback_state
 	end_with_awaken = false
 	for hitbox in all_hitbox_nodes:
 		hitbox.plus_frames = original_hitbox_plus_frames[hitbox]
@@ -221,6 +224,7 @@ func _tick_shared():
 	if (current_tick == iasa_at and end_with_awaken):
 		next_state_on_hold = false
 		queue_state_change("Awaken")
+
 
 """
 func _on_hit_something(obj, _hitbox):
