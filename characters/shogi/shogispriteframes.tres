@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=294 format=2]
+[gd_resource type="SpriteFrames" load_steps=296 format=2]
 
 [ext_resource path="res://_Shogi/characters/shogi/sprites/idle.png" type="Texture" id=1]
 [ext_resource path="res://characters/stickman/sprites/stickman35.png" type="Texture" id=2]
@@ -89,6 +89,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Attacks/windmill.png" type="Texture" id=87]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/hustleWIP.png" type="Texture" id=88]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/sacrifice.png" type="Texture" id=89]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/stance.png" type="Texture" id=90]
 
 [sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 42 )
@@ -191,9 +192,15 @@ atlas = ExtResource( 59 )
 region = Rect2( 0, 768, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=222]
-region = Rect2( 1536, 512, 512, 512 )
+atlas = ExtResource( 90 )
+region = Rect2( 1024, 512, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=223]
+atlas = ExtResource( 90 )
+region = Rect2( 1536, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=224]
+atlas = ExtResource( 90 )
 region = Rect2( 2048, 512, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=1]
@@ -929,7 +936,7 @@ animations = [ {
 "name": "DashForward",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 222 ), SubResource( 222 ), SubResource( 223 ) ],
+"frames": [ SubResource( 222 ), SubResource( 222 ), SubResource( 223 ), SubResource( 223 ), SubResource( 223 ), SubResource( 224 ) ],
 "loop": true,
 "name": "Dedication",
 "speed": 5.0

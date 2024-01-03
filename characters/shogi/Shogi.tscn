@@ -74,8 +74,12 @@ do_drop
 dropped_this_turn
 can_bounce
 current_conquer_tier
+armor_hits_remaining
 sacrifices
-armor_hits_remaining"
+raid
+dedication
+dedication_delay
+got_hit"
 character_portrait = ExtResource( 34 )
 player_info_scene = ExtResource( 30 )
 player_extra_params_scene = ExtResource( 28 )
@@ -89,6 +93,8 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 material = SubResource( 1 )
 frames = ExtResource( 9 )
 animation = "Dedication"
+frame = 2
+speed_scale = 3.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
@@ -2599,20 +2605,14 @@ __meta__ = {
 }
 apply_forces = true
 apply_fric = true
-apply_custom_x_fric = true
-apply_custom_y_fric = true
-custom_x_fric = "0.05"
-custom_y_fric = "0.05"
-apply_custom_limits = true
-custom_max_air_speed = "30.0"
-custom_max_ground_speed = "30.0"
+reset_momentum = true
 sprite_animation = "Dedication"
 anim_length = 10
 title = "Dedication"
 type = 3
 data_ui_scene = ExtResource( 42 )
 air_type = 2
-iasa_at = 10
+iasa_at = 9
 next_state_on_hold_on_opponent_turn = true
 reversible = false
 interrupt_from_string = "GroundedSuper
@@ -2628,5 +2628,5 @@ Aerial"
 allowed_stances_string = "All"
 change_stance_to = "Normal"
 super_level_ = 1
-super_freeze_ticks_ = 3
+super_freeze_ticks_ = 7
 super_effect_ = true

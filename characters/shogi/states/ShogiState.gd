@@ -19,14 +19,23 @@ func init():
 	.init()
 	for hitbox in all_hitbox_nodes:
 		original_hitbox_plus_frames[hitbox] = hitbox.plus_frames
+		#//this is so strange
+		#//weirdopilled, even
+		#//but it should workies -
 
 var last_vel = {}
 
 var windup = 0
 
-func add_plus_frames(frames):
+func add_plus_frames(frames): 
 	for hitbox in all_hitbox_nodes:
 		hitbox.plus_frames += frames
+		
+func _add(hitbox, hits, ticks):
+	hitbox_register[hitbox] = {"Hits":hits, "Ticks":ticks}
+	
+func _add_f(hitbox, frame):
+	hitbox_frame[hitbox] = frame
 
 func conquer_tier_1():
 	windup = 5
@@ -57,13 +66,7 @@ func _enter():
 		if host.current_conquer_tier == 3:
 			conquer_tier_3()
 	
-	#._enter()
-	
-func _add(hitbox, hits, ticks):
-	hitbox_register[hitbox] = {"Hits":hits, "Ticks":ticks}
-	
-func _add_f(hitbox, frame):
-	hitbox_frame[hitbox] = frame
+	._enter()
 	
 var x_speed_preserved = "0.25"
 var speed = "25.0"

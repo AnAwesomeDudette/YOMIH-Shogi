@@ -73,12 +73,14 @@ func tick():
 		if dedication_delay == 0:
 			dedication_delay = -1
 			#if dedication != {"x":0, "y":0}:
+			#print("Applying...")
 			apply_dedication(dedication.x, dedication.y)
 	
 	if do_drop:
 		apply_drop()
 		do_drop = false
-	if (got_hit):
+		
+	if got_hit:
 		armor_hits_remaining -= 1
 		got_hit = false
 
@@ -88,24 +90,23 @@ func apply_dedication(x, y):
 	var apply_x = fixed.div(str(x * get_facing_int()), mult)
 	var apply_y = fixed.div(str(y), mult)
 	
-	var x_mod = "1.5"
-	var y_mod = "1.5"
-	apply_x = fixed.mul(apply_x, x_mod)
-	apply_y = fixed.mul(apply_y, y_mod)
+#	var x_mod = "1.5"
+#	var y_mod = "1.5"
+#	apply_x = fixed.mul(apply_x, x_mod)
+#	apply_y = fixed.mul(apply_y, y_mod)
 	
 	if (sign(opponent.data.object_data.position_x - data.object_data.position_x) != sign(x)) and not opponent.is_in_hurt_state():
 		var penalty = int(fixed.round(fixed.abs(fixed.mul(apply_x, "2"))))
 		add_penalty(penalty)
-		apply_x = fixed.round(apply_x)
-	else:
-		apply_x = fixed.round(apply_x)
-		
+	apply_x = fixed.round(apply_x)
+	
 	if (int(fixed.round(apply_y)) > 0) and not opponent.is_in_hurt_state():
 		apply_y = fixed.round(fixed.mul(apply_y, "0.8"))
 	else:
 		apply_y = fixed.round(apply_y)
 	
 	apply_force_relative(apply_x, apply_y)
+	#print("Applied!")
 
 func apply_drop():
 	apply_force_relative("0.0", "10.0")
@@ -135,7 +136,3 @@ func attempt_consume(obj, hits = 1, ticks = 0):
 	
 func has_armor():
 	return armor_hits_remaining > 0 and not (current_state() is CharacterHurtState)
-	
-
-
-#fast fall bounce thingymajigoo
