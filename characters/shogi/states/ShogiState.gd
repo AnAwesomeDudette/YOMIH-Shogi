@@ -20,6 +20,14 @@ var original_fallback_state = fallback_state
 var end_with_awaken = false
 
 
+func is_usable():
+	if (host.stance == "Conquer"):
+		if (is_raid_variant):
+				return true
+		elif (host.state_machine.get_state(opposite_variant)):
+			if (host.state_machine.get_state(opposite_variant).is_usable()):
+				return false
+	return .is_usable()
 
 func init():
 	.init()

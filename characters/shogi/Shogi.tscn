@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -39,6 +39,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/states/SwiftPunish.gd" type="Script" id=37]
 [ext_resource path="res://characters/swordandgun/sounds/lightningslice.wav" type="AudioStream" id=38]
 [ext_resource path="res://characters/swordandgun/sounds/1000cuts.wav" type="AudioStream" id=39]
+[ext_resource path="res://_Shogi/characters/shogi/states/RaidVariant.gd" type="Script" id=40]
 [ext_resource path="res://_Shogi/characters/shogi/states/Dedication.gd" type="Script" id=41]
 [ext_resource path="res://_Shogi/characters/shogi/ui/DedicationActionUIData.tscn" type="PackedScene" id=42]
 [ext_resource path="res://_Shogi/characters/shogi/states/ShogiState.gd" type="Script" id=43]
@@ -102,8 +103,8 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "Shuffle"
-frame = 9
+animation = "TyphoonSewer"
+frame = 17
 speed_scale = 3.0
 __meta__ = {
 "_edit_group_": true,
@@ -999,7 +1000,80 @@ loop_inactive_ticks = 1
 to_x = 1
 to_y = 1
 
-[node name="Whirl" type="Node2D" parent="StateMachine" index="59"]
+[node name="TyphoonSewer" type="Node2D" parent="StateMachine" index="59"]
+script = ExtResource( 40 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_fric = true
+apply_grav = true
+apply_custom_x_fric = true
+apply_custom_grav = true
+custom_x_fric = "0.05"
+custom_grav = "-0.05"
+apply_custom_limits = true
+custom_max_ground_speed = "100.0"
+sprite_animation = "TyphoonSewer"
+anim_length = 28
+enter_force_dir_x = "1.0"
+enter_force_speed = "25.0"
+title = "Typhoon Sewer"
+type = 3
+air_type = 2
+reversible = false
+interrupt_from_string = "GroundedSpecial
+Grounded
+AerialSpecial
+Aerial"
+interrupt_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+change_stance_to = "Normal"
+no_collision_start_frame = 6
+no_collision_end_frame = 19
+min_bounce_frame = 3
+bounce_frame = 15
+x_modifier = "0.6"
+is_raid_variant = true
+opposite_variant = "StormDrain"
+shogi_hit_particle = ExtResource( 35 )
+super_cost = 4
+conquer_super_cost = 2
+raid_stack_cost = 4
+
+[node name="Hitbox" type="Node2D" parent="StateMachine/TyphoonSewer" index="0"]
+z_index = 1000
+script = ExtResource( 12 )
+y = -52
+width = 250
+height = 75
+damage = 160
+damage_in_combo = 100
+minimum_damage = 5
+chip_damage_modifier = "1.2"
+hitstun_ticks = 35
+hitlag_ticks = 6
+victim_hitlag = 7
+damage_proration = 1
+di_modifier = "0.8"
+sdi_modifier = "0.8"
+parry_meter_gain = 125
+ignore_armor = true
+plus_frames = 7
+priority = 8
+screenshake_amount = 9
+hit_sound_volume = -4.0
+dir_x = "0.0"
+dir_y = "0.2"
+knockback = "2.5"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 15
+active_ticks = 4
+
+[node name="Whirl" type="Node2D" parent="StateMachine" index="60"]
 script = ExtResource( 25 )
 __meta__ = {
 "_editor_description_": ""
@@ -1152,7 +1226,7 @@ wall_slam = true
 start_tick = 20
 active_ticks = 2
 
-[node name="Split" type="Node2D" parent="StateMachine" index="60"]
+[node name="Split" type="Node2D" parent="StateMachine" index="61"]
 script = ExtResource( 29 )
 __meta__ = {
 "_editor_description_": ""
@@ -1378,7 +1452,7 @@ active_ticks = 2
 to_x = 36
 to_y = -23
 
-[node name="Windmill" type="Node2D" parent="StateMachine" index="61"]
+[node name="Windmill" type="Node2D" parent="StateMachine" index="62"]
 script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
@@ -1982,7 +2056,7 @@ active_ticks = 2
 to_x = -42
 to_y = 26
 
-[node name="WindmillG" type="Node2D" parent="StateMachine" index="62"]
+[node name="WindmillG" type="Node2D" parent="StateMachine" index="63"]
 script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
@@ -2577,7 +2651,7 @@ active_ticks = 2
 to_x = -42
 to_y = 26
 
-[node name="Sacrifice" type="Node2D" parent="StateMachine" index="63"]
+[node name="Sacrifice" type="Node2D" parent="StateMachine" index="64"]
 script = ExtResource( 36 )
 __meta__ = {
 "_editor_description_": ""
@@ -2641,7 +2715,7 @@ wall_slam = true
 start_tick = 9
 active_ticks = 3
 
-[node name="Not Bankai" type="Node2D" parent="StateMachine" index="64"]
+[node name="Not Bankai" type="Node2D" parent="StateMachine" index="65"]
 script = ExtResource( 41 )
 __meta__ = {
 "_editor_description_": ""
@@ -2680,7 +2754,7 @@ movement_mod = "2.2"
 script = ExtResource( 48 )
 method = "has_dedication"
 
-[node name="Awaken" type="Node2D" parent="StateMachine" index="68"]
+[node name="Awaken" type="Node2D" parent="StateMachine" index="69"]
 script = ExtResource( 43 )
 __meta__ = {
 "_editor_description_": ""
@@ -2705,7 +2779,7 @@ interrupt_into_string = "Grounded
 Aerial"
 change_stance_to = "Conquer"
 
-[node name="ConquerWait" type="Node2D" parent="StateMachine" index="69"]
+[node name="ConquerWait" type="Node2D" parent="StateMachine" index="70"]
 script = ExtResource( 45 )
 anim_length = 15
 title = "Wait"
@@ -2718,7 +2792,7 @@ interrupt_into_string = "Grounded
 Aerial"
 allowed_stances_string = "Conquer"
 
-[node name="Shuffle" type="Node2D" parent="StateMachine" index="70"]
+[node name="Shuffle" type="Node2D" parent="StateMachine" index="71"]
 script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
@@ -2756,7 +2830,7 @@ height = 14
 active_ticks = 5
 endless = true
 
-[node name="DownThrow" type="Node2D" parent="StateMachine" index="71"]
+[node name="DownThrow" type="Node2D" parent="StateMachine" index="72"]
 script = ExtResource( 49 )
 apply_forces = true
 apply_fric = true
