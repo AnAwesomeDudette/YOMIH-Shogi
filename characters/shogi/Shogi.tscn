@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
@@ -55,6 +56,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/ui/ConquerGrabActionUIData.tscn" type="PackedScene" id=53]
 [ext_resource path="res://sound/common/catch.wav" type="AudioStream" id=54]
 [ext_resource path="res://ui/ActionSelector/StateIcons/grab.png" type="Texture" id=55]
+[ext_resource path="res://_Shogi/characters/shogi/ui/ConquerGrabActionUIData.tscn" type="PackedScene" id=56]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -118,6 +120,10 @@ __meta__ = {
 [node name="Fall" parent="StateMachine" index="17"]
 sprite_animation = "Fall"
 loop_animation = false
+allowed_stances_string = "All"
+
+[node name="Landing" parent="StateMachine" index="18"]
+change_stance_to = ""
 
 [node name="Walk" type="Node2D" parent="StateMachine" index="24"]
 script = ExtResource( 8 )
@@ -181,8 +187,11 @@ show_in_menu = false
 
 [node name="Grab" parent="StateMachine" index="44"]
 position = Vector2( 0, 1 )
+
 throw_techable = false
-allowed_stances_string = "Normal"
+data_ui_scene = ExtResource( 53 )
+change_stance_to = ""
+down_throw_state = "GodsFavoriteGirliepop"
 
 [node name="ForwardThrow" parent="StateMachine" index="47"]
 script = ExtResource( 11 )
@@ -623,7 +632,7 @@ Aerial"
 hit_cancel_into_string = "Grounded
 Aerial"
 allowed_stances_string = "All"
-change_stance_to = "Normal"
+change_stance_to = "Conquer"
 release_opponent_on_startup = true
 shogi_hit_particle = ExtResource( 35 )
 
@@ -2777,41 +2786,3 @@ screenshake_frames = 5
 damage_proration = 2
 release_sfx = ExtResource( 51 )
 release_sfx_volume = -7.0
-
-[node name="ConquerGrab" type="Node2D" parent="StateMachine" index="72"]
-position = Vector2( 0, 1 )
-script = ExtResource( 40 )
-__meta__ = {
-"_editor_description_": ""
-}
-sprite_animation = "Grab"
-anim_length = 15
-title = "Throw"
-type = 1
-data_ui_scene = ExtResource( 53 )
-button_texture = ExtResource( 55 )
-instant_cancellable = false
-can_feint_if_possible = false
-interrupt_from_string = "Grounded
-GroundedAttack
-GroundedGrab"
-interrupt_into_string = "Grounded"
-allowed_stances_string = "Conquer"
-change_stance_to = "Normal"
-whiff_meter_gain_multiplier = "0.0"
-down_throw_state = "GodsFavoriteGirliepop"
-
-[node name="ThrowBox" type="Node2D" parent="StateMachine/ConquerGrab" index="0"]
-z_index = 1000
-script = ExtResource( 52 )
-x = 14
-y = -18
-width = 15
-height = 12
-increment_combo = false
-hits_vs_aerial = false
-block_cancel_allowed = null
-hit_sound = ExtResource( 54 )
-start_tick = 3
-active_ticks = 3
-throw_state = "ForwardThrow"

@@ -1,10 +1,42 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://characters/PlayerInfo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/ShogiInfo.gd" type="Script" id=2]
+[ext_resource path="res://_Shogi/characters/shogi/ui/dedication_stacks.png" type="Texture" id=3]
+[ext_resource path="res://theme.tres" type="Theme" id=4]
 
 [node name="ShogiInfo" instance=ExtResource( 1 )]
+margin_right = 0.0
+margin_bottom = 0.0
+theme = ExtResource( 4 )
 script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
+unique_name_in_owner = true
+margin_left = 10.0
+margin_right = 260.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" index="0"]
+margin_right = 24.0
+margin_bottom = 40.0
+grow_horizontal = 0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="DedicationLabel" type="Label" parent="HBoxContainer/TextureRect" index="0"]
+unique_name_in_owner = true
+margin_left = 9.0
+margin_top = 13.0
+margin_right = 19.0
+margin_bottom = 28.0
+grow_horizontal = 0
+text = "0"
+valign = 1
 __meta__ = {
 "_editor_description_": ""
 }

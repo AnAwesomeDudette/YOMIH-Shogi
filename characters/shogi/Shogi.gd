@@ -14,11 +14,10 @@ var got_hit = false # whether Shogi was hit this tick
 var damage_multiplier = 1
 var queue_damage_multiplier = 1
 var reset_damage_multiplier = false
+var dedication_stacks = 0
+var super_until_dedication = MAX_SUPER_METER
 
-func take_damage(damage:int, minimum = 0, meter_gain_modifier = "1.0", combo_scaling_offset = 0, damage_taken_meter_gain_modifier = "1.0"):
 
-	damage *= damage_multiplier
-	.take_damage(damage, minimum ,meter_gain_modifier, combo_scaling_offset, damage_taken_meter_gain_modifier)
 
 func init(pos = null):
 	.init(pos)
@@ -74,8 +73,16 @@ func on_got_hit_by_fighter():
 	if armor_hits_remaining > 0:
 		got_hit = true
 
+
 func tick():
 	.tick()
+	if (stance == "Conquer"):
+		var old_super_meter = super_meter + (MAX_SUPER_METER * supers_available) 
+		use_super_meter(MAX_SUPER_METER/50)
+		super_until_dedication -= old_super_meter - (super_meter + (MAX_SUPER_METER * supers_available))
+		if (super_until_dedication <= 0):
+			super_until_dedication += MAX_SUPER_METER
+			dedication_stacks += 1
 	if reset_damage_multiplier:
 		damage_multiplier = 1
 	if queue_damage_multiplier < damage_multiplier:
@@ -86,6 +93,7 @@ func tick():
 			dedication_delay = -1
 			#if dedication != {"x":0, "y":0}:
 			#print("Applying...")
+			set_vel(get_vel().x, "0.0");
 			apply_dedication(dedication.x, dedication.y)
 	
 	if do_drop:
@@ -147,4 +155,11 @@ func attempt_consume(obj, hits = 1, ticks = 0):
 	#	pass
 	
 func has_armor():
-	return armor_hits_remaining > 0 and not (current_state() is CharacterHurtState)
+	return (armor_hits_remaining > 0  or (stance == "Conquer" and has_super_meter() ) )and not (current_state() is CharacterHurtState)
+	
+func take_damage(damage:int, minimum = 0, meter_gain_modifier = "1.0", combo_scaling_offset = 0, damage_taken_meter_gain_modifier = "1.0"):
+	damage *= damage_multiplier
+	.take_damage(damage, minimum ,meter_gain_modifier, combo_scaling_offset, damage_taken_meter_gain_modifier)
+
+func has_dedication():
+	return dedication_stacks >= 1
