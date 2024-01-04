@@ -137,6 +137,7 @@ button_texture = ExtResource( 4 )
 flip_with_facing = true
 iasa_at = 15
 interruptible_on_opponent_turn = true
+next_state_on_hold = false
 reversible = false
 interrupt_from_string = "GroundedMovement
 Grounded
@@ -2718,7 +2719,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 reset_momentum = true
-fallback_state = "Shuffle"
+fallback_state = "ConquerWait"
 anim_length = 15
 sprite_anim_length = 15
 ticks_per_frame = 4
@@ -2731,6 +2732,7 @@ data_ui_scene = ExtResource( 6 )
 button_texture = ExtResource( 4 )
 flip_with_facing = true
 interruptible_on_opponent_turn = true
+next_state_on_hold = false
 reversible = false
 interrupt_from_string = "GroundedMovement
 Grounded

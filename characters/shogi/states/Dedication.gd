@@ -18,7 +18,7 @@ func _frame_0():
 	#var dir = xy_to_dir(data.x, data.y, MOVE_DIST)
 	
 	
-	var send = data
+	var send = data.duplicate()
 	send.x = fixed.round(fixed.mul(str(send.x), movement_mod))
 	send.y = fixed.round(fixed.mul(str(send.y), movement_mod))
 	#print(data)
