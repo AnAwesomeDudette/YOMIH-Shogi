@@ -1,29 +1,18 @@
 extends "res://_Shogi/characters/shogi/states/ShogiState.gd"
 
-onready var hitbox1 = $SHitbox1
-onready var hitbox2 = $SHitbox2
-onready var catch = $Catch
+export var _c_drag = 0
+export (bool) var drag = false
+export (int) var offset_x = 0
+export (int) var offset_y = 0
+export (int) var end_on_tick = 1
+export (int) var drag_strength = 10
 
-var halt = false
+var hit_opponent = false
 
 func _enter():
 	._enter()
-	
-	_add(hitbox1, 1, 0)
-	_add(hitbox2, 1, 0)
-	_add(catch, 1, 0)
-	
-	hitbox1.activated = true
-	hitbox2.activated = true
-	catch.activated = false
-	
-	halt = false
-	
-	catch.di_modifier = "0.0"
-	catch.sdi_modifier = "0.0"
-	catch.dir_x = "0.0"
-	catch.dir_y = "0.0"
-	catch.knockback = "5.0"
+
+	hit_opponent = false
 	
 func _frame_0():
 	host.play_sound("Super2")
@@ -52,32 +41,16 @@ func _frame_13():
 	
 func _tick():
 	._tick()
-	var y_dist = str(host.obj_local_pos(host.opponent).y)
-	#print(y_dist)
-	if not halt:
-		catch.dir_x = host.get_vel().x
-		catch.dir_y = fixed.mul(y_dist, "1")#host.get_vel().y
+	if hit_opponent == true:
+		if current_tick < end_on_tick:
+			var pos = host.get_pos()
+			var opos = host.opponent.get_pos()
 
-func _frame_16():
-	catch.di_modifier = "1.0"
-	catch.sdi_modifier = "0.8"
-	catch.dir_x = "-1.0"
-	catch.dir_y = "-0.25"
-	catch.knockback = "9.0"
-	halt = true
-
-func on_attack_blocked():
-	hitbox1.activated = false
-	hitbox2.activated = false
-	catch.activated = true
+			host.opponent.set_vel(0, 0)
+			host.opponent.move_directly(str((pos.x + (offset_x * host.get_facing_int()) - opos.x) / drag_strength), str((pos.y - (offset_y + 18) - opos.y) / drag_strength))
 
 func _on_hit_something(obj, _hitbox):
 	._on_hit_something(obj, _hitbox)
-	if obj is Fighter:
-		if _hitbox == catch:
-			host.visible_combo_count += 1
-			#print("Hitting the right hitbox")
-		else:
-			hitbox1.activated = false
-			hitbox2.activated = false
-			catch.activated = true
+	if current_tick < end_on_tick:
+		if obj == host.opponent:
+			hit_opponent = true

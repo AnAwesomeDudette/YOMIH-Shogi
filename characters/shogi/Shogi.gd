@@ -155,7 +155,7 @@ func attempt_consume(obj, hits = 1, ticks = 0):
 	#	pass
 	
 func has_armor():
-	return armor_hits_remaining > 0 and not (current_state() is CharacterHurtState)
+	return (armor_hits_remaining > 0  or (stance == "Conquer" and has_super_meter() ) )and not (current_state() is CharacterHurtState)
 	
 func take_damage(damage:int, minimum = 0, meter_gain_modifier = "1.0", combo_scaling_offset = 0, damage_taken_meter_gain_modifier = "1.0"):
 	damage *= damage_multiplier

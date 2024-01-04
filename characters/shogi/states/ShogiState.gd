@@ -41,17 +41,17 @@ func _add_f(hitbox, frame):
 	hitbox_frame[hitbox] = frame
 
 func conquer_tier_1():
-	windup = 5
+	windup = 4
 	add_plus_frames(3)
 	host.armor_hits_remaining = 1
 
 func conquer_tier_2():
-	windup = 7
+	windup = 5
 	add_plus_frames(3)
 	host.armor_hits_remaining = 2
 
 func conquer_tier_3():
-	windup = 9
+	windup = 7
 	add_plus_frames(3)
 	end_with_awaken = true
 	fallback_state = "Awaken"
