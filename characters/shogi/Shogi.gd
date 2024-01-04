@@ -123,7 +123,7 @@ func apply_dedication(x, y):
 	if (int(fixed.round(apply_y)) > 0) and not opponent.is_in_hurt_state():
 		apply_y = fixed.round(fixed.mul(apply_y, "0.8"))
 	else:
-		apply_y = fixed.round(apply_y)
+		apply_y = fixed.round(fixed.mul(apply_y, "1.0"))
 	
 	apply_force_relative(apply_x, apply_y)
 	#print("Applied!")

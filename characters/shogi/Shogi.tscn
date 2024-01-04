@@ -167,11 +167,6 @@ loop_animation = false
 [node name="ChargeDash" parent="StateMachine" index="31"]
 show_in_menu = false
 
-[node name="SuperJump" parent="StateMachine" index="32"]
-interrupt_from_string = "GroundedMovement
-Grounded
-Jump"
-
 [node name="DoubleJump" parent="StateMachine" index="33"]
 script = ExtResource( 10 )
 __meta__ = {
@@ -2647,6 +2642,10 @@ __meta__ = {
 }
 apply_forces = true
 reset_momentum = true
+apply_custom_x_fric = true
+apply_custom_y_fric = true
+custom_x_fric = "0.25"
+custom_y_fric = "0.25"
 sprite_animation = "Dedication"
 anim_length = 10
 title = "Dedication"
@@ -2668,8 +2667,9 @@ hit_cancel_into_string = "Grounded
 Aerial"
 allowed_stances_string = "All"
 apply_pushback = false
-super_freeze_ticks_ = 7
+super_freeze_ticks_ = -1
 super_effect_ = true
+movement_mod = "3.0"
 
 [node name="UsableRequirement" type="Node" parent="StateMachine/Not Bankai" index="0"]
 script = ExtResource( 48 )
