@@ -1133,6 +1133,11 @@ animations = [ {
 "name": "Burst",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 236 ) ],
+"loop": true,
+"name": "CWait",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "DashBackward",
