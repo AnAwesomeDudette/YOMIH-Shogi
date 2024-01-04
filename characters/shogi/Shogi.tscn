@@ -91,7 +91,7 @@ can_bounce
 current_conquer_tier
 armor_hits_remaining
 sacrifices
-raid
+raid_stacks
 dedication
 dedication_delay
 got_hit
@@ -872,7 +872,7 @@ x_modifier = "0.6"
 shogi_hit_particle = ExtResource( 35 )
 drag = true
 end_on_tick = 35
-drag_strength = 5
+drag_strength = 6
 
 [node name="SHitbox1" type="Node2D" parent="StateMachine/StormDrain" index="0"]
 z_index = 1000
@@ -1031,6 +1031,7 @@ can_conquer = true
 shogi_hit_particle = ExtResource( 35 )
 end_on_tick = 18
 drag_strength = 6
+drag = true
 
 [node name="Flurry1" type="Node2D" parent="StateMachine/Whirl" index="0"]
 z_index = 1000
@@ -2665,9 +2666,7 @@ Aerial"
 hit_cancel_into_string = "Grounded
 Aerial"
 allowed_stances_string = "All"
-change_stance_to = "Normal"
 apply_pushback = false
-super_level_ = 1
 super_freeze_ticks_ = 7
 super_effect_ = true
 

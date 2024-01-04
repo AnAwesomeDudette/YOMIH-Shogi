@@ -41,7 +41,7 @@ func _frame_13():
 	
 func _tick():
 	._tick()
-	if hit_opponent == true:
+	if hit_opponent == true and drag:
 		if current_tick < end_on_tick:
 			var pos = host.get_pos()
 			var opos = host.opponent.get_pos()

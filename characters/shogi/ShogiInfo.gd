@@ -9,5 +9,8 @@ func set_fighter(fighter):
 
 func _process(delta):
 	$"%DedicationLabel".text = str(fighter.dedication_stacks) + dedication_modifier
-	
-	
+	if ReplayManager.playback or ReplayManager.replaying_ingame:
+		rect_position.y = -40
+	else:
+		rect_position.y = -10
+		

@@ -6,8 +6,9 @@
 [ext_resource path="res://theme.tres" type="Theme" id=4]
 
 [node name="ShogiInfo" instance=ExtResource( 1 )]
+margin_top = -10.0
 margin_right = 0.0
-margin_bottom = 0.0
+margin_bottom = -10.0
 theme = ExtResource( 4 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -20,7 +21,7 @@ margin_left = 10.0
 margin_right = 260.0
 margin_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer" index="0"]
+[node name="DedicationTex" type="TextureRect" parent="HBoxContainer" index="0"]
 margin_right = 24.0
 margin_bottom = 40.0
 grow_horizontal = 0
@@ -28,7 +29,7 @@ rect_min_size = Vector2( 24, 24 )
 texture = ExtResource( 3 )
 stretch_mode = 6
 
-[node name="DedicationLabel" type="Label" parent="HBoxContainer/TextureRect" index="0"]
+[node name="DedicationLabel" type="Label" parent="HBoxContainer/DedicationTex" index="0"]
 unique_name_in_owner = true
 margin_left = 9.0
 margin_top = 13.0
@@ -36,6 +37,87 @@ margin_right = 19.0
 margin_bottom = 28.0
 grow_horizontal = 0
 text = "0"
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RaidTex1" type="TextureRect" parent="HBoxContainer" index="1"]
+unique_name_in_owner = true
+margin_left = 25.0
+margin_right = 49.0
+margin_bottom = 40.0
+grow_horizontal = 0
+rect_min_size = Vector2( 24, 24 )
+stretch_mode = 6
+
+[node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex1" index="0"]
+margin_left = 9.0
+margin_top = 13.0
+margin_right = 19.0
+margin_bottom = 28.0
+grow_horizontal = 0
+text = "Raid"
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RaidTex2" type="TextureRect" parent="HBoxContainer" index="2"]
+margin_left = 50.0
+margin_right = 74.0
+margin_bottom = 40.0
+grow_horizontal = 0
+rect_min_size = Vector2( 24, 24 )
+stretch_mode = 6
+
+[node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex2" index="0"]
+margin_left = 9.0
+margin_top = 13.0
+margin_right = 19.0
+margin_bottom = 28.0
+grow_horizontal = 0
+text = "Raid"
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RaidTex3" type="TextureRect" parent="HBoxContainer" index="3"]
+margin_left = 75.0
+margin_right = 99.0
+margin_bottom = 40.0
+grow_horizontal = 0
+rect_min_size = Vector2( 24, 24 )
+stretch_mode = 6
+
+[node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex3" index="0"]
+margin_left = 9.0
+margin_top = 13.0
+margin_right = 19.0
+margin_bottom = 28.0
+grow_horizontal = 0
+text = "Raid"
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RaidTex4" type="TextureRect" parent="HBoxContainer" index="4"]
+margin_left = 100.0
+margin_right = 124.0
+margin_bottom = 40.0
+grow_horizontal = 0
+rect_min_size = Vector2( 24, 24 )
+stretch_mode = 6
+
+[node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex4" index="0"]
+margin_left = 9.0
+margin_top = 13.0
+margin_right = 19.0
+margin_bottom = 28.0
+grow_horizontal = 0
+text = "Raid"
 valign = 1
 __meta__ = {
 "_editor_description_": ""

@@ -7,14 +7,14 @@ var can_bounce = 0
 var current_conquer_tier = 0
 var armor_hits_remaining = 0
 var sacrifices = 0 #7 uses
-var raid = 0
+var raid_stacks = 0
 var dedication = {"x":0, "y":0}
 var dedication_delay = -1
 var got_hit = false # whether Shogi was hit this tick
 var damage_multiplier = 1
 var queue_damage_multiplier = 1
 var reset_damage_multiplier = false
-var dedication_stacks = 0
+var dedication_stacks = 1
 var super_until_dedication = MAX_SUPER_METER
 
 
