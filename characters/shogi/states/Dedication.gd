@@ -4,6 +4,10 @@ export var movement_mod = "1.0"
 
 const MOVE_DIST = "200"
 
+func _tick():
+	._tick()
+	host.apply_forces_no_limit()
+
 func _frame_0():
 	host.dedication_stacks -= 1
 	if data == null:

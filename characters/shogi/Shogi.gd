@@ -107,7 +107,7 @@ func tick():
 func apply_dedication(x, y):
 	
 	var mult = fixed.div("100", str(max_air_speed))
-	var apply_x = fixed.div(str(x * get_facing_int()), mult)
+	var apply_x = fixed.div(str(x), mult)
 	var apply_y = fixed.div(str(y), mult)
 	
 #	var x_mod = "1.5"
@@ -125,7 +125,7 @@ func apply_dedication(x, y):
 	else:
 		apply_y = fixed.round(fixed.mul(apply_y, "1.0"))
 	
-	apply_force_relative(apply_x, apply_y)
+	apply_force(apply_x, apply_y)
 	#print("Applied!")
 
 func apply_drop():

@@ -2640,7 +2640,6 @@ script = ExtResource( 41 )
 __meta__ = {
 "_editor_description_": ""
 }
-apply_forces = true
 reset_momentum = true
 apply_custom_x_fric = true
 apply_custom_y_fric = true
@@ -2669,7 +2668,7 @@ allowed_stances_string = "All"
 apply_pushback = false
 super_freeze_ticks_ = -1
 super_effect_ = true
-movement_mod = "3.0"
+movement_mod = "2.2"
 
 [node name="UsableRequirement" type="Node" parent="StateMachine/Not Bankai" index="0"]
 script = ExtResource( 48 )
