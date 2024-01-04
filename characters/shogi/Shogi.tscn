@@ -870,7 +870,7 @@ bounce_frame = 15
 x_modifier = "0.6"
 shogi_hit_particle = ExtResource( 35 )
 drag = true
-end_on_tick = 35
+end_on_tick = 17
 drag_strength = 6
 
 [node name="SHitbox1" type="Node2D" parent="StateMachine/StormDrain" index="0"]
@@ -1126,6 +1126,8 @@ hitstun_ticks = 32
 hitlag_ticks = 13
 victim_hitlag = 12
 damage_proration = 1
+scale_combo = false
+combo_scaling_amount = 0
 cancellable = false
 di_modifier = "0.8"
 sdi_modifier = "0.8"
