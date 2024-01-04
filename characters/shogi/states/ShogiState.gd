@@ -12,12 +12,17 @@ export var x_modifier = "1.0"
 export var can_conquer = false
 export var is_raid_variant = false
 export (String) var opposite_variant = null
+export var conquer_1_frames = 4
+export var conquer_2_frames = 5
+export var conquer_3_frames = 7
 
 export (PackedScene) var shogi_hit_particle
 var damage_multiplier = 1
 var original_hitbox_plus_frames = {}
 var original_fallback_state = fallback_state
 var end_with_awaken = false
+var armor_hits_to_give = 0
+var armor_timer = 3
 
 
 func is_usable():
@@ -52,26 +57,28 @@ func _add_f(hitbox, frame):
 	hitbox_frame[hitbox] = frame
 
 func conquer_tier_1():
-	windup = 4
+	windup = conquer_1_frames
 	add_plus_frames(3)
-	host.armor_hits_remaining = 1
+	armor_hits_to_give = 1
 
 func conquer_tier_2():
-	windup = 5
+	windup = conquer_2_frames
 	add_plus_frames(3)
-	host.armor_hits_remaining = 2
+	armor_hits_to_give = 2
 
 func conquer_tier_3():
-	windup = 7
+	windup = conquer_3_frames
 	add_plus_frames(3)
 	end_with_awaken = true
 	fallback_state = "Awaken"
-	host.armor_hits_remaining = 4
+	armor_hits_to_give = 4
 	
 
 func _enter():
 	fallback_state = original_fallback_state
 	end_with_awaken = false
+	armor_hits_to_give = 0
+	armor_timer = 1 if host.initiative else 3
 	for hitbox in all_hitbox_nodes:
 		hitbox.plus_frames = original_hitbox_plus_frames[hitbox]
 	hitbox_register = {}
@@ -156,7 +163,11 @@ func _tick_after():
 
 		
 func _tick_shared():
-
+		
+	armor_timer -= 1
+	if (armor_timer == 0):
+		host.armor_hits_remaining = armor_hits_to_give
+		print("egg")
 	if windup >= 0:
 		host.queue_damage_multiplier = 0.95
 		if current_tick == -1:

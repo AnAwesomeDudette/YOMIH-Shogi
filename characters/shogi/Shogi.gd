@@ -79,13 +79,18 @@ func incr_combo(scale = true, projectile = false, force = false, combo_scale_amo
 func on_got_hit_by_fighter():
 	if armor_hits_remaining > 0:
 		got_hit = true
+	.on_got_hit_by_fighter()
 
+func on_got_hit():
+	if has_armor():
+		hitlag_ticks += 1
+	.on_got_hit()
 
 func tick():
 	.tick()
 	if (stance == "Conquer"):
 		var old_super_meter = super_meter + (MAX_SUPER_METER * supers_available) 
-		use_super_meter(MAX_SUPER_METER/50)
+		use_super_meter(MAX_SUPER_METER/25)
 		super_until_dedication -= old_super_meter - (super_meter + (MAX_SUPER_METER * supers_available))
 		if (super_until_dedication <= 0):
 			super_until_dedication += MAX_SUPER_METER
