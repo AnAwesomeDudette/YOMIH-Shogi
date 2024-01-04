@@ -22,6 +22,7 @@ var super_until_dedication = MAX_SUPER_METER
 func init(pos = null):
 	.init(pos)
 	HOLD_RESTARTS.append("Walk")
+	HOLD_RESTARTS.append("Shuffle")
 
 func _on_state_exited(state):
 	._on_state_exited(state)

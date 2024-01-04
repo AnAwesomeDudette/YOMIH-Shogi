@@ -147,7 +147,3 @@ func update_sprite_frame():
 		idle_anim -= 1
 	else:
 		idle_anim += 1
-
-func enable_interrupt(check_opponent = true, remove_hitlag = false):
-	.enable_interrupt(check_opponent, remove_hitlag)
-	host.change_state(name, data)
