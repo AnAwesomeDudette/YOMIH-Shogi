@@ -54,6 +54,7 @@ func _exit():
 	if not has_armor:
 		host.has_hyper_armor = false
 
+
 func _tick():
 	._tick()
 	if current_tick > 9:
@@ -73,6 +74,8 @@ func _tick():
 	
 func _on_hit_something(obj, hitbox):
 	._on_hit_something(obj, hitbox)
+	if (hitbox != ender):
+		host.melee_attack_combo_scaling_applied = false
 	if obj is Fighter and (hitbox == flurry1 or hitbox == flurry2):
 		var vel = host.get_vel()
 		if not fixed.eq(vel.x, "0") and fixed.sign(vel.x) != host.get_opponent_dir():
