@@ -180,6 +180,10 @@ loop_animation = false
 [node name="AirDash" parent="StateMachine" index="34"]
 show_in_menu = false
 
+[node name="Grabbed" parent="StateMachine" index="41"]
+sprite_animation = "HurtAerial"
+change_stance_to = "Normal"
+
 [node name="Grab" parent="StateMachine" index="44"]
 position = Vector2( 0, 1 )
 data_ui_scene = ExtResource( 56 )
