@@ -873,6 +873,7 @@ no_collision_end_frame = 19
 min_bounce_frame = 3
 bounce_frame = 15
 x_modifier = "0.6"
+opposite_variant = "TyphoonSewer"
 shogi_hit_particle = ExtResource( 35 )
 drag = true
 end_on_tick = 17

@@ -10,6 +10,9 @@ export var bounce_frame = -1
 export var y_modifier = "0.7"
 export var x_modifier = "1.0"
 export var can_conquer = false
+export var is_raid_variant = false
+export (String) var opposite_variant = null
+
 export (PackedScene) var shogi_hit_particle
 var damage_multiplier = 1
 var original_hitbox_plus_frames = {}
