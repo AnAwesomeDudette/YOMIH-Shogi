@@ -15,5 +15,7 @@ func is_usable():
 		return .is_usable() and host.raid_stacks >= raid_stack_cost 
 			
 func _frame_0_shared():
+	._frame_0_shared()
 	host.add_raid_stacks(-(conquer_raid_stack_cost if host.stance == "Conquer" else raid_stack_cost))
-	.frame_0_shared()
+
+
