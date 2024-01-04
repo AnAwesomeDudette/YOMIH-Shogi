@@ -44,7 +44,6 @@ __meta__ = {
 
 [node name="RaidTex1" type="TextureRect" parent="HBoxContainer" index="1"]
 unique_name_in_owner = true
-visible = false
 margin_left = 25.0
 margin_right = 49.0
 margin_bottom = 40.0
@@ -53,7 +52,6 @@ rect_min_size = Vector2( 24, 24 )
 stretch_mode = 6
 
 [node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex1" index="0"]
-visible = false
 margin_left = 9.0
 margin_top = 13.0
 margin_right = 19.0
@@ -66,16 +64,15 @@ __meta__ = {
 }
 
 [node name="RaidTex2" type="TextureRect" parent="HBoxContainer" index="2"]
-visible = false
-margin_left = 25.0
-margin_right = 49.0
+unique_name_in_owner = true
+margin_left = 50.0
+margin_right = 74.0
 margin_bottom = 40.0
 grow_horizontal = 0
 rect_min_size = Vector2( 24, 24 )
 stretch_mode = 6
 
 [node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex2" index="0"]
-visible = false
 margin_left = 9.0
 margin_top = 13.0
 margin_right = 19.0
@@ -88,16 +85,15 @@ __meta__ = {
 }
 
 [node name="RaidTex3" type="TextureRect" parent="HBoxContainer" index="3"]
-visible = false
-margin_left = 25.0
-margin_right = 49.0
+unique_name_in_owner = true
+margin_left = 75.0
+margin_right = 99.0
 margin_bottom = 40.0
 grow_horizontal = 0
 rect_min_size = Vector2( 24, 24 )
 stretch_mode = 6
 
 [node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex3" index="0"]
-visible = false
 margin_left = 9.0
 margin_top = 13.0
 margin_right = 19.0
@@ -110,16 +106,15 @@ __meta__ = {
 }
 
 [node name="RaidTex4" type="TextureRect" parent="HBoxContainer" index="4"]
-visible = false
-margin_left = 25.0
-margin_right = 49.0
+unique_name_in_owner = true
+margin_left = 100.0
+margin_right = 124.0
 margin_bottom = 40.0
 grow_horizontal = 0
 rect_min_size = Vector2( 24, 24 )
 stretch_mode = 6
 
 [node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex4" index="0"]
-visible = false
 margin_left = 9.0
 margin_top = 13.0
 margin_right = 19.0

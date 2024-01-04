@@ -17,7 +17,9 @@ var reset_damage_multiplier = false
 var dedication_stacks = 1
 var super_until_dedication = MAX_SUPER_METER
 
-
+func add_raid_stacks(stacks):
+	raid_stacks += stacks
+	raid_stacks = clamp(raid_stacks, 0, 4)
 
 func init(pos = null):
 	.init(pos)
@@ -69,7 +71,11 @@ func process_extra(extra):
 	if extra.has("conquer_tier"):
 		current_conquer_tier = extra.conquer_tier
 
-
+func incr_combo(scale = true, projectile = false, force = false, combo_scale_amount = 1):
+	.incr_combo(scale, projectile, force, combo_scale_amount)
+	if combo_count == 3 or combo_count == 6 or combo_count == 9:
+		add_raid_stacks(1)
+		
 func on_got_hit_by_fighter():
 	if armor_hits_remaining > 0:
 		got_hit = true

@@ -10,7 +10,7 @@ func _frame_8():
 	#//I O U 60 bleeding damage
 	host.take_damage(60, 0, "0.0")
 	host.sacrifices += 1
-	host.raid_stacks += 1
+	host.add_raid_stacks(1)
 	
 	var lag = 9
 	if host.sacrifices > 4:
