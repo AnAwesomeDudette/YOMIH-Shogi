@@ -27,6 +27,26 @@ func _process(delta):
 			$"%Conquer".hide()
 			$"%Conquer/Direction".value = 0
 		else:
+			var color = Color("ff006f")
+			if fighter:
+				
+				if fighter.is_color_active and fighter.style_extra_color_2:
+					color = fighter.style_extra_color_2
+					
+				var val_range = $"%Conquer".max_value - $"%Conquer".min_value
+				var val = $"%Conquer/Direction".value - $"%Conquer".min_value
+				var r = abs(color.r - 1.0)
+				var g = abs(color.g - 1.0)
+				var b = abs(color.b - 1.0)
+				
+				r = r * (val/val_range)
+				g = g * (val/val_range)
+				b = b * (val/val_range)
+				
+				color = Color(1.0 - r, 1.0 - g, 1.0 - b)
+				$"%Conquer".modulate = color
+			else:
+				$"%Conquer".modulate = Color(1.0, 1.0, 1.0)
 			$"%Conquer".show()
 
 func reset():
