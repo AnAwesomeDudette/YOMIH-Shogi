@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -40,7 +39,6 @@
 [ext_resource path="res://_Shogi/characters/shogi/states/SwiftPunish.gd" type="Script" id=37]
 [ext_resource path="res://characters/swordandgun/sounds/lightningslice.wav" type="AudioStream" id=38]
 [ext_resource path="res://characters/swordandgun/sounds/1000cuts.wav" type="AudioStream" id=39]
-[ext_resource path="res://characters/states/Grab.gd" type="Script" id=40]
 [ext_resource path="res://_Shogi/characters/shogi/states/Dedication.gd" type="Script" id=41]
 [ext_resource path="res://_Shogi/characters/shogi/ui/DedicationActionUIData.tscn" type="PackedScene" id=42]
 [ext_resource path="res://_Shogi/characters/shogi/states/ShogiState.gd" type="Script" id=43]
@@ -52,10 +50,6 @@
 [ext_resource path="res://characters/states/ThrowState.gd" type="Script" id=49]
 [ext_resource path="res://ui/ActionSelector/StateIcons/throw_down.png" type="Texture" id=50]
 [ext_resource path="res://sound/common/swipe1.wav" type="AudioStream" id=51]
-[ext_resource path="res://characters/ThrowBox.gd" type="Script" id=52]
-[ext_resource path="res://_Shogi/characters/shogi/ui/ConquerGrabActionUIData.tscn" type="PackedScene" id=53]
-[ext_resource path="res://sound/common/catch.wav" type="AudioStream" id=54]
-[ext_resource path="res://ui/ActionSelector/StateIcons/grab.png" type="Texture" id=55]
 [ext_resource path="res://_Shogi/characters/shogi/ui/ConquerGrabActionUIData.tscn" type="PackedScene" id=56]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -173,6 +167,11 @@ loop_animation = false
 [node name="ChargeDash" parent="StateMachine" index="31"]
 show_in_menu = false
 
+[node name="SuperJump" parent="StateMachine" index="32"]
+interrupt_from_string = "GroundedMovement
+Grounded
+Jump"
+
 [node name="DoubleJump" parent="StateMachine" index="33"]
 script = ExtResource( 10 )
 __meta__ = {
@@ -187,9 +186,8 @@ show_in_menu = false
 
 [node name="Grab" parent="StateMachine" index="44"]
 position = Vector2( 0, 1 )
-
+data_ui_scene = ExtResource( 56 )
 throw_techable = false
-data_ui_scene = ExtResource( 53 )
 change_stance_to = ""
 down_throw_state = "GodsFavoriteGirliepop"
 
@@ -317,6 +315,7 @@ air_type = 2
 iasa_at = 18
 interrupt_from_string = "GroundedAttack
 Grounded
+Aerial
 "
 interrupt_into_string = "Grounded
 Aerial"
@@ -470,7 +469,7 @@ air_type = 2
 iasa_at = 14
 interrupt_from_string = "GroundedAttack
 Grounded
-"
+Aerial"
 interrupt_into_string = "Grounded
 Aerial"
 hit_cancel_into_string = "Grounded
@@ -564,7 +563,7 @@ land_cancel = true
 iasa_at = 17
 interrupt_from_string = "GroundedAttack
 Grounded
-"
+Aerial"
 interrupt_into_string = "Grounded
 Aerial"
 hit_cancel_into_string = "Grounded
@@ -626,7 +625,7 @@ reversible = false
 selectable = false
 interrupt_from_string = "GroundedSpecial
 Grounded
-"
+Aerial"
 interrupt_into_string = "Grounded
 Aerial"
 hit_cancel_into_string = "Grounded
@@ -794,7 +793,7 @@ min_land_cancel_frame = 8
 iasa_at = 14
 interrupt_from_string = "GroundedAttack
 Grounded
-"
+Aerial"
 interrupt_into_string = "Grounded
 Aerial"
 hit_cancel_into_string = "Grounded
@@ -1019,7 +1018,7 @@ iasa_on_hit = 20
 iasa_on_hit_on_block = false
 interrupt_from_string = "GroundedAttack
 Grounded
-"
+Aerial"
 interrupt_into_string = "Grounded
 Aerial"
 allowed_stances_string = "All"
@@ -1029,9 +1028,9 @@ bounce_frame = 20
 x_modifier = "2.5"
 can_conquer = true
 shogi_hit_particle = ExtResource( 35 )
+drag = true
 end_on_tick = 18
 drag_strength = 6
-drag = true
 
 [node name="Flurry1" type="Node2D" parent="StateMachine/Whirl" index="0"]
 z_index = 1000
@@ -2600,7 +2599,7 @@ reversible = false
 can_feint_if_possible = false
 interrupt_from_string = "GroundedSpecial
 Grounded
-"
+Aerial"
 interrupt_into_string = "Grounded
 Aerial"
 hit_cancel_into_string = "Grounded
