@@ -94,6 +94,8 @@ func _on_hit_something(obj, _hitbox):
 			hitbox1.activated = false
 			hitbox2.activated = false
 			catch.activated = true
+			print(catch.activated)
+			
 	if current_tick < end_on_tick:
 		if obj == host.opponent:
 			hit_opponent = true
