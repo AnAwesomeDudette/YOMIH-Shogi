@@ -167,7 +167,6 @@ func _tick_shared():
 	armor_timer -= 1
 	if (armor_timer == 0):
 		host.armor_hits_remaining = armor_hits_to_give
-		print("egg")
 	if windup >= 0:
 		host.queue_damage_multiplier = 0.95
 		if current_tick == -1:
