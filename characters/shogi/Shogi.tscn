@@ -1040,7 +1040,6 @@ x_modifier = "0.6"
 is_raid_variant = true
 opposite_variant = "StormDrain"
 shogi_hit_particle = ExtResource( 35 )
-super_cost = 4
 conquer_super_cost = 2
 raid_stack_cost = 4
 
