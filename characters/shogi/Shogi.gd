@@ -25,6 +25,9 @@ func init(pos = null):
 	.init(pos)
 	HOLD_RESTARTS.append("Walk")
 	HOLD_RESTARTS.append("Shuffle")
+	if infinite_resources:
+		raid_stacks = 999
+		dedication_stacks = 999
 
 func _on_state_exited(state):
 	._on_state_exited(state)

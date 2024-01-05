@@ -31,6 +31,15 @@ onready var d4 = $D4
 
 func _enter():
 	._enter()
+	_add(a1, 1, 1); _add(a2, 1, 1); _add(a3, 1, 1); _add(a4, 1, 1); _add(a5, 1, 1);
+	_add(b1, 1, 1); _add(b2, 1, 1); _add(b3, 1, 1); _add(b4, 1, 1);
+	_add(c1, 1, 1); _add(c2, 1, 1); _add(c3, 1, 1); _add(c4, 1, 1); _add(c5, 1, 1); _add(c6, 1, 1);
+	_add(d1, 1, 1); _add(d2, 1, 1); _add(d3, 1, 1); _add(d4, 1, 1);
+	
+	_add_f(a1, 5); _add_f(a2, 5); _add_f(a3, 5); _add_f(a4, 5); _add_f(a5, 5); 
+	_add_f(b1, 5); _add_f(b2, 5); _add_f(b3, 5); _add_f(b4, 5); 
+	_add_f(c1, 5); _add_f(c2, 5); _add_f(c3, 5); _add_f(c4, 5); _add_f(c5, 5); _add_f(c6, 5); 
+	_add_f(d1, 5); _add_f(d2, 5); _add_f(d3, 5); _add_f(d4, 5); 
 	hit_opponent = false
 
 func _frame_12():
