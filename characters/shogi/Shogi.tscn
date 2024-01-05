@@ -1088,7 +1088,7 @@ is_raid_variant = true
 opposite_variant = "StormDrain"
 shogi_hit_particle = ExtResource( 35 )
 nonconquer_super_cost = 4
-conquer_super_cost = 2
+conquer_super_cost = 3
 raid_stack_cost = 4
 drag = true
 offset_x = 100
@@ -3432,7 +3432,7 @@ opposite_variant = "Windmill"
 shogi_hit_particle = ExtResource( 35 )
 raid_stack_cost = 1
 drag = true
-end_on_tick = 10
+end_on_tick = 23
 drag_strength = 8
 
 [node name="FlurryA1" type="Node2D" parent="StateMachine/Turbine" index="0"]

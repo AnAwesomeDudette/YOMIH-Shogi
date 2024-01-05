@@ -26,9 +26,20 @@ func _enter():
 				
 func _tick():
 	._tick()
-	#if current_tick >= 4 and current_tick <= 13:
-	#	track("0.03")
+	if hit_opponent and current_tick >= 4 and current_tick <= 17:
+		track("0.03")
+	#host.apply_forces_no_limit()
+	if fixed.lt(host.get_vel().y, "-7"):
+		host.set_vel(host.get_vel().x, "-7")
 		
+	if hit_opponent == true and drag:
+		if current_tick < end_on_tick:
+			var pos = host.get_pos()
+			var opos = host.opponent.get_pos()
+
+			host.opponent.set_vel(0, 0)
+			host.opponent.move_directly(str((pos.x + (offset_x * host.get_facing_int()) - opos.x) / drag_strength), str((pos.y - (offset_y + 18) - opos.y) / drag_strength))
+	
 	var grav = host.gravity
 	if true:
 		grav = "0.0"
@@ -40,7 +51,7 @@ func _tick():
 	flurrya2.dir_y = fixed.add(host.get_vel().y, grav)
 			
 func _frame_5():
-	track("1.0")
+	track("0.1")
 			
 func _frame_21():
 	flurrya1.dir_x = "1.0"
@@ -55,9 +66,13 @@ func _frame_21():
 func _on_hit_something(obj, hitbox):
 	._on_hit_something(obj, hitbox)
 	if obj is Fighter:
+		hit_opponent = true
 		host.visible_combo_count += 1
 		flurrya1.scale_combo = false
 		flurrya2.scale_combo = false
+		
+func on_attack_blocked():
+	track("0.03")
 		
 func explode_trin_with_my_mind():
 	if false:
