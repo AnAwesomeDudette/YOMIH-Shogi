@@ -262,14 +262,15 @@ func _on_hit_something(obj, hitbox):
 		if hitbox.grounded_hit_state is String and hitbox.grounded_hit_state == "HurtGrounded" and obj.is_grounded():
 				dir.y *= 0
 		var par = host._spawn_particle_effect(shogi_hit_particle, location, dir)
-		"""
+
 		if not host.is_ghost:
 			par.material = host.sprite.material
-			par.get_material().set_shader_param("is_particle", true)
+			# par.get_material().set_shader_param("is_particle", true)
 			for child_node in par.get_children():
 				if child_node is CPUParticles2D:
 					child_node.set_color_ramp(preload("res://_Shogi/characters/shogi/particles/ShogiHitGradient.tres"))
-		"""
+
+
 		var frame = host.randi_range(0, 5)
 		if hitbox_frame.has(hitbox):
 			frame = hitbox_frame[hitbox]

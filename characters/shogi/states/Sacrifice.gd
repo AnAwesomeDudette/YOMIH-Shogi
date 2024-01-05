@@ -1,9 +1,19 @@
 extends "res://_Shogi/characters/shogi/states/ShogiState.gd"
 
+var SACRIFICE_PARTICLES = preload("res://_Shogi/characters/shogi/particles/ShogiHit.tscn")
+var SACRIFICE_PARTICLES_POS = Vector2(0, -18)
+
 #func _frame_6():
 	#host.global_hitlag(2)
-	
+
 func _frame_8():
+	var pos = SACRIFICE_PARTICLES_POS
+	SACRIFICE_PARTICLES_POS.x *= host.get_facing_int()
+	var par = host._spawn_particle_effect(SACRIFICE_PARTICLES, host.get_pos_visual() + SACRIFICE_PARTICLES_POS, Vector2(host.get_facing_int(), 0))
+	
+	par.material = host.sprite.material
+
+	
 	host.refresh_feints()
 	host.opponent.refresh_feints()
 	host.take_damage(20, 0, "0.0")

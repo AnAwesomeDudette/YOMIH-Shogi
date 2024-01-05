@@ -2728,7 +2728,6 @@ apply_grav = true
 anim_length = 16
 state_screenshake_tick = 8
 state_screenshake_amount = 8
-timed_particle_scene = ExtResource( 35 )
 timed_particle_position = Vector2( 0, -18 )
 timed_spawn_particle_tick = 8
 sfx = ExtResource( 24 )

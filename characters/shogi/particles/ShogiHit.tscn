@@ -31,10 +31,12 @@ _data = [ Vector2( 0, -120.849 ), 0.0, 0.0, 0, 0, Vector2( 0.970297, -193.576 ),
 material = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+use_parent_material = true
 frames = ExtResource( 4 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." index="2"]
 unique_name_in_owner = true
+use_parent_material = true
 z_index = -4
 amount = 1
 speed_scale = 2.2
@@ -50,6 +52,7 @@ scale_amount_random = 1.0
 color_ramp = ExtResource( 3 )
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="." index="3"]
+use_parent_material = true
 amount = 12
 lifetime = 0.8
 speed_scale = 2.2
