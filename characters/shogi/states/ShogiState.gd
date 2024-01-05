@@ -265,9 +265,10 @@ func _on_hit_something(obj, hitbox):
 				dir.y *= 0
 		var par = host._spawn_particle_effect(shogi_hit_particle, location, dir)
 		
-		"""
+		
 		if not host.is_ghost:
 			par.material = host.sprite.material
+		"""
 			# par.get_material().set_shader_param("is_particle", true)
 			for child_node in par.get_children():
 				if child_node is CPUParticles2D:

@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://characters/PlayerInfo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/ShogiInfo.gd" type="Script" id=2]
 [ext_resource path="res://_Shogi/characters/shogi/ui/dedication_stacks.png" type="Texture" id=3]
 [ext_resource path="res://theme.tres" type="Theme" id=4]
+[ext_resource path="res://_Shogi/characters/shogi/ui/raid_stacks.png" type="Texture" id=5]
 
 [node name="ShogiInfo" instance=ExtResource( 1 )]
-margin_top = -10.0
+margin_top = -5.0
 margin_right = 0.0
-margin_bottom = -10.0
+margin_bottom = -5.0
 theme = ExtResource( 4 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -17,22 +18,22 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
 unique_name_in_owner = true
-margin_left = 10.0
+margin_left = 40.0
 margin_right = 260.0
-margin_bottom = 40.0
+margin_bottom = 27.0
+rect_scale = Vector2( 0.998801, 0.984485 )
 
 [node name="DedicationTex" type="TextureRect" parent="HBoxContainer" index="0"]
-margin_right = 24.0
-margin_bottom = 40.0
+margin_right = 16.0
+margin_bottom = 27.0
 grow_horizontal = 0
-rect_min_size = Vector2( 24, 24 )
+rect_min_size = Vector2( 16, 16 )
 texture = ExtResource( 3 )
 stretch_mode = 6
 
 [node name="DedicationLabel" type="Label" parent="HBoxContainer/DedicationTex" index="0"]
 unique_name_in_owner = true
-margin_left = 9.0
-margin_top = 13.0
+margin_left = 5.0
 margin_right = 19.0
 margin_bottom = 28.0
 grow_horizontal = 0
@@ -44,20 +45,22 @@ __meta__ = {
 
 [node name="RaidTex1" type="TextureRect" parent="HBoxContainer" index="1"]
 unique_name_in_owner = true
-margin_left = 25.0
-margin_right = 49.0
-margin_bottom = 40.0
+margin_left = 17.0
+margin_right = 33.0
+margin_bottom = 27.0
 grow_horizontal = 0
-rect_min_size = Vector2( 24, 24 )
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 5 )
 stretch_mode = 6
 
-[node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex1" index="0"]
+[node name="Label" type="Label" parent="HBoxContainer/RaidTex1" index="0"]
 margin_left = 9.0
 margin_top = 13.0
 margin_right = 19.0
 margin_bottom = 28.0
 grow_horizontal = 0
-text = "Raid"
+text = "
+"
 valign = 1
 __meta__ = {
 "_editor_description_": ""
@@ -65,20 +68,22 @@ __meta__ = {
 
 [node name="RaidTex2" type="TextureRect" parent="HBoxContainer" index="2"]
 unique_name_in_owner = true
-margin_left = 50.0
-margin_right = 74.0
-margin_bottom = 40.0
+margin_left = 34.0
+margin_right = 50.0
+margin_bottom = 27.0
 grow_horizontal = 0
-rect_min_size = Vector2( 24, 24 )
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 5 )
 stretch_mode = 6
 
-[node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex2" index="0"]
+[node name="Label" type="Label" parent="HBoxContainer/RaidTex2" index="0"]
 margin_left = 9.0
 margin_top = 13.0
 margin_right = 19.0
 margin_bottom = 28.0
 grow_horizontal = 0
-text = "Raid"
+text = "
+"
 valign = 1
 __meta__ = {
 "_editor_description_": ""
@@ -86,20 +91,22 @@ __meta__ = {
 
 [node name="RaidTex3" type="TextureRect" parent="HBoxContainer" index="3"]
 unique_name_in_owner = true
-margin_left = 75.0
-margin_right = 99.0
-margin_bottom = 40.0
+margin_left = 51.0
+margin_right = 67.0
+margin_bottom = 27.0
 grow_horizontal = 0
-rect_min_size = Vector2( 24, 24 )
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 5 )
 stretch_mode = 6
 
-[node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex3" index="0"]
+[node name="Label" type="Label" parent="HBoxContainer/RaidTex3" index="0"]
 margin_left = 9.0
 margin_top = 13.0
 margin_right = 19.0
 margin_bottom = 28.0
 grow_horizontal = 0
-text = "Raid"
+text = "
+"
 valign = 1
 __meta__ = {
 "_editor_description_": ""
@@ -107,20 +114,22 @@ __meta__ = {
 
 [node name="RaidTex4" type="TextureRect" parent="HBoxContainer" index="4"]
 unique_name_in_owner = true
-margin_left = 100.0
-margin_right = 124.0
-margin_bottom = 40.0
+margin_left = 68.0
+margin_right = 84.0
+margin_bottom = 27.0
 grow_horizontal = 0
-rect_min_size = Vector2( 24, 24 )
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 5 )
 stretch_mode = 6
 
-[node name="DedicationLabel" type="Label" parent="HBoxContainer/RaidTex4" index="0"]
+[node name="Label" type="Label" parent="HBoxContainer/RaidTex4" index="0"]
 margin_left = 9.0
 margin_top = 13.0
 margin_right = 19.0
 margin_bottom = 28.0
 grow_horizontal = 0
-text = "Raid"
+text = "
+"
 valign = 1
 __meta__ = {
 "_editor_description_": ""

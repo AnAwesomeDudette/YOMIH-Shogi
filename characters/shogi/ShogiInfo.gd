@@ -19,9 +19,9 @@ func _ready():
 func _process(delta):
 	$"%DedicationLabel".text = str(fighter.dedication_stacks) + dedication_modifier
 	if ReplayManager.playback or ReplayManager.replaying_ingame:
-		rect_position.y = -40
+		rect_position.y = -35
 	else:
-		rect_position.y = -10
+		rect_position.y = -5
 	for i in range(raid_elements.size()):
 		if i < fighter.raid_stacks:
 			raid_elements[i].show()
