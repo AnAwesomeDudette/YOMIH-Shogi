@@ -7,6 +7,7 @@ const MOVE_DIST = "200"
 func _tick():
 	._tick()
 	host.apply_forces_no_limit()
+	#print(host.get_vel())
 
 func _frame_0():
 	host.dedication_stacks -= 1
@@ -30,4 +31,5 @@ func _frame_1():
 	
 func _exit():
 	._exit()
+		
 	host.end_projectile_invulnerability()

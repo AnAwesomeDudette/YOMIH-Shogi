@@ -10,6 +10,7 @@ export var bounce_frame = -1
 export var y_modifier = "0.7"
 export var x_modifier = "1.0"
 export var y_cap = "1.0"
+export var exit_cap = "100"
 export var can_conquer = false
 export var is_raid_variant = false
 export (String) var opposite_variant = null
@@ -288,4 +289,18 @@ func _on_hit_something(obj, hitbox):
 func _exit():
 	if bounce_frame > 0:
 		host.can_bounce = 0
+		
+	var v = host.get_vel()
+	var cap = exit_cap
+	var ncap = fixed.mul(cap, "-1")
+	if fixed.gt(v.x, cap):
+		host.set_vel(cap, v.y)
+	elif fixed.lt(v.x, ncap):
+		host.set_vel(ncap, v.y)
+		
+	if fixed.gt(v.y, cap):
+		host.set_vel(v.x, cap)
+	elif fixed.lt(v.y, ncap):
+		host.set_vel(v.x, ncap)
+		
 	._exit()

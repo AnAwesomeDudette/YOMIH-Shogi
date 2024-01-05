@@ -1,5 +1,7 @@
 extends Fighter
 
+onready var gb_label = $GBLabel
+
 var no_escape = 0
 var do_drop = false
 var dropped_this_turn = false
@@ -89,7 +91,15 @@ func on_got_hit():
 		hitlag_ticks += 1
 	.on_got_hit()
 
+var info_ui : PlayerExtra
+
+func copy_to(f):
+	f.info_ui = info_ui
+	.copy_to(f)
+
 func tick():
+	if is_ghost and is_instance_valid(info_ui):
+		info_ui.ghost = self
 	.tick()
 	if (stance == "Conquer"):
 		var old_super_meter = super_meter + (MAX_SUPER_METER * supers_available) 

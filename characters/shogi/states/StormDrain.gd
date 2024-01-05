@@ -13,6 +13,36 @@ export (int) var drag_strength = 10
 var halt = false
 var hit_opponent = false
 
+func enable_hitbox(can_catch = false):
+	if can_catch == false:
+		hitbox1.hits_vs_grounded = true
+		hitbox1.hits_vs_aerial = true
+		hitbox1.can_draw = true
+		
+		hitbox2.hits_vs_grounded = true
+		hitbox2.hits_vs_aerial = true
+		hitbox2.can_draw = true
+		
+		catch.hits_vs_grounded = false
+		catch.hits_vs_aerial = false
+		catch.can_draw = false
+		if catch.whiff_sound and catch.whiff_sound_player:
+			catch.whiff_sound_player.volume_db = -100
+	else:
+		hitbox1.hits_vs_grounded = false
+		hitbox1.hits_vs_aerial = false
+		hitbox1.can_draw = false
+		
+		hitbox2.hits_vs_grounded = false
+		hitbox2.hits_vs_aerial = false
+		hitbox2.can_draw = false
+		
+		catch.hits_vs_grounded = true
+		catch.hits_vs_aerial = true
+		catch.can_draw = true
+		if catch.whiff_sound and catch.whiff_sound_player:
+			catch.whiff_sound_player.volume_db = -8
+
 func _enter():
 	._enter()
 
@@ -21,9 +51,7 @@ func _enter():
 	_add(hitbox2, 1, 0)
 	_add(catch, 1, 0)
 	
-	hitbox1.activated = true
-	hitbox2.activated = true
-	catch.activated = false
+	enable_hitbox()
 	
 	halt = false
 	
@@ -80,9 +108,7 @@ func _frame_16():
 	halt = true
 	
 func on_attack_blocked():
-	hitbox1.activated = false
-	hitbox2.activated = false
-	catch.activated = true
+	enable_hitbox(true)
 	
 func _on_hit_something(obj, _hitbox):
 	._on_hit_something(obj, _hitbox)
@@ -91,10 +117,8 @@ func _on_hit_something(obj, _hitbox):
 			host.visible_combo_count += 1
 			#print("Hitting the right hitbox")
 		else:
-			hitbox1.activated = false
-			hitbox2.activated = false
-			catch.activated = true
-			print(catch.activated)
+			enable_hitbox(true)
+			#print(catch.activated)
 			
 	if current_tick < end_on_tick:
 		if obj == host.opponent:

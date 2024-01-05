@@ -1,5 +1,15 @@
 extends PlayerExtra
 
+var ghost : Fighter
+
+var max_delay = 4
+var delay = max_delay
+var text = "Guard Break on Conquer Level 3"
+
+func set_fighter(fighter):
+	.set_fighter(fighter)
+	fighter.info_ui = self
+
 func _ready():
 	$"%DropButton".connect("pressed", self, "emit_signal", ["data_changed"])
 	$"%Conquer".connect("data_changed", self, "emit_signal", ["data_changed"])
@@ -20,6 +30,33 @@ func show_options():
 		$"%DropButton".show()
 
 func _process(delta):
+	
+	if is_instance_valid(ghost):
+		ghost.gb_label.hide()
+		if selected_move is preload("res://_Shogi/characters/shogi/states/Split.gd"):
+			#if not fighter.current_state().get("do_show") == true:
+				#print("Should show")
+				
+				if $"%Conquer/Direction".value == 3:
+					#print(ghost.current_state()
+					if ghost.current_state().name == "Split":
+						if ghost.current_state().get("overdesign") == false:
+							text = "[~16f]"
+						else:
+							text = "[~18f]"
+				else:
+					text = "Guard Break on Conquer Level 3"	
+				ghost.gb_label.text = text
+				
+				if fighter.opponent and fighter.opponent.is_in_hurt_state():
+					delay = 1
+				
+				if delay == 0:
+					ghost.gb_label.show()
+				else:
+					delay -= 1
+		else:
+			delay = max_delay
 	if not (selected_move is preload("res://_Shogi/characters/shogi/states/ShogiState.gd")):
 		$"%Conquer".hide()
 	else:
