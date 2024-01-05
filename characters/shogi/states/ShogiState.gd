@@ -27,10 +27,8 @@ var armor_timer = 3
 
 
 func is_usable():
-	if (host.stance == "Conquer"):
-		if (is_raid_variant):
-				return true
-		elif (host.state_machine.get_state(opposite_variant)):
+	if (host.stance == "Conquer") and is_raid_variant == false:
+		if (host.state_machine.get_state(opposite_variant)):
 			if (host.state_machine.get_state(opposite_variant).is_usable()):
 				return false
 	return .is_usable()

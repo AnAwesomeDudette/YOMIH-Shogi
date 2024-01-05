@@ -1091,7 +1091,7 @@ is_raid_variant = true
 opposite_variant = "StormDrain"
 shogi_hit_particle = ExtResource( 35 )
 nonconquer_super_cost = 4
-conquer_super_cost = 3
+conquer_super_cost = 2
 raid_stack_cost = 4
 drag = true
 offset_x = 100
@@ -2234,7 +2234,6 @@ min_bounce_frame = 3
 bounce_frame = 19
 y_modifier = "0.5"
 x_modifier = "0.8"
-y_cap = "0.6"
 shogi_hit_particle = ExtResource( 35 )
 
 [node name="A1" type="Node2D" parent="StateMachine/Windmill" index="0"]
@@ -2841,7 +2840,6 @@ change_stance_to = "Normal"
 bounce_frame = 19
 y_modifier = "0.5"
 x_modifier = "0.8"
-y_cap = "0.6"
 shogi_hit_particle = ExtResource( 35 )
 
 [node name="A1" type="Node2D" parent="StateMachine/WindmillG" index="0"]
