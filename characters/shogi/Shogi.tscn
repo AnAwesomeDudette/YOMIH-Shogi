@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -53,6 +53,7 @@
 [ext_resource path="res://sound/common/swipe1.wav" type="AudioStream" id=51]
 [ext_resource path="res://_Shogi/characters/shogi/sfx/bigWhiffB.wav" type="AudioStream" id=52]
 [ext_resource path="res://_Shogi/characters/shogi/sfx/bigWindupA.wav" type="AudioStream" id=53]
+[ext_resource path="res://_Shogi/characters/shogi/states/Turbine.gd" type="Script" id=54]
 [ext_resource path="res://_Shogi/characters/shogi/ui/ConquerGrabActionUIData.tscn" type="PackedScene" id=56]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -105,8 +106,8 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "TyphoonSewer"
-frame = 16
+animation = "Turbine"
+frame = 5
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
@@ -149,16 +150,54 @@ change_stance_to = "Normal"
 beats_backdash = true
 dash_speed = 12
 
-[node name="DashForward" parent="StateMachine" index="25"]
+[node name="Shuffle" type="Node2D" parent="StateMachine" index="25"]
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
+reset_momentum = true
+fallback_state = "ConquerWait"
+anim_length = 15
+sprite_anim_length = 15
+ticks_per_frame = 4
+loop_animation = true
+particle_scene = ExtResource( 7 )
+enter_sfx = ExtResource( 5 )
+enter_sfx_volume = -10.0
+title = "Shuffle"
+data_ui_scene = ExtResource( 6 )
+button_texture = ExtResource( 4 )
+flip_with_facing = true
+interruptible_on_opponent_turn = true
+next_state_on_hold = false
+reversible = false
+interrupt_from_string = "GroundedMovement
+Grounded
+Dash"
+interrupt_into_string = "Grounded"
+allowed_stances_string = "Conquer"
+beats_backdash = true
+dash_speed = 12
+
+[node name="HurtboxState" type="Node2D" parent="StateMachine/Shuffle" index="0"]
+z_index = 999
+script = ExtResource( 47 )
+y = -14
+width = 14
+height = 14
+active_ticks = 5
+endless = true
+
+[node name="DashForward" parent="StateMachine" index="26"]
 show_in_menu = false
 
-[node name="ChargeDashForward" parent="StateMachine" index="26"]
+[node name="ChargeDashForward" parent="StateMachine" index="27"]
 show_in_menu = false
 
-[node name="DashBackward" parent="StateMachine" index="27"]
+[node name="DashBackward" parent="StateMachine" index="28"]
 show_in_menu = false
 
-[node name="Jump" parent="StateMachine" index="30"]
+[node name="Jump" parent="StateMachine" index="31"]
 script = ExtResource( 10 )
 __meta__ = {
 "_editor_description_": ""
@@ -167,10 +206,10 @@ sprite_anim_length = 5
 ticks_per_frame = 3
 loop_animation = false
 
-[node name="ChargeDash" parent="StateMachine" index="31"]
+[node name="ChargeDash" parent="StateMachine" index="32"]
 show_in_menu = false
 
-[node name="DoubleJump" parent="StateMachine" index="33"]
+[node name="DoubleJump" parent="StateMachine" index="34"]
 script = ExtResource( 10 )
 __meta__ = {
 "_editor_description_": ""
@@ -179,21 +218,21 @@ sprite_anim_length = 5
 ticks_per_frame = 3
 loop_animation = false
 
-[node name="AirDash" parent="StateMachine" index="34"]
+[node name="AirDash" parent="StateMachine" index="35"]
 show_in_menu = false
 
-[node name="Grabbed" parent="StateMachine" index="41"]
+[node name="Grabbed" parent="StateMachine" index="42"]
 sprite_animation = "HurtAerial"
 change_stance_to = "Normal"
 
-[node name="Grab" parent="StateMachine" index="44"]
+[node name="Grab" parent="StateMachine" index="45"]
 position = Vector2( 0, 1 )
 data_ui_scene = ExtResource( 56 )
 throw_techable = false
 change_stance_to = ""
 down_throw_state = "GodsFavoriteGirliepop"
 
-[node name="ForwardThrow" parent="StateMachine" index="47"]
+[node name="ForwardThrow" parent="StateMachine" index="48"]
 script = ExtResource( 11 )
 __meta__ = {
 "_editor_description_": ""
@@ -241,7 +280,7 @@ grounded_hit_state = "HurtAerial"
 knockdown = true
 active_ticks = 1
 
-[node name="BackThrow" parent="StateMachine" index="48"]
+[node name="BackThrow" parent="StateMachine" index="49"]
 __meta__ = {
 "_editor_description_": ""
 }
@@ -291,16 +330,16 @@ grounded_hit_state = "HurtAerial"
 knockdown = true
 active_ticks = 1
 
-[node name="AirForwardThrow" parent="StateMachine" index="49"]
+[node name="AirForwardThrow" parent="StateMachine" index="50"]
 change_stance_to = "Normal"
 
-[node name="AirBackThrow" parent="StateMachine" index="50"]
+[node name="AirBackThrow" parent="StateMachine" index="51"]
 change_stance_to = "Normal"
 
-[node name="AirDownThrow" parent="StateMachine" index="51"]
+[node name="AirDownThrow" parent="StateMachine" index="52"]
 change_stance_to = "Normal"
 
-[node name="Ballet" type="Node2D" parent="StateMachine" index="52"]
+[node name="Ballet" type="Node2D" parent="StateMachine" index="53"]
 script = ExtResource( 14 )
 __meta__ = {
 "_editor_description_": ""
@@ -355,7 +394,7 @@ knockdown_extends_hitstun = false
 start_tick = 5
 active_ticks = 4
 
-[node name="Stomp" type="Node2D" parent="StateMachine" index="53"]
+[node name="Stomp" type="Node2D" parent="StateMachine" index="54"]
 script = ExtResource( 33 )
 __meta__ = {
 "_editor_description_": ""
@@ -448,7 +487,7 @@ knockdown_extends_hitstun = false
 start_tick = 5
 active_ticks = 2
 
-[node name="GodsFavoriteAntiair" type="Node2D" parent="StateMachine" index="54"]
+[node name="GodsFavoriteAntiair" type="Node2D" parent="StateMachine" index="55"]
 script = ExtResource( 16 )
 __meta__ = {
 "_editor_description_": ""
@@ -550,7 +589,7 @@ knockdown_extends_hitstun = false
 start_tick = 6
 active_ticks = 2
 
-[node name="GodsWorstMidrange" type="Node2D" parent="StateMachine" index="55"]
+[node name="GodsWorstMidrange" type="Node2D" parent="StateMachine" index="56"]
 script = ExtResource( 18 )
 __meta__ = {
 "_editor_description_": ""
@@ -603,7 +642,7 @@ knockdown = true
 start_tick = 7
 active_ticks = 3
 
-[node name="GodsFavoriteGirliepop" type="Node2D" parent="StateMachine" index="56"]
+[node name="GodsFavoriteGirliepop" type="Node2D" parent="StateMachine" index="57"]
 script = ExtResource( 37 )
 __meta__ = {
 "_editor_description_": ""
@@ -773,7 +812,7 @@ ground_bounce = false
 start_tick = 12
 active_ticks = 2
 
-[node name="Punch" type="Node2D" parent="StateMachine" index="57"]
+[node name="Punch" type="Node2D" parent="StateMachine" index="58"]
 script = ExtResource( 19 )
 __meta__ = {
 "_editor_description_": ""
@@ -837,7 +876,7 @@ knockdown_extends_hitstun = false
 start_tick = 5
 active_ticks = 3
 
-[node name="StormDrain" type="Node2D" parent="StateMachine" index="58"]
+[node name="StormDrain" type="Node2D" parent="StateMachine" index="59"]
 script = ExtResource( 23 )
 __meta__ = {
 "_editor_description_": ""
@@ -1003,7 +1042,7 @@ loop_inactive_ticks = 1
 to_x = 1
 to_y = 1
 
-[node name="NeverAnimateOnOnesEverAgain" type="Node2D" parent="StateMachine" index="59"]
+[node name="NeverAnimateOnOnesEverAgain" type="Node2D" parent="StateMachine" index="60"]
 script = ExtResource( 40 )
 __meta__ = {
 "_editor_description_": ""
@@ -1065,10 +1104,10 @@ x = 21
 y = -69
 width = 1
 height = 10
-damage = 111
-damage_in_combo = 111
-minimum_damage = 22
-chip_damage_modifier = "1.2"
+damage = 150
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 hitstun_ticks = 45
 combo_hitstun_ticks = 30
 hitlag_ticks = 19
@@ -1077,7 +1116,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 1
 screenshake_amount = 17
@@ -1104,10 +1143,10 @@ __meta__ = {
 x = -115
 y = -15
 width = 1
-damage = 111
-damage_in_combo = 111
-minimum_damage = 22
-chip_damage_modifier = "1.2"
+damage = 150
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 hitstun_ticks = 45
 combo_hitstun_ticks = 30
 hitlag_ticks = 19
@@ -1116,7 +1155,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 1
 screenshake_amount = 17
@@ -1144,10 +1183,10 @@ x = -99
 y = -41
 width = 6
 height = 6
-damage = 111
-damage_in_combo = 111
-minimum_damage = 22
-chip_damage_modifier = "1.2"
+damage = 150
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 hitstun_ticks = 45
 combo_hitstun_ticks = 30
 hitlag_ticks = 19
@@ -1156,7 +1195,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 1
 screenshake_amount = 17
@@ -1184,10 +1223,10 @@ x = -39
 y = -57
 width = 6
 height = 12
-damage = 111
-damage_in_combo = 111
-minimum_damage = 22
-chip_damage_modifier = "1.2"
+damage = 150
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 hitstun_ticks = 45
 combo_hitstun_ticks = 30
 hitlag_ticks = 19
@@ -1196,7 +1235,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 1
 screenshake_amount = 17
@@ -1224,10 +1263,10 @@ x = -28
 y = -36
 width = 7
 height = 7
-damage = 111
-damage_in_combo = 111
-minimum_damage = 22
-chip_damage_modifier = "1.2"
+damage = 150
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 hitstun_ticks = 45
 combo_hitstun_ticks = 30
 hitlag_ticks = 19
@@ -1236,7 +1275,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 1
 screenshake_amount = 17
@@ -1262,10 +1301,10 @@ __meta__ = {
 x = 6
 y = 48
 width = 30
-damage = 111
-damage_in_combo = 111
-minimum_damage = 22
-chip_damage_modifier = "1.2"
+damage = 150
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 hitstun_ticks = 45
 combo_hitstun_ticks = 30
 hitlag_ticks = 19
@@ -1274,7 +1313,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 1
 screenshake_amount = 17
@@ -1300,10 +1339,10 @@ x = -27
 y = 56
 width = 15
 height = 9
-damage = 111
-damage_in_combo = 111
-minimum_damage = 22
-chip_damage_modifier = "1.2"
+damage = 150
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 hitstun_ticks = 45
 combo_hitstun_ticks = 30
 hitlag_ticks = 19
@@ -1312,7 +1351,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 1
 screenshake_amount = 17
@@ -1338,10 +1377,10 @@ x = 20
 y = -5
 width = 4
 height = 8
-damage = 111
-damage_in_combo = 111
-minimum_damage = 22
-chip_damage_modifier = "1.2"
+damage = 150
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 hitstun_ticks = 45
 combo_hitstun_ticks = 30
 hitlag_ticks = 19
@@ -1350,7 +1389,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 1
 screenshake_amount = 17
@@ -1376,10 +1415,10 @@ x = 131
 y = 20
 width = 4
 height = 9
-damage = 111
-damage_in_combo = 111
-minimum_damage = 22
-chip_damage_modifier = "1.2"
+damage = 150
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 hitstun_ticks = 45
 combo_hitstun_ticks = 30
 hitlag_ticks = 19
@@ -1388,7 +1427,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 1
 screenshake_amount = 17
@@ -1414,10 +1453,10 @@ x = -170
 y = -82
 width = 50
 height = 8
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1425,7 +1464,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1453,10 +1492,10 @@ x = -146
 y = -96
 width = 50
 height = 8
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1464,7 +1503,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1492,10 +1531,10 @@ x = 83
 y = -118
 width = 8
 height = 8
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1503,7 +1542,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1531,10 +1570,10 @@ x = 212
 y = -78
 width = 8
 height = 16
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1542,7 +1581,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1569,10 +1608,10 @@ __meta__ = {
 x = 225
 y = -32
 height = 8
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1580,7 +1619,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1608,10 +1647,10 @@ x = -39
 y = -82
 width = 35
 height = 35
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1619,7 +1658,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1647,10 +1686,10 @@ x = -210
 y = 7
 width = 8
 height = 40
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1658,7 +1697,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1686,10 +1725,10 @@ x = -233
 y = -4
 width = 8
 height = 30
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1697,7 +1736,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1725,10 +1764,10 @@ x = -137
 y = -81
 width = 11
 height = 11
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1736,7 +1775,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1764,10 +1803,10 @@ x = 49
 y = -98
 width = 11
 height = 11
-damage = 222
-damage_in_combo = 111
-minimum_damage = 33
-chip_damage_modifier = "1.2"
+damage = 300
+damage_in_combo = 150
+minimum_damage = 30
+chip_damage_modifier = "1.5"
 combo_hitstun_ticks = 20
 hitlag_ticks = 18
 victim_hitlag = 17
@@ -1775,7 +1814,7 @@ damage_proration = 2
 cancellable = false
 parry_meter_gain = 166
 block_cancel_allowed = false
-plus_frames = 3
+plus_frames = 1
 priority = 8
 group = 2
 screenshake_amount = 30
@@ -1793,7 +1832,7 @@ active_ticks = 1
 to_x = 116
 to_y = 23
 
-[node name="Whirl" type="Node2D" parent="StateMachine" index="60"]
+[node name="Whirl" type="Node2D" parent="StateMachine" index="61"]
 script = ExtResource( 25 )
 __meta__ = {
 "_editor_description_": ""
@@ -1943,7 +1982,7 @@ wall_slam = true
 start_tick = 20
 active_ticks = 2
 
-[node name="Split" type="Node2D" parent="StateMachine" index="61"]
+[node name="Split" type="Node2D" parent="StateMachine" index="62"]
 script = ExtResource( 29 )
 __meta__ = {
 "_editor_description_": ""
@@ -2168,7 +2207,7 @@ active_ticks = 2
 to_x = 36
 to_y = -23
 
-[node name="Windmill" type="Node2D" parent="StateMachine" index="62"]
+[node name="Windmill" type="Node2D" parent="StateMachine" index="63"]
 script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
@@ -2772,7 +2811,7 @@ active_ticks = 2
 to_x = -42
 to_y = 26
 
-[node name="WindmillG" type="Node2D" parent="StateMachine" index="63"]
+[node name="WindmillG" type="Node2D" parent="StateMachine" index="64"]
 script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
@@ -3367,7 +3406,114 @@ active_ticks = 2
 to_x = -42
 to_y = 26
 
-[node name="Sacrifice" type="Node2D" parent="StateMachine" index="64"]
+[node name="Turbine" type="Node2D" parent="StateMachine" index="65"]
+script = ExtResource( 54 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_fric = true
+anim_length = 28
+title = "Turbine"
+type = 2
+air_type = 1
+interrupt_from_string = "GroundedSpecial
+AerialSpecial
+Grounded
+Aerial
+"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+is_raid_variant = true
+opposite_variant = "Windmill"
+shogi_hit_particle = ExtResource( 35 )
+raid_stack_cost = 1
+drag = true
+end_on_tick = 10
+drag_strength = 8
+
+[node name="FlurryA1" type="Node2D" parent="StateMachine/Turbine" index="0"]
+z_index = 1000
+script = ExtResource( 12 )
+y = -18
+width = 66
+height = 66
+damage = 8
+minimum_damage = 1
+chip_damage_modifier = "1.2"
+hitstun_ticks = 20
+hitlag_ticks = 2
+victim_hitlag = 2
+damage_proration = 1
+cancellable = false
+increment_combo = false
+di_modifier = "0.0"
+sdi_modifier = "0.0"
+parry_meter_gain = 12
+block_cancel_allowed = false
+plus_frames = 1
+hit_height = 0
+priority = 8
+screenshake_amount = 6
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "0.0"
+dir_y = "0.0"
+knockback = "1.0"
+grounded_hit_state = "HurtAerial"
+minimum_grounded_frames = 2
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 6
+active_ticks = 17
+looping = true
+loop_active_ticks = 1
+loop_inactive_ticks = 1
+
+[node name="FlurryA2" type="Node2D" parent="StateMachine/Turbine" index="1"]
+z_index = 1000
+script = ExtResource( 12 )
+y = -18
+width = 66
+height = 66
+damage = 8
+minimum_damage = 1
+chip_damage_modifier = "1.2"
+hitstun_ticks = 20
+hitlag_ticks = 2
+victim_hitlag = 2
+damage_proration = 1
+cancellable = false
+increment_combo = false
+di_modifier = "0.0"
+sdi_modifier = "0.0"
+parry_meter_gain = 12
+block_cancel_allowed = false
+plus_frames = 1
+hit_height = 0
+priority = 8
+screenshake_amount = 6
+whiff_sound = ExtResource( 27 )
+hit_sound = ExtResource( 21 )
+hit_sound_volume = -4.0
+dir_x = "0.0"
+dir_y = "0.0"
+knockback = "1.0"
+grounded_hit_state = "HurtAerial"
+minimum_grounded_frames = 2
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 7
+active_ticks = 15
+looping = true
+loop_active_ticks = 1
+loop_inactive_ticks = 1
+
+[node name="Sacrifice" type="Node2D" parent="StateMachine" index="66"]
 script = ExtResource( 36 )
 __meta__ = {
 "_editor_description_": ""
@@ -3430,7 +3576,7 @@ wall_slam = true
 start_tick = 9
 active_ticks = 3
 
-[node name="Not Bankai" type="Node2D" parent="StateMachine" index="65"]
+[node name="Not Bankai" type="Node2D" parent="StateMachine" index="67"]
 script = ExtResource( 41 )
 __meta__ = {
 "_editor_description_": ""
@@ -3469,7 +3615,7 @@ movement_mod = "2.2"
 script = ExtResource( 48 )
 method = "has_dedication"
 
-[node name="Awaken" type="Node2D" parent="StateMachine" index="69"]
+[node name="Awaken" type="Node2D" parent="StateMachine" index="71"]
 script = ExtResource( 43 )
 __meta__ = {
 "_editor_description_": ""
@@ -3494,7 +3640,7 @@ interrupt_into_string = "Grounded
 Aerial"
 change_stance_to = "Conquer"
 
-[node name="ConquerWait" type="Node2D" parent="StateMachine" index="70"]
+[node name="ConquerWait" type="Node2D" parent="StateMachine" index="72"]
 script = ExtResource( 45 )
 sprite_animation = "CWait"
 anim_length = 15
@@ -3508,45 +3654,7 @@ interrupt_into_string = "Grounded
 Aerial"
 allowed_stances_string = "Conquer"
 
-[node name="Shuffle" type="Node2D" parent="StateMachine" index="71"]
-script = ExtResource( 8 )
-__meta__ = {
-"_editor_description_": ""
-}
-reset_momentum = true
-fallback_state = "ConquerWait"
-anim_length = 15
-sprite_anim_length = 15
-ticks_per_frame = 4
-loop_animation = true
-particle_scene = ExtResource( 7 )
-enter_sfx = ExtResource( 5 )
-enter_sfx_volume = -10.0
-title = "Shuffle"
-data_ui_scene = ExtResource( 6 )
-button_texture = ExtResource( 4 )
-flip_with_facing = true
-interruptible_on_opponent_turn = true
-next_state_on_hold = false
-reversible = false
-interrupt_from_string = "GroundedMovement
-Grounded
-Dash"
-interrupt_into_string = "Grounded"
-allowed_stances_string = "Conquer"
-beats_backdash = true
-dash_speed = 12
-
-[node name="HurtboxState" type="Node2D" parent="StateMachine/Shuffle" index="0"]
-z_index = 999
-script = ExtResource( 47 )
-y = -14
-width = 14
-height = 14
-active_ticks = 5
-endless = true
-
-[node name="DownThrow" type="Node2D" parent="StateMachine" index="72"]
+[node name="DownThrow" type="Node2D" parent="StateMachine" index="73"]
 script = ExtResource( 49 )
 apply_forces = true
 apply_fric = true

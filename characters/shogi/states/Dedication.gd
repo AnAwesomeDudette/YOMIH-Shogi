@@ -24,3 +24,10 @@ func _frame_0():
 	#print(data)
 	host.dedication = send
 	host.dedication_delay = 2
+
+func _frame_1():
+	host.start_projectile_invulnerability()
+	
+func _exit():
+	._exit()
+	host.end_projectile_invulnerability()
