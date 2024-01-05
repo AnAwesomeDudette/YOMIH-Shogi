@@ -1,9 +1,9 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gdshader" type="Shader" id=3]
-[ext_resource path="res://ui/ActionSelector/StateIcons/dash.png" type="Texture" id=4]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Sacrifice.png" type="Texture" id=4]
 [ext_resource path="res://sound/common/whiff1.wav" type="AudioStream" id=5]
 [ext_resource path="res://_Shogi/characters/shogi/ui/WalkActionUIData.tscn" type="PackedScene" id=6]
 [ext_resource path="res://fx/DashFloorParticle.tscn" type="PackedScene" id=7]
@@ -43,7 +43,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/states/Dedication.gd" type="Script" id=41]
 [ext_resource path="res://_Shogi/characters/shogi/ui/DedicationActionUIData.tscn" type="PackedScene" id=42]
 [ext_resource path="res://_Shogi/characters/shogi/states/ShogiState.gd" type="Script" id=43]
-[ext_resource path="res://ui/ActionSelector/StateIcons/taunt.png" type="Texture" id=44]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Dedication.png" type="Texture" id=44]
 [ext_resource path="res://characters/states/Idle.gd" type="Script" id=45]
 [ext_resource path="res://ui/ActionSelector/StateIcons/wait.png" type="Texture" id=46]
 [ext_resource path="res://HurtboxState.gd" type="Script" id=47]
@@ -57,6 +57,24 @@
 [ext_resource path="res://theme.tres" type="Theme" id=55]
 [ext_resource path="res://_Shogi/characters/shogi/ui/ConquerGrabActionUIData.tscn" type="PackedScene" id=56]
 [ext_resource path="res://_Shogi/characters/shogi/sfx/stormDrainWhiff.wav" type="AudioStream" id=57]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Throw.png" type="Texture" id=58]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Burst.png" type="Texture" id=59]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/OffensiveBurst.png" type="Texture" id=60]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Walk&Shuffle.png" type="Texture" id=61]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Stomp.png" type="Texture" id=62]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Headbutt.png" type="Texture" id=63]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Punch.png" type="Texture" id=64]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Pommel.png" type="Texture" id=65]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_TyphoonSewer.png" type="Texture" id=66]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_StormDrain.png" type="Texture" id=67]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Whirl (1).png" type="Texture" id=68]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Windmill.png" type="Texture" id=69]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Turbine.png" type="Texture" id=70]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Ballet.png" type="Texture" id=71]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Split.png" type="Texture" id=72]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Shogi_Awaken_Icon.png" type="Texture" id=73]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Whiff_Cancel_Icon.png" type="Texture" id=74]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Instant_Cancel_Icon.png" type="Texture" id=75]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -116,6 +134,15 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Burst" parent="StateMachine" index="11"]
+button_texture = ExtResource( 59 )
+
+[node name="DefensiveBurst" parent="StateMachine" index="12"]
+button_texture = ExtResource( 59 )
+
+[node name="OffensiveBurst" parent="StateMachine" index="13"]
+button_texture = ExtResource( 60 )
+
 [node name="Fall" parent="StateMachine" index="17"]
 sprite_animation = "Fall"
 loop_animation = false
@@ -138,7 +165,7 @@ enter_sfx = ExtResource( 5 )
 enter_sfx_volume = -10.0
 title = "Walk"
 data_ui_scene = ExtResource( 6 )
-button_texture = ExtResource( 4 )
+button_texture = ExtResource( 61 )
 flip_with_facing = true
 iasa_at = 15
 interruptible_on_opponent_turn = true
@@ -168,7 +195,7 @@ enter_sfx = ExtResource( 5 )
 enter_sfx_volume = -10.0
 title = "Shuffle"
 data_ui_scene = ExtResource( 6 )
-button_texture = ExtResource( 4 )
+button_texture = ExtResource( 61 )
 flip_with_facing = true
 interruptible_on_opponent_turn = true
 next_state_on_hold = false
@@ -223,6 +250,12 @@ loop_animation = false
 [node name="AirDash" parent="StateMachine" index="35"]
 show_in_menu = false
 
+[node name="InstantCancel" parent="StateMachine" index="36"]
+button_texture = ExtResource( 75 )
+
+[node name="WhiffInstantCancel" parent="StateMachine" index="37"]
+button_texture = ExtResource( 74 )
+
 [node name="Grabbed" parent="StateMachine" index="42"]
 sprite_animation = "HurtAerial"
 change_stance_to = "Normal"
@@ -230,9 +263,16 @@ change_stance_to = "Normal"
 [node name="Grab" parent="StateMachine" index="45"]
 position = Vector2( 0, 1 )
 data_ui_scene = ExtResource( 56 )
+button_texture = ExtResource( 58 )
 throw_techable = false
 change_stance_to = ""
 down_throw_state = "GodsFavoriteGirliepop"
+
+[node name="AirGrab" parent="StateMachine" index="46"]
+button_texture = ExtResource( 58 )
+
+[node name="JumpGrab" parent="StateMachine" index="47"]
+button_texture = ExtResource( 58 )
 
 [node name="ForwardThrow" parent="StateMachine" index="48"]
 script = ExtResource( 11 )
@@ -354,6 +394,7 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "3.0"
 title = "Ballet"
 type = 1
+button_texture = ExtResource( 71 )
 air_type = 2
 iasa_at = 18
 interrupt_from_string = "GroundedAttack
@@ -409,6 +450,7 @@ custom_grav = "0.02"
 anim_length = 13
 title = "Stomp"
 type = 1
+button_texture = ExtResource( 62 )
 air_type = 1
 interrupt_from_string = "AerialAttack
 Aerial
@@ -507,6 +549,7 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "5.0"
 title = "Headbutt"
 type = 1
+button_texture = ExtResource( 63 )
 air_type = 2
 iasa_at = 14
 interrupt_from_string = "GroundedAttack
@@ -605,6 +648,7 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "8.5"
 title = "Pommel"
 type = 1
+button_texture = ExtResource( 65 )
 land_cancel = true
 iasa_at = 17
 interrupt_from_string = "GroundedAttack
@@ -662,6 +706,7 @@ sfx_volume = -5.0
 earliest_hitbox = 5
 title = "Swift Punish"
 type = 2
+button_texture = ExtResource( 66 )
 iasa_at = 30
 iasa_on_hit = 24
 self_hit_cancellable = false
@@ -832,6 +877,7 @@ enter_force_dir_y = "-0.01"
 enter_force_speed = "3.0"
 title = "Punch"
 type = 1
+button_texture = ExtResource( 64 )
 air_type = 1
 land_cancel = true
 min_land_cancel_frame = 8
@@ -897,6 +943,7 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "25.0"
 title = "Storm Drain"
 type = 2
+button_texture = ExtResource( 67 )
 air_type = 2
 reversible = false
 interrupt_from_string = "GroundedSpecial
@@ -930,7 +977,7 @@ x = -48
 y = -17
 width = 16
 height = 16
-damage = 35
+damage = 33
 minimum_damage = 5
 chip_damage_modifier = "2.0"
 hitstun_ticks = 10
@@ -971,7 +1018,7 @@ x = 25
 y = -12
 width = 16
 height = 16
-damage = 35
+damage = 33
 minimum_damage = 5
 chip_damage_modifier = "2.0"
 hitstun_ticks = 10
@@ -1074,6 +1121,7 @@ enter_sfx_volume = -8.0
 earliest_hitbox = 16
 title = "Typhoon Sewer"
 type = 3
+button_texture = ExtResource( 66 )
 air_type = 2
 reversible = false
 interrupt_from_string = "GroundedSpecial
@@ -1854,6 +1902,7 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "6.0"
 title = "Whirl"
 type = 2
+button_texture = ExtResource( 68 )
 air_type = 2
 iasa_on_hit = 20
 iasa_on_hit_on_block = false
@@ -1957,7 +2006,7 @@ x = 21
 y = -40
 width = 36
 height = 43
-damage = 150
+damage = 140
 minimum_damage = 75
 chip_damage_modifier = "2.2"
 hitstun_ticks = 32
@@ -2008,6 +2057,7 @@ enter_force_dir_x = "1.0"
 enter_force_speed = "2.0"
 title = "Split"
 type = 2
+button_texture = ExtResource( 72 )
 iasa_on_hit = 18
 interrupt_from_string = "GroundedSpecial
 Grounded
@@ -2223,6 +2273,7 @@ anim_length = 30
 particle_scene = ExtResource( 35 )
 title = "Windmill"
 type = 2
+button_texture = ExtResource( 69 )
 air_type = 1
 land_cancel = true
 min_land_cancel_frame = 18
@@ -2831,6 +2882,7 @@ particle_scene = ExtResource( 35 )
 earliest_hitbox = 8
 title = "Windmill"
 type = 2
+button_texture = ExtResource( 69 )
 land_cancel = true
 min_land_cancel_frame = 18
 iasa_on_hit = 19
@@ -3418,6 +3470,7 @@ apply_fric = true
 anim_length = 28
 title = "Turbine"
 type = 2
+button_texture = ExtResource( 70 )
 air_type = 1
 interrupt_from_string = "GroundedSpecial
 AerialSpecial
@@ -3533,6 +3586,7 @@ sfx_tick = 8
 sfx_volume = -5.0
 title = "Sacrifice"
 type = 2
+button_texture = ExtResource( 4 )
 iasa_on_hit = 12
 iasa_on_hit_on_block = false
 reversible = false
@@ -3592,6 +3646,7 @@ sprite_animation = "Dedication"
 anim_length = 10
 title = "Dedication"
 data_ui_scene = ExtResource( 42 )
+button_texture = ExtResource( 44 )
 air_type = 2
 iasa_at = 9
 interruptible_on_opponent_turn = true
@@ -3629,7 +3684,7 @@ apply_grav = true
 sprite_animation = "Awaken"
 anim_length = 45
 type = 4
-button_texture = ExtResource( 44 )
+button_texture = ExtResource( 73 )
 interruptible_on_opponent_turn = true
 next_state_on_hold = false
 can_feint_if_possible = false

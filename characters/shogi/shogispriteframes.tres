@@ -8,9 +8,9 @@
 [ext_resource path="res://characters/stickman/sprites/stickman16.png" type="Texture" id=6]
 [ext_resource path="res://characters/stickman/sprites/stickman34.png" type="Texture" id=7]
 [ext_resource path="res://characters/stickman/sprites/stickman36.png" type="Texture" id=8]
-[ext_resource path="res://_Shogi/characters/shogi/sprites/knockdown.png" type="Texture" id=9]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Shogi_Grabbed.png" type="Texture" id=9]
 [ext_resource path="res://characters/stickman/sprites/stickman23.png" type="Texture" id=10]
-[ext_resource path="res://_Shogi/characters/shogi/sprites/wallsplat.png" type="Texture" id=11]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Shogi_Wallsplat_new.png" type="Texture" id=11]
 [ext_resource path="res://characters/stickman/sprites/stickman11.png" type="Texture" id=12]
 [ext_resource path="res://characters/stickman/sprites/stickman27.png" type="Texture" id=13]
 [ext_resource path="res://characters/stickman/sprites/stickman20.png" type="Texture" id=14]
@@ -27,7 +27,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Attacks/grab.png" type="Texture" id=25]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/hurtLow.png" type="Texture" id=26]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/hurtHigh.png" type="Texture" id=27]
-[ext_resource path="res://characters/stickman/sprites/stickman5.png" type="Texture" id=28]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Shogi_Knockdown_New.png" type="Texture" id=28]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/rollBack.png" type="Texture" id=29]
 [ext_resource path="res://characters/stickman/sprites/stickman15.png" type="Texture" id=30]
 [ext_resource path="res://characters/stickman/sprites/stickman39.png" type="Texture" id=31]
@@ -1306,7 +1306,7 @@ animations = [ {
 "name": "Grab",
 "speed": 60.0
 }, {
-"frames": [ ExtResource( 28 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "Grabbed",
 "speed": 5.0
@@ -1376,7 +1376,7 @@ animations = [ {
 "name": "JumpKick",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 28 ) ],
 "loop": true,
 "name": "Knockdown",
 "speed": 5.0
