@@ -57,6 +57,7 @@ func _exit():
 
 func _tick():
 	._tick()
+	#host.apply_forces_no_limit()
 	if current_tick > 9:
 		do_reset -= 1
 		flurry1.dir_x = host.get_vel().x
@@ -78,8 +79,9 @@ func _on_hit_something(obj, hitbox):
 		host.melee_attack_combo_scaling_applied = false
 	if obj is Fighter and (hitbox == flurry1 or hitbox == flurry2):
 		var vel = host.get_vel()
-		if not fixed.eq(vel.x, "0") and fixed.sign(vel.x) != host.get_opponent_dir():
-			host.update_facing()
+		#if not fixed.eq(vel.x, "0") and fixed.sign(vel.x) != host.get_opponent_dir():
+			#host.update_facing()
+		host.update_facing()
 		flurry1.scale_combo = false
 		flurry2.scale_combo = false
 		host.visible_combo_count += 1

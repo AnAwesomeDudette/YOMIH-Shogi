@@ -59,6 +59,7 @@ func _tick():
 		startup_lag -= 1
 		current_tick = 1
 	._tick()
+	host.apply_forces_no_limit()
 
 """
 func _on_hit_something(obj, hitbox):

@@ -13,3 +13,7 @@ func _enter():
 	_add(a3, 2, 2)
 	_add(b1, 2, 2)
 	_add(b2, 2, 2)
+
+func _tick():
+	._tick()
+	host.apply_forces_no_limit()

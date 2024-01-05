@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -39,7 +39,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/states/SwiftPunish.gd" type="Script" id=37]
 [ext_resource path="res://characters/swordandgun/sounds/lightningslice.wav" type="AudioStream" id=38]
 [ext_resource path="res://characters/swordandgun/sounds/1000cuts.wav" type="AudioStream" id=39]
-[ext_resource path="res://_Shogi/characters/shogi/states/RaidVariant.gd" type="Script" id=40]
+[ext_resource path="res://_Shogi/characters/shogi/states/TyphoonSewer.gd" type="Script" id=40]
 [ext_resource path="res://_Shogi/characters/shogi/states/Dedication.gd" type="Script" id=41]
 [ext_resource path="res://_Shogi/characters/shogi/ui/DedicationActionUIData.tscn" type="PackedScene" id=42]
 [ext_resource path="res://_Shogi/characters/shogi/states/ShogiState.gd" type="Script" id=43]
@@ -51,6 +51,8 @@
 [ext_resource path="res://characters/states/ThrowState.gd" type="Script" id=49]
 [ext_resource path="res://ui/ActionSelector/StateIcons/throw_down.png" type="Texture" id=50]
 [ext_resource path="res://sound/common/swipe1.wav" type="AudioStream" id=51]
+[ext_resource path="res://_Shogi/characters/shogi/sfx/bigWhiffB.wav" type="AudioStream" id=52]
+[ext_resource path="res://_Shogi/characters/shogi/sfx/bigWindupA.wav" type="AudioStream" id=53]
 [ext_resource path="res://_Shogi/characters/shogi/ui/ConquerGrabActionUIData.tscn" type="PackedScene" id=56]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -105,7 +107,6 @@ material = SubResource( 1 )
 frames = ExtResource( 9 )
 animation = "TyphoonSewer"
 frame = 16
-speed_scale = 3.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
@@ -841,7 +842,6 @@ script = ExtResource( 23 )
 __meta__ = {
 "_editor_description_": ""
 }
-apply_forces = true
 apply_fric = true
 apply_grav = true
 apply_custom_x_fric = true
@@ -871,7 +871,8 @@ no_collision_end_frame = 19
 min_bounce_frame = 3
 bounce_frame = 15
 x_modifier = "0.6"
-opposite_variant = "TyphoonSewer"
+y_cap = "0.6"
+opposite_variant = "NeverAnimateOnOnesEverAgain"
 shogi_hit_particle = ExtResource( 35 )
 drag = true
 end_on_tick = 17
@@ -1002,7 +1003,7 @@ loop_inactive_ticks = 1
 to_x = 1
 to_y = 1
 
-[node name="TyphoonSewer" type="Node2D" parent="StateMachine" index="59"]
+[node name="NeverAnimateOnOnesEverAgain" type="Node2D" parent="StateMachine" index="59"]
 script = ExtResource( 40 )
 __meta__ = {
 "_editor_description_": ""
@@ -1019,7 +1020,12 @@ custom_max_ground_speed = "100.0"
 sprite_animation = "TyphoonSewer"
 anim_length = 28
 enter_force_dir_x = "1.0"
-enter_force_speed = "25.0"
+enter_force_speed = "8.0"
+state_screenshake_tick = 14
+state_screenshake_amount = 14
+enter_sfx = ExtResource( 53 )
+enter_sfx_volume = -8.0
+earliest_hitbox = 16
 title = "Typhoon Sewer"
 type = 3
 air_type = 2
@@ -1038,110 +1044,764 @@ min_bounce_frame = 3
 bounce_frame = 15
 y_modifier = "0.4"
 x_modifier = "0.3"
+y_cap = "0.4"
 is_raid_variant = true
 opposite_variant = "StormDrain"
 shogi_hit_particle = ExtResource( 35 )
 nonconquer_super_cost = 4
 conquer_super_cost = 2
 raid_stack_cost = 4
+drag = true
+offset_x = 100
+offset_y = -130
 
-[node name="Hitbox1" type="Node2D" parent="StateMachine/TyphoonSewer" index="0"]
+[node name="A1" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="0"]
 z_index = 1000
-script = ExtResource( 12 )
-x = -28
-y = -34
-width = 90
-height = 45
-damage = 160
-damage_in_combo = 100
-minimum_damage = 5
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 21
+y = -69
+width = 1
+height = 10
+damage = 111
+damage_in_combo = 111
+minimum_damage = 22
 chip_damage_modifier = "1.2"
-hitstun_ticks = 35
-hitlag_ticks = 6
-victim_hitlag = 7
-damage_proration = 1
-di_modifier = "0.8"
-sdi_modifier = "0.8"
-parry_meter_gain = 125
-ignore_armor = true
-plus_frames = 7
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 19
+victim_hitlag = 12
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
 priority = 8
 group = 1
-screenshake_amount = 9
-hit_sound_volume = -4.0
-dir_x = "0.0"
-dir_y = "0.2"
-knockback = "2.5"
+screenshake_amount = 17
+whiff_sound = ExtResource( 52 )
+hit_sound = ExtResource( 24 )
+whiff_sound_volume = -2.0
+dir_x = "-1.0"
+dir_y = "-0.2"
+knockback = "0.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
 knockdown_extends_hitstun = false
 start_tick = 15
 active_ticks = 1
+to_x = 40
+to_y = 14
 
-[node name="Hitbox2" type="Node2D" parent="StateMachine/TyphoonSewer" index="1"]
+[node name="A2" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="1"]
 z_index = 1000
-script = ExtResource( 12 )
-x = 6
-y = 47
-width = 138
-height = 45
-damage = 160
-damage_in_combo = 100
-minimum_damage = 5
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -115
+y = -15
+width = 1
+damage = 111
+damage_in_combo = 111
+minimum_damage = 22
 chip_damage_modifier = "1.2"
-hitstun_ticks = 35
-hitlag_ticks = 6
-victim_hitlag = 7
-damage_proration = 1
-di_modifier = "0.8"
-sdi_modifier = "0.8"
-parry_meter_gain = 125
-ignore_armor = true
-plus_frames = 7
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 19
+victim_hitlag = 12
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
 priority = 8
-group = 2
-screenshake_amount = 9
-hit_sound_volume = -4.0
-dir_x = "0.0"
-dir_y = "0.2"
-knockback = "2.5"
+group = 1
+screenshake_amount = 17
+whiff_sound = ExtResource( 52 )
+hit_sound = ExtResource( 24 )
+whiff_sound_volume = -2.0
+dir_x = "-1.0"
+dir_y = "-0.2"
+knockback = "0.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 15
+active_ticks = 1
+to_x = 94
+to_y = -11
+
+[node name="A3" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="2"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -99
+y = -41
+width = 6
+height = 6
+damage = 111
+damage_in_combo = 111
+minimum_damage = 22
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 19
+victim_hitlag = 12
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 1
+screenshake_amount = 17
+whiff_sound = ExtResource( 52 )
+hit_sound = ExtResource( 24 )
+whiff_sound_volume = -2.0
+dir_x = "-1.0"
+dir_y = "-0.2"
+knockback = "0.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 15
+active_ticks = 1
+to_x = 75
+to_y = -27
+
+[node name="A4" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="3"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -39
+y = -57
+width = 6
+height = 12
+damage = 111
+damage_in_combo = 111
+minimum_damage = 22
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 19
+victim_hitlag = 12
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 1
+screenshake_amount = 17
+whiff_sound = ExtResource( 52 )
+hit_sound = ExtResource( 24 )
+whiff_sound_volume = -2.0
+dir_x = "-1.0"
+dir_y = "-0.2"
+knockback = "0.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 15
+active_ticks = 1
+to_x = 66
+to_y = -9
+
+[node name="A5" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="4"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -28
+y = -36
+width = 7
+height = 7
+damage = 111
+damage_in_combo = 111
+minimum_damage = 22
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 19
+victim_hitlag = 12
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 1
+screenshake_amount = 17
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+dir_x = "-1.0"
+dir_y = "-0.2"
+knockback = "0.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 15
+active_ticks = 1
+to_x = 15
+to_y = -8
+
+[node name="B1" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="5"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 6
+y = 48
+width = 30
+damage = 111
+damage_in_combo = 111
+minimum_damage = 22
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 19
+victim_hitlag = 12
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 1
+screenshake_amount = 17
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+dir_y = "-0.2"
+knockback = "0.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
 knockdown_extends_hitstun = false
 start_tick = 16
 active_ticks = 1
+to_x = 79
+to_y = -21
 
-[node name="Hitbox3" type="Node2D" parent="StateMachine/TyphoonSewer" index="2"]
+[node name="B2" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="6"]
 z_index = 1000
-script = ExtResource( 12 )
-y = -52
-width = 250
-height = 75
-damage = 160
-damage_in_combo = 100
-minimum_damage = 5
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -27
+y = 56
+width = 15
+height = 9
+damage = 111
+damage_in_combo = 111
+minimum_damage = 22
 chip_damage_modifier = "1.2"
-hitstun_ticks = 35
-hitlag_ticks = 6
-victim_hitlag = 7
-damage_proration = 1
-di_modifier = "0.8"
-sdi_modifier = "0.8"
-parry_meter_gain = 125
-ignore_armor = true
-plus_frames = 7
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 19
+victim_hitlag = 12
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
 priority = 8
-group = 3
-screenshake_amount = 9
-hit_sound_volume = -4.0
-dir_x = "0.0"
-dir_y = "0.2"
-knockback = "2.5"
+group = 1
+screenshake_amount = 17
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+dir_y = "-0.2"
+knockback = "0.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 16
+active_ticks = 1
+to_x = -86
+to_y = -27
+
+[node name="B3" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="7"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 20
+y = -5
+width = 4
+height = 8
+damage = 111
+damage_in_combo = 111
+minimum_damage = 22
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 19
+victim_hitlag = 12
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 1
+screenshake_amount = 17
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+dir_y = "-0.2"
+knockback = "0.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 16
+active_ticks = 1
+to_x = 122
+to_y = 21
+
+[node name="B4" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="8"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 131
+y = 20
+width = 4
+height = 9
+damage = 111
+damage_in_combo = 111
+minimum_damage = 22
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 19
+victim_hitlag = 12
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 1
+screenshake_amount = 17
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+dir_y = "-0.2"
+knockback = "0.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 16
+active_ticks = 1
+to_x = -12
+to_y = 9
+
+[node name="C1" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="9"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -170
+y = -82
+width = 50
+height = 8
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
 grounded_hit_state = "HurtAerial"
 knockdown = true
 knockdown_extends_hitstun = false
 start_tick = 17
-active_ticks = 2
+active_ticks = 1
+to_x = 201
+to_y = 61
+
+[node name="C2" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="10"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -146
+y = -96
+width = 50
+height = 8
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 17
+active_ticks = 1
+to_x = 172
+to_y = -24
+
+[node name="C3" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="11"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 83
+y = -118
+width = 8
+height = 8
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 17
+active_ticks = 1
+to_x = 116
+to_y = 30
+
+[node name="C4" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="12"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 212
+y = -78
+width = 8
+height = 16
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 17
+active_ticks = 1
+to_x = 32
+to_y = 31
+
+[node name="C5" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="13"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 225
+y = -32
+height = 8
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 17
+active_ticks = 1
+to_x = -110
+to_y = 59
+
+[node name="C6" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="14"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -39
+y = -82
+width = 35
+height = 35
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 17
+active_ticks = 1
+to_x = 201
+to_y = 50
+
+[node name="D1" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="15"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -210
+y = 7
+width = 8
+height = 40
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 17
+active_ticks = 1
+to_x = 239
+to_y = -76
+
+[node name="D2" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="16"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -233
+y = -4
+width = 8
+height = 30
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 17
+active_ticks = 1
+to_x = 77
+to_y = -54
+
+[node name="D3" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="17"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = -137
+y = -81
+width = 11
+height = 11
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 17
+active_ticks = 1
+to_x = 133
+to_y = -20
+
+[node name="D4" type="Node2D" parent="StateMachine/NeverAnimateOnOnesEverAgain" index="18"]
+z_index = 1000
+script = ExtResource( 22 )
+__meta__ = {
+"_editor_description_": ""
+}
+x = 49
+y = -98
+width = 11
+height = 11
+damage = 222
+damage_in_combo = 111
+minimum_damage = 33
+chip_damage_modifier = "1.2"
+hitstun_ticks = 45
+combo_hitstun_ticks = 30
+hitlag_ticks = 18
+victim_hitlag = 17
+damage_proration = 2
+cancellable = false
+parry_meter_gain = 166
+block_cancel_allowed = false
+plus_frames = 3
+priority = 8
+group = 2
+screenshake_amount = 30
+screenshake_frames = 20
+whiff_sound = null
+hit_sound = ExtResource( 24 )
+hit_sound_volume = 0.0
+dir_y = "-0.2"
+knockback = "15.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 17
+active_ticks = 1
+to_x = 116
+to_y = 23
 
 [node name="Whirl" type="Node2D" parent="StateMachine" index="60"]
 script = ExtResource( 25 )
@@ -1171,6 +1831,7 @@ change_stance_to = "Normal"
 min_bounce_frame = 7
 bounce_frame = 20
 x_modifier = "2.5"
+y_cap = "0.8"
 can_conquer = true
 shogi_hit_particle = ExtResource( 35 )
 drag = true
@@ -1297,7 +1958,6 @@ script = ExtResource( 29 )
 __meta__ = {
 "_editor_description_": ""
 }
-apply_forces = true
 apply_fric = true
 apply_grav = true
 apply_custom_x_fric = true
@@ -1523,7 +2183,6 @@ script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
 }
-apply_forces = true
 apply_fric = true
 apply_grav = true
 sprite_animation = "Windmill"
@@ -1549,6 +2208,7 @@ min_bounce_frame = 3
 bounce_frame = 19
 y_modifier = "0.5"
 x_modifier = "0.8"
+y_cap = "0.6"
 shogi_hit_particle = ExtResource( 35 )
 
 [node name="A1" type="Node2D" parent="StateMachine/Windmill" index="0"]
@@ -2127,7 +2787,6 @@ script = ExtResource( 31 )
 __meta__ = {
 "_editor_description_": ""
 }
-apply_forces = true
 apply_fric = true
 apply_grav = true
 sprite_animation = "Windmill"
@@ -2156,6 +2815,7 @@ change_stance_to = "Normal"
 bounce_frame = 19
 y_modifier = "0.5"
 x_modifier = "0.8"
+y_cap = "0.6"
 shogi_hit_particle = ExtResource( 35 )
 
 [node name="A1" type="Node2D" parent="StateMachine/WindmillG" index="0"]

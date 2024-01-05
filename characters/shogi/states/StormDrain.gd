@@ -62,7 +62,7 @@ func _frame_13():
 	
 func _tick():
 	._tick()
-	
+	host.apply_forces_no_limit()
 	if hit_opponent == true and drag:
 		if current_tick < end_on_tick:
 			var pos = host.get_pos()

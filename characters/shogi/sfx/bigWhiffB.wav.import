@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bigWhiffB.wav-35a827e8865b2e8c3b91af8cc3727ac4.sample"
+
+[deps]
+
+source_file="res://_Shogi/characters/shogi/sfx/bigWhiffB.wav"
+dest_files=[ "res://.import/bigWhiffB.wav-35a827e8865b2e8c3b91af8cc3727ac4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
