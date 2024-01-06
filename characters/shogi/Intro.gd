@@ -26,3 +26,6 @@ func _tick():
 		host.state_interruptable = true
 		host.stance = "Normal"
 		return "Wait"
+
+func _frame_3():
+	host.play_sound("Introeyeflash")
