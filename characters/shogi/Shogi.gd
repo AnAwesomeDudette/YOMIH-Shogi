@@ -163,7 +163,7 @@ func turn_start_effects():
 
 func attempt_consume(obj, hits = 1, ticks = 0):
 	obj.hitlag_ticks += ticks
-	if obj.current_state().get("num_hits"):
+	if obj and obj.current_state() and obj.current_state().get("num_hits"):
 		if obj.current_state().num_hits - 1 != -1:
 			obj.current_state().num_hits -= 1
 			
