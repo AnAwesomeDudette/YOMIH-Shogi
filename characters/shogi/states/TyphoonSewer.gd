@@ -31,6 +31,7 @@ onready var d4 = $D4
 
 func _enter():
 	._enter()
+	host.TIMEFREEZE = true
 	_add(a1, 1, 1); _add(a2, 1, 1); _add(a3, 1, 1); _add(a4, 1, 1); _add(a5, 1, 1);
 	_add(b1, 1, 1); _add(b2, 1, 1); _add(b3, 1, 1); _add(b4, 1, 1);
 	_add(c1, 1, 1); _add(c2, 1, 1); _add(c3, 1, 1); _add(c4, 1, 1); _add(c5, 1, 1); _add(c6, 1, 1);
@@ -42,9 +43,13 @@ func _enter():
 	_add_f(d1, 5); _add_f(d2, 5); _add_f(d3, 5); _add_f(d4, 5); 
 	hit_opponent = false
 
-func _frame_12():
+func _frame_10():
+	host.TIMEFREEZE = false
+
+func _frame_22():
 	host.global_hitlag(7)
-			
+
+
 func _on_hit_something(obj, _hitbox):
 	._on_hit_something(obj, _hitbox)
 	
@@ -81,3 +86,6 @@ func _on_hit_something(obj, _hitbox):
 		#host.opponent.set_vel(0, 0)
 		#host.opponent.move_directly(str((pos.x + (offset_x * host.get_facing_int()) - opos.x) / drag_strength), str((pos.y - (offset_y + 18) - opos.y) / drag_strength))
 		
+			
+func _exit():
+	host.TIMEFREEZE = false

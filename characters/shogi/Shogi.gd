@@ -18,6 +18,7 @@ var queue_damage_multiplier = 1
 var reset_damage_multiplier = false
 var dedication_stacks = 1
 var super_until_dedication = MAX_SUPER_METER
+var TIMEFREEZE = false
 
 func add_raid_stacks(stacks):
 	raid_stacks += stacks
@@ -98,6 +99,43 @@ func copy_to(f):
 	.copy_to(f)
 
 func tick():
+	if TIMEFREEZE == true:
+	
+		#Using VHS's afterimage code for extra flare, completely option, remove if you don't have it
+		#CreateAfterImage(self, Color(0.37, 1, 0.98, 0.65))
+
+		#Freezes game time
+		if not is_ghost:
+			Global.current_game.time += 1
+		
+		#Ensures the timer goes down and that the opponents HP doesnt fall when in time stop
+		#time_ticks -= 1
+		opponent.trail_hp = opponent.trail_hp
+
+		#Turns off opponent hitboxes
+		var opp_hitboxes = opponent.get_active_hitboxes()
+		for hitbox in opp_hitboxes:
+			hitbox.deactivate()
+
+		#Turns off positional DI for player hitboxes
+		var player_hitboxes = get_active_hitboxes()
+		for hitbox in player_hitboxes:
+			hitbox.sdi_modifier = "0.0"
+
+		#The juicy effects
+		opponent.feinting = false
+		opponent.hitlag_ticks += 1
+		opponent.end_invulnerability()
+		opponent.got_parried = true
+		#        opponent.current_state().iasa_at = time_ticks
+		opponent.current_state().interruptible_on_opponent_turn = false
+
+		#Freezes Projectiles
+		for objs in objs_map.values():
+			if is_instance_valid(objs):
+				if not (objs.is_in_group("Fighter")) and not objs == self:
+					if objs is BaseObj or BaseProjectile:
+						objs.hitlag_ticks += 1
 	if is_ghost and is_instance_valid(info_ui):
 		info_ui.ghost = self
 	.tick()
