@@ -151,6 +151,7 @@ show_in_menu = true
 interrupt_into_string = "Aerial
 Grounded
 Jump"
+change_stance_to = "Intro"
 
 [node name="Burst" parent="StateMachine" index="11"]
 button_texture = ExtResource( 59 )
@@ -223,6 +224,7 @@ Grounded
 Dash"
 interrupt_into_string = "Grounded"
 allowed_stances_string = "Conquer"
+change_stance_to = "Conquer"
 beats_backdash = true
 dash_speed = 12
 
@@ -3729,6 +3731,7 @@ Wait"
 interrupt_into_string = "Grounded
 Aerial"
 allowed_stances_string = "Conquer"
+change_stance_to = "Conquer"
 
 [node name="DownThrow" type="Node2D" parent="StateMachine" index="73"]
 script = ExtResource( 49 )

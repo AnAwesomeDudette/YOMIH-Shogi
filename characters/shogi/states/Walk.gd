@@ -48,8 +48,6 @@ func _frame_0():
 		iasa_at -= 2
 	if title == "Shuffle":
 		iasa_at = 15
-	else:
-		host.queue_damage_multiplier = 0.92
 
 func _frame_1():
 	if data == host.get_facing_int():
