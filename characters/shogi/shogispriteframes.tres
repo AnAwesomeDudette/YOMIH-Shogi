@@ -1,5 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=415 format=2]
+[gd_resource type="SpriteFrames" load_steps=432 format=2]
 
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_MaelstromCatch_Sheet.png" type="Texture" id=1]
 [ext_resource path="res://characters/stickman/sprites/stickman35.png" type="Texture" id=2]
 [ext_resource path="res://characters/stickman/sprites/stickman3.png" type="Texture" id=3]
 [ext_resource path="res://characters/stickman/sprites/stickman19.png" type="Texture" id=4]
@@ -93,6 +94,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Attacks/turbine.png" type="Texture" id=92]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Shogi_Intro_Sheet.png" type="Texture" id=93]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_Gust_Sheet.png" type="Texture" id=94]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_Maelstrom_Sheet.png" type="Texture" id=95]
 
 [sub_resource type="AtlasTexture" id=225]
 atlas = ExtResource( 90 )
@@ -609,6 +611,66 @@ region = Rect2( 256, 256, 256, 256 )
 [sub_resource type="AtlasTexture" id=173]
 atlas = ExtResource( 86 )
 region = Rect2( 512, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=416]
+atlas = ExtResource( 95 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=417]
+atlas = ExtResource( 95 )
+region = Rect2( 256, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=418]
+atlas = ExtResource( 95 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=419]
+atlas = ExtResource( 95 )
+region = Rect2( 768, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=420]
+atlas = ExtResource( 95 )
+region = Rect2( 0, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=421]
+atlas = ExtResource( 95 )
+region = Rect2( 256, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=422]
+atlas = ExtResource( 95 )
+region = Rect2( 512, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=423]
+atlas = ExtResource( 95 )
+region = Rect2( 768, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=424]
+atlas = ExtResource( 95 )
+region = Rect2( 0, 512, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=425]
+atlas = ExtResource( 95 )
+region = Rect2( 256, 512, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=426]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=427]
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=428]
+atlas = ExtResource( 1 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=429]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=430]
+atlas = ExtResource( 1 )
+region = Rect2( 256, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=140]
 atlas = ExtResource( 77 )
@@ -1563,6 +1625,16 @@ animations = [ {
 "frames": [ ExtResource( 81 ) ],
 "loop": true,
 "name": "Landing",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 416 ), SubResource( 417 ), SubResource( 418 ), SubResource( 419 ), SubResource( 420 ), SubResource( 421 ), SubResource( 422 ), SubResource( 423 ), SubResource( 424 ), SubResource( 425 ) ],
+"loop": true,
+"name": "Maelstrom",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 426 ), SubResource( 427 ), SubResource( 428 ), SubResource( 429 ), SubResource( 430 ) ],
+"loop": true,
+"name": "MaelstromCatch",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 50 ), ExtResource( 50 ), ExtResource( 50 ), ExtResource( 71 ), ExtResource( 71 ), ExtResource( 71 ), ExtResource( 50 ), ExtResource( 50 ), ExtResource( 50 ), ExtResource( 46 ) ],
