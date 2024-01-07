@@ -31,7 +31,8 @@ script = ExtResource( 4 )
 apply_forces = true
 anim_length = 8
 loop_animation = true
-homing_end_tick = 3
+homing_start_tick = 3
+homing_end_tick = 7
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/Default" index="0"]
 z_index = 1000

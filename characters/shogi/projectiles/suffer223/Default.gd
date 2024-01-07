@@ -4,7 +4,8 @@ extends ObjectState
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export (int) var homing_end_tick = 3
+export (int) var homing_start_tick = 3
+export (int) var homing_end_tick = 7
 var drag_strength = 10
 var returning = false
 var should_pull = false
@@ -35,7 +36,7 @@ func _tick():
 		host.creator.opponent.set_vel(0, 0)
 		host.creator.opponent.move_directly(str((pos.x - opos.x) / drag_strength), str((pos.y - opos.y) / drag_strength))
 	
-	if current_tick <= homing_end_tick and not returning:
+	if current_tick <= homing_end_tick and current_tick >= homing_start_tick and not returning:
 		track("0.03", host.creator.opponent.get_hurtbox_center())
 	elif returning:
 		track("0.03", host.creator.get_hurtbox_center())
