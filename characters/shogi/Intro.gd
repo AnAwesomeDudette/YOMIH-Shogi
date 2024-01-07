@@ -27,5 +27,5 @@ func _tick():
 		host.stance = "Normal"
 		return "Wait"
 
-func _frame_3():
-	host.play_sound("Introeyeflash")
+func _frame_52():
+	host.play_sound("IntroExplode")

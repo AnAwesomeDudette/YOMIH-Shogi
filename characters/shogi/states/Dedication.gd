@@ -16,6 +16,7 @@ func _frame_0():
 			"x":0, 
 			"y":0
 		}
+	host.penalty -= 40
 	#var dir = xy_to_dir(data.x, data.y, MOVE_DIST)
 	
 	
