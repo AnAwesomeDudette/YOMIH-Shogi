@@ -14,15 +14,16 @@ __meta__ = {
 has_projectile_parry_window = false
 
 [node name="Sprite" parent="Flip" index="0"]
+position = Vector2( 0, -16 )
 frames = ExtResource( 3 )
 
 [node name="CollisionBox" parent="." index="2"]
-y = 3
+y = -13
 width = 13
 height = 13
 
 [node name="Hurtbox" parent="." index="3"]
-y = 3
+y = -13
 width = 13
 height = 13
 
@@ -37,7 +38,7 @@ homing_end_tick = 7
 [node name="Hitbox" type="Node2D" parent="StateMachine/Default" index="0"]
 z_index = 1000
 script = ExtResource( 2 )
-y = 3
+y = -13
 width = 69
 height = 13
 damage = 10
@@ -56,7 +57,7 @@ loop_inactive_ticks = 1
 [node name="Hitbox2" type="Node2D" parent="StateMachine/Default" index="1"]
 z_index = 1000
 script = ExtResource( 2 )
-y = 3
+y = -13
 width = 69
 height = 13
 damage = 10

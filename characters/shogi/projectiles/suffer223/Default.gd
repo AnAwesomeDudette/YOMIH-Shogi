@@ -37,9 +37,9 @@ func _tick():
 		host.creator.opponent.move_directly(str((pos.x - opos.x) / drag_strength), str((pos.y - opos.y) / drag_strength))
 	
 	if current_tick <= homing_end_tick and current_tick >= homing_start_tick and not returning:
-		track("0.03", host.creator.opponent.get_hurtbox_center())
+		track("0.03", host.creator.opponent.get_pos())
 	elif returning:
-		track("0.03", host.creator.get_hurtbox_center())
+		track("0.03", host.creator.get_pos())
 	if host.collision_box.overlaps(host.creator.collision_box) and returning:
 		fizzle()
 
@@ -53,6 +53,8 @@ func track(strength, opp_pos):
 	var pos = host.get_pos()
 	pos.x -= opp_pos.x
 	pos.y -= opp_pos.y
+
+	#print(pos.y)
 	
 	
 	pos.x = -pos.x * host.get_facing_int()

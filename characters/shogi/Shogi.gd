@@ -100,6 +100,8 @@ func copy_to(f):
 	.copy_to(f)
 
 func tick():
+	if opponent.current_state() is CharacterHurtState or current_state() is CharacterHurtState:
+		sacrifices = 0
 	if TIMEFREEZE == true:
 	
 		#Using VHS's afterimage code for extra flare, completely option, remove if you don't have it
