@@ -733,6 +733,7 @@ __meta__ = {
 apply_forces = true
 apply_fric = true
 apply_grav = true
+fallback_state = "C. Wait"
 sprite_animation = "SwiftPunish"
 anim_length = 60
 enter_force_dir_x = "1.0"
@@ -3895,6 +3896,7 @@ AerialAttack
 GroundedMovement
 AerialMovement"
 hit_cancel_exceptions_string = "Maelstrom"
+is_raid_variant = true
 opposite_variant = "HeNeedsIt"
 has_maelstrom_penalty = true
 shogi_hit_particle = ExtResource( 35 )
