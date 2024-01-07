@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://projectile/BaseProjectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mechanics/Hitbox.gd" type="Script" id=2]
+[ext_resource path="res://_Shogi/characters/shogi/projectiles/suffer223/Suffer223SpriteFrames.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://_Shogi/characters/shogi/projectiles/suffer223/Default.gd" type="Script" id=4]
+[ext_resource path="res://_Shogi/characters/shogi/projectiles/suffer223/Suffer223.gd" type="Script" id=5]
+
+[node name="Suffer223" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+has_projectile_parry_window = false
+
+[node name="Sprite" parent="Flip" index="0"]
+frames = ExtResource( 3 )
+
+[node name="CollisionBox" parent="." index="2"]
+y = 3
+width = 13
+height = 13
+
+[node name="Hurtbox" parent="." index="3"]
+y = 3
+width = 13
+height = 13
+
+[node name="Default" parent="StateMachine" index="0"]
+script = ExtResource( 4 )
+apply_forces = true
+anim_length = 8
+loop_animation = true
+homing_end_tick = 3
+
+[node name="Hitbox" type="Node2D" parent="StateMachine/Default" index="0"]
+z_index = 1000
+script = ExtResource( 2 )
+y = 3
+width = 69
+height = 13
+damage = 10
+minimum_damage = 10
+chip_damage_modifier = "3.0"
+hitstun_ticks = 20
+cancellable = false
+block_cancel_allowed = false
+start_tick = 1
+active_ticks = 1
+always_on = true
+looping = true
+loop_active_ticks = 1
+loop_inactive_ticks = 1
+
+[node name="Hitbox2" type="Node2D" parent="StateMachine/Default" index="1"]
+z_index = 1000
+script = ExtResource( 2 )
+y = 3
+width = 69
+height = 13
+damage = 10
+minimum_damage = 10
+chip_damage_modifier = "3.0"
+hitstun_ticks = 20
+cancellable = false
+block_cancel_allowed = false
+start_tick = 2
+active_ticks = 1
+always_on = true
+looping = true
+loop_active_ticks = 1
+loop_inactive_ticks = 1

@@ -51,7 +51,7 @@ func _tick():
 	flurrya2.dir_y = fixed.add(host.get_vel().y, grav)
 			
 func _frame_5():
-	track("0.1")
+	track("0.03")
 			
 func _frame_21():
 	flurrya1.dir_x = "1.0"

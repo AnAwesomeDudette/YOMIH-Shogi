@@ -19,6 +19,7 @@ var reset_damage_multiplier = false
 var dedication_stacks = 1
 var super_until_dedication = MAX_SUPER_METER
 var TIMEFREEZE = false
+var maelstrom_projectile = null
 
 func add_raid_stacks(stacks):
 	raid_stacks += stacks

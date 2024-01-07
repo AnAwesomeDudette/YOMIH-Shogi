@@ -17,7 +17,8 @@ export (String) var opposite_variant = null
 export var conquer_1_frames = 4
 export var conquer_2_frames = 5
 export var conquer_3_frames = 7
-
+export (bool) var has_maelstrom_penalty = false
+export (bool) var has_maelstrom_buff = false
 export (PackedScene) var shogi_hit_particle
 var damage_multiplier = 1
 var original_hitbox_plus_frames = {}
@@ -25,6 +26,8 @@ var original_fallback_state = fallback_state
 var end_with_awaken = false
 var armor_hits_to_give = 0
 var armor_timer = 3
+var hitbox_blockstun_modifier = 0
+
 
 
 func is_usable():
@@ -83,6 +86,8 @@ func _enter():
 		hitbox.plus_frames = original_hitbox_plus_frames[hitbox]
 	hitbox_register = {}
 	hitbox_frame = {}
+	windup = -1
+	hitbox_blockstun_modifier = 0
 	if can_conquer:
 		if host.current_conquer_tier == 1:
 			conquer_tier_1()
@@ -90,7 +95,13 @@ func _enter():
 			conquer_tier_2()
 		if host.current_conquer_tier == 3:
 			conquer_tier_3()
-	
+	if host.maelstrom_projectile != null:
+		if has_maelstrom_buff:
+			add_plus_frames(2)
+		if has_maelstrom_penalty:
+			windup += 1
+			add_plus_frames(-1)
+
 	._enter()
 	
 var x_speed_preserved = "0.25"
@@ -129,7 +140,7 @@ func jump():
 	host.apply_force(force.x, force.y)
 	
 func track(strength, keep_ground = true):
-	var opp_pos = host.opponent.get_pos()
+	var opp_pos = host.opponent.get_hurtbox_center()
 	var pos = host.get_pos()
 	pos.x -= opp_pos.x
 	pos.y -= opp_pos.y
@@ -258,6 +269,7 @@ func _on_hit_something(obj, _hitbox):
 
 func _on_hit_something(obj, hitbox):
 	._on_hit_something(obj, hitbox)
+
 	if shogi_hit_particle:
 		var dir = hitbox.get_dir_float(true)
 		var location = hitbox.get_overlap_center_float(obj.hurtbox)
