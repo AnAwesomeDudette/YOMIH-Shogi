@@ -150,7 +150,7 @@ volume_db = -17.0
 
 [node name="IntroExplode" type="AudioStreamPlayer2D" parent="Sounds" index="18"]
 stream = ExtResource( 80 )
-volume_db = -20.101
+volume_db = -6.118
 
 [node name="Start" parent="StateMachine" index="0"]
 script = ExtResource( 76 )
@@ -158,7 +158,7 @@ sprite_animation = "Intro"
 anim_length = 120
 sfx = ExtResource( 57 )
 sfx_tick = 12
-sfx_volume = -22.0
+sfx_volume = -8.0
 title = ""
 show_in_menu = true
 interrupt_into_string = "Aerial
@@ -722,6 +722,7 @@ hit_sound_volume = -4.0
 dir_y = "-0.3"
 knockback = "3.0"
 knockdown = true
+knockdown_extends_hitstun = false
 start_tick = 7
 active_ticks = 3
 
@@ -3913,10 +3914,12 @@ width = 16
 height = 16
 damage = 5
 minimum_damage = 5
+chip_damage_modifier = "1.6"
 dir_x = "-1.0"
 dir_y = "0.0"
 knockback = "100.0"
 ground_bounce = false
+wall_slam = true
 start_tick = 5
 active_ticks = 1
 to_x = 23
@@ -3934,9 +3937,11 @@ width = 16
 height = 16
 damage = 5
 minimum_damage = 5
+chip_damage_modifier = "1.6"
 dir_y = "0.0"
 knockback = "100.0"
 ground_bounce = false
+wall_slam = true
 start_tick = 6
 active_ticks = 1
 to_x = 23
