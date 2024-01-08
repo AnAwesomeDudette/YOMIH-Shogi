@@ -9,6 +9,7 @@ export (int) var homing_end_tick = 7
 var drag_strength = 10
 var returning = false
 var should_pull = false
+export (int) var pull_frames = 20
 
 func _enter():
 	host.creator.maelstrom_projectile = self
@@ -29,7 +30,8 @@ func _tick():
 	host.update_grounded()
 	if host.creator.opponent.invulnerable or host.creator.opponent.projectile_invulnerable:
 		returning = false
-	if should_pull == true:
+	if should_pull == true and pull_frames > 0 and not (host.creator.opponent.current_state() is CharacterHurtState):
+		pull_frames -= 1
 		var pos = host.get_pos()
 		var opos = host.creator.opponent.get_pos()
 

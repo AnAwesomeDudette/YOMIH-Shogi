@@ -34,6 +34,7 @@ anim_length = 8
 loop_animation = true
 homing_start_tick = 3
 homing_end_tick = 7
+pull_frames = 20
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/Default" index="0"]
 z_index = 1000
