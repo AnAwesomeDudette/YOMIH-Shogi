@@ -36,6 +36,8 @@ func getOpponentName(): #Returns a string with the opponent name.
 	if filter != -1:
 		filter += 2
 		name = name.right(filter)
+		
+	return name
 
 func add_raid_stacks(stacks):
 	raid_stacks += stacks
