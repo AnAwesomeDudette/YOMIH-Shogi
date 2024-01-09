@@ -17,6 +17,7 @@ var do_reset = 6
 var reset_handler = false
 
 func _enter():
+	hit_opponent = false
 	._enter()
 	_add(flurry1, 1, 0)
 	_add(flurry2, 1, 0)
