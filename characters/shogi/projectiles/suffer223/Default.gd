@@ -30,7 +30,7 @@ func _tick():
 	host.update_grounded()
 	if host.creator.opponent.invulnerable or host.creator.opponent.projectile_invulnerable:
 		returning = false
-	if should_pull == true and pull_frames > 0 and not (host.creator.opponent.current_state() is CharacterHurtState):
+	if should_pull == true and pull_frames > 0 and (host.creator.opponent.current_state() is CharacterHurtState):
 		pull_frames -= 1
 		var pos = host.get_pos()
 		var opos = host.creator.opponent.get_pos()
