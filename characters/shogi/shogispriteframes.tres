@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=442 format=2]
+[gd_resource type="SpriteFrames" load_steps=447 format=2]
 
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_MaelstromCatch_Sheet.png" type="Texture" id=1]
 [ext_resource path="res://characters/stickman/sprites/stickman35.png" type="Texture" id=2]
@@ -96,6 +96,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_Gust_Sheet.png" type="Texture" id=94]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_Maelstrom_Sheet.png" type="Texture" id=95]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_Reminisce_Sheet.png" type="Texture" id=96]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_MountaintSlash_Sheet.png" type="Texture" id=97]
 
 [sub_resource type="AtlasTexture" id=225]
 atlas = ExtResource( 90 )
@@ -493,17 +494,33 @@ region = Rect2( 256, 256, 256, 256 )
 atlas = ExtResource( 93 )
 region = Rect2( 512, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=397]
-atlas = ExtResource( 93 )
-region = Rect2( 1280, 256, 256, 256 )
+[sub_resource type="AtlasTexture" id=442]
+atlas = ExtResource( 97 )
+region = Rect2( 0, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=395]
-atlas = ExtResource( 93 )
-region = Rect2( 768, 256, 256, 256 )
+[sub_resource type="AtlasTexture" id=443]
+atlas = ExtResource( 97 )
+region = Rect2( 256, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=396]
-atlas = ExtResource( 93 )
-region = Rect2( 1024, 256, 256, 256 )
+[sub_resource type="AtlasTexture" id=444]
+atlas = ExtResource( 97 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=445]
+atlas = ExtResource( 97 )
+region = Rect2( 0, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=446]
+atlas = ExtResource( 97 )
+region = Rect2( 512, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=447]
+atlas = ExtResource( 97 )
+region = Rect2( 256, 512, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=448]
+atlas = ExtResource( 97 )
+region = Rect2( 0, 512, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=398]
 atlas = ExtResource( 93 )
@@ -1634,7 +1651,7 @@ animations = [ {
 "name": "InstantCancel",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 387 ), SubResource( 388 ), SubResource( 388 ), SubResource( 388 ), SubResource( 389 ), SubResource( 390 ), SubResource( 390 ), SubResource( 390 ), SubResource( 391 ), SubResource( 391 ), SubResource( 391 ), SubResource( 392 ), SubResource( 392 ), SubResource( 392 ), SubResource( 393 ), SubResource( 393 ), SubResource( 393 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 397 ), SubResource( 397 ), SubResource( 397 ), SubResource( 397 ), SubResource( 397 ), SubResource( 395 ), SubResource( 397 ), SubResource( 396 ), SubResource( 397 ), SubResource( 397 ), SubResource( 397 ), SubResource( 397 ), SubResource( 397 ), SubResource( 398 ), SubResource( 398 ), SubResource( 398 ), SubResource( 399 ), SubResource( 399 ), SubResource( 399 ), SubResource( 400 ), SubResource( 400 ), SubResource( 400 ), SubResource( 401 ), SubResource( 401 ), SubResource( 402 ), SubResource( 402 ), SubResource( 402 ), SubResource( 403 ), SubResource( 403 ), SubResource( 403 ), SubResource( 404 ), SubResource( 404 ), SubResource( 405 ), SubResource( 406 ), SubResource( 406 ), SubResource( 407 ), SubResource( 407 ), SubResource( 408 ), SubResource( 408 ), SubResource( 409 ), SubResource( 409 ), SubResource( 410 ), SubResource( 410 ), SubResource( 411 ), SubResource( 411 ), SubResource( 412 ), SubResource( 412 ), SubResource( 413 ), SubResource( 413 ), SubResource( 414 ) ],
+"frames": [ SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 386 ), SubResource( 387 ), SubResource( 388 ), SubResource( 388 ), SubResource( 388 ), SubResource( 389 ), SubResource( 390 ), SubResource( 390 ), SubResource( 390 ), SubResource( 391 ), SubResource( 391 ), SubResource( 391 ), SubResource( 392 ), SubResource( 392 ), SubResource( 392 ), SubResource( 393 ), SubResource( 393 ), SubResource( 393 ), SubResource( 393 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 394 ), SubResource( 442 ), SubResource( 442 ), SubResource( 443 ), SubResource( 443 ), SubResource( 444 ), SubResource( 444 ), SubResource( 445 ), SubResource( 445 ), SubResource( 446 ), SubResource( 446 ), SubResource( 447 ), SubResource( 447 ), SubResource( 448 ), SubResource( 448 ), SubResource( 448 ), SubResource( 448 ), SubResource( 448 ), SubResource( 398 ), SubResource( 398 ), SubResource( 398 ), SubResource( 399 ), SubResource( 399 ), SubResource( 399 ), SubResource( 400 ), SubResource( 400 ), SubResource( 400 ), SubResource( 401 ), SubResource( 401 ), SubResource( 402 ), SubResource( 402 ), SubResource( 402 ), SubResource( 403 ), SubResource( 403 ), SubResource( 403 ), SubResource( 404 ), SubResource( 404 ), SubResource( 405 ), SubResource( 406 ), SubResource( 406 ), SubResource( 407 ), SubResource( 407 ), SubResource( 408 ), SubResource( 408 ), SubResource( 409 ), SubResource( 409 ), SubResource( 410 ), SubResource( 410 ), SubResource( 411 ), SubResource( 411 ), SubResource( 412 ), SubResource( 412 ), SubResource( 413 ), SubResource( 413 ), SubResource( 414 ) ],
 "loop": true,
 "name": "Intro",
 "speed": 5.0

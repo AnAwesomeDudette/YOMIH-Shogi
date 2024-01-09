@@ -140,7 +140,8 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "Taunt"
+animation = "Intro"
+frame = 27
 speed_scale = 6.0
 __meta__ = {
 "_edit_group_": true,
@@ -3535,6 +3536,7 @@ title = "Turbine"
 type = 2
 button_texture = ExtResource( 70 )
 air_type = 1
+self_interruptable = false
 interrupt_from_string = "GroundedSpecial
 AerialSpecial
 Grounded
