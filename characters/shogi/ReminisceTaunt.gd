@@ -8,7 +8,8 @@ func _ready():
 	pass
 
 func _enter():
-	host.play_sound("ShogiTaunt")
+	if not $"%ShogiTaunt".playing:
+		host.play_sound("ShogiTaunt")
 
 func _tick():
 	host.gain_super_meter(6)
@@ -23,3 +24,4 @@ func is_usable():
 
 func _exit():
 	host.stop_sound("ShogiTaunt")
+

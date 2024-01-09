@@ -20,7 +20,7 @@ var dedication_stacks = 1
 var super_until_dedication = MAX_SUPER_METER
 var TIMEFREEZE = false
 var maelstrom_projectile = null
-var Dialogue = preload("res://_Shogi/ShogiDialogue.gd")
+var Dialogue = preload("res://_Shogi/characters/shogi/ShogiDialogue.gd")
 
 
 
