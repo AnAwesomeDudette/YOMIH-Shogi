@@ -30,7 +30,7 @@ func _tick():
 func _frame_52():
 	host.play_sound("IntroExplode")
 	$"./Dialogue".show()
-	$"./Dialogue".text = host.Dialogue.GetLine(host.getOpponentName(), "Intro")
+	$"./Dialogue".text = host.Dialogue.GetLine(host.getOpponentName(), "Intro", Network.pid_to_username(host.opponent.id))
 
 func _exit():
 	$"./Dialogue".hide()
