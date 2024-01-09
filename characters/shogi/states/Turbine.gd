@@ -13,6 +13,7 @@ onready var flurrya1 = $FlurryA1
 onready var flurrya2 = $FlurryA2
 
 func _enter():
+	hit_opponent = false
 	._enter()
 	_add(flurrya1, 1, 0)
 	_add(flurrya2, 1, 0)

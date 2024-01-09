@@ -44,6 +44,7 @@ func enable_hitbox(can_catch = false):
 			catch.whiff_sound_player.volume_db = -8
 
 func _enter():
+	hit_opponent = false
 	._enter()
 
 
