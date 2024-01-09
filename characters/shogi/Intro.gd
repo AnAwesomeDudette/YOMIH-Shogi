@@ -29,3 +29,8 @@ func _tick():
 
 func _frame_52():
 	host.play_sound("IntroExplode")
+	$"./Dialogue".show()
+	$"./Dialogue".text = host.Dialogue.GetLine(host.getOpponentName(), "Intro")
+
+func _exit():
+	$"./Dialogue".hide()

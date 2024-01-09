@@ -175,6 +175,14 @@ Grounded
 Jump"
 change_stance_to = "Intro"
 
+[node name="Dialogue" type="Label" parent="StateMachine/Start" index="0"]
+margin_left = -30.0
+margin_top = -80.0
+margin_right = 30.0
+margin_bottom = -40.0
+theme = ExtResource( 55 )
+autowrap = true
+
 [node name="Burst" parent="StateMachine" index="11"]
 button_texture = ExtResource( 59 )
 

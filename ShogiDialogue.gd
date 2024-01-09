@@ -40,3 +40,6 @@ static func GetLine(name, option): #Gets a dialogue line. Argument 1 is the oppo
 
 static func GetDefualtValue(option): #For fallback.
 	return GetLine("Default", option) #Pretend the name of the enemy is "Default" to access our default set.
+
+
+
