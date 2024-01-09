@@ -61,7 +61,20 @@ func _enter():
 	catch.dir_y = "0.0"
 	catch.knockback = "5.0"
 	
+
+	
 	hit_opponent = false
+	if host.reverse_state:
+		hitbox1.guard_break = false
+		hitbox2.guard_break = false
+		catch.guard_break = false
+		enter_force_speed = "12.5"
+	else:
+		hitbox1.guard_break = true
+		hitbox2.guard_break = true
+		catch.guard_break = true
+		enter_force_speed = "25.0"
+	._enter()
 	
 func _frame_0():
 	host.play_sound("Super2")
@@ -82,6 +95,7 @@ func _frame_0():
 	hitbox2.to_y = -8
 	"""
 	
+
 func _frame_4():
 	host.start_projectile_invulnerability()
 	
