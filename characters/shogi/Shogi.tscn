@@ -139,8 +139,7 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "ReminisceTaunt"
-frame = 20
+animation = "Taunt"
 speed_scale = 6.0
 __meta__ = {
 "_edit_group_": true,
@@ -3743,7 +3742,7 @@ apply_fric = false
 apply_grav = false
 fallback_state = "ReminisceTaunt"
 sfx_tick = 8
-title = ""
+title = "Reminisce"
 button_texture = ExtResource( 88 )
 iasa_at = 29
 next_state_on_hold = true
@@ -3993,6 +3992,7 @@ sprite_animation = "ReminisceTaunt"
 anim_length = 45
 loop_animation = true
 endless = true
+title = "Reminiscing"
 iasa_at = 45
 interruptible_on_opponent_turn = true
 usable_from_whiff_cancel_if_possible = false

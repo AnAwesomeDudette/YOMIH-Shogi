@@ -1045,10 +1045,6 @@ region = Rect2( 0, 768, 256, 256 )
 atlas = ExtResource( 91 )
 region = Rect2( 256, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=431]
-atlas = ExtResource( 88 )
-region = Rect2( 0, 0, 256, 256 )
-
 [sub_resource type="AtlasTexture" id=432]
 atlas = ExtResource( 88 )
 region = Rect2( 256, 0, 256, 256 )
@@ -1069,9 +1065,13 @@ region = Rect2( 256, 256, 256, 256 )
 atlas = ExtResource( 88 )
 region = Rect2( 512, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=437]
-atlas = ExtResource( 88 )
-region = Rect2( 0, 512, 256, 256 )
+[sub_resource type="AtlasTexture" id=440]
+atlas = ExtResource( 96 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=441]
+atlas = ExtResource( 96 )
+region = Rect2( 256, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=294]
 atlas = ExtResource( 92 )
@@ -1764,7 +1764,7 @@ animations = [ {
 "name": "SwiftPunish",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 431 ), SubResource( 432 ), SubResource( 432 ), SubResource( 432 ), SubResource( 433 ), SubResource( 433 ), SubResource( 433 ), SubResource( 434 ), SubResource( 434 ), SubResource( 434 ), SubResource( 435 ), SubResource( 435 ), SubResource( 435 ), SubResource( 435 ), SubResource( 436 ), SubResource( 436 ), SubResource( 437 ) ],
+"frames": [ SubResource( 432 ), SubResource( 432 ), SubResource( 432 ), SubResource( 433 ), SubResource( 433 ), SubResource( 433 ), SubResource( 434 ), SubResource( 434 ), SubResource( 434 ), SubResource( 435 ), SubResource( 435 ), SubResource( 435 ), SubResource( 435 ), SubResource( 436 ), SubResource( 436 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ) ],
 "loop": true,
 "name": "Taunt",
 "speed": 5.0
