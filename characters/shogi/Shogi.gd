@@ -20,6 +20,22 @@ var dedication_stacks = 1
 var super_until_dedication = MAX_SUPER_METER
 var TIMEFREEZE = false
 var maelstrom_projectile = null
+var Dialogue = preload("res://_Shogi/ShogiDialogue.gd")
+
+
+
+
+func getOpponentName(): #Returns a string with the opponent name.
+	var name = find_parent("Main").match_data.selected_characters[opponent.id]["name"] #Grabs the opponent's name.
+#Modified from Bard's code to be multihustle friendly.
+#Is the same as it appears in the character select menu.
+
+		#When mods are exported to be built in the main game, their file name changes, so the below code trims it appropriately.
+	var filter = name.rfind("__") 
+	
+	if filter != -1:
+		filter += 2
+		name = name.right(filter)
 
 func add_raid_stacks(stacks):
 	raid_stacks += stacks
@@ -229,3 +245,4 @@ func take_damage(damage:int, minimum = 0, meter_gain_modifier = "1.0", combo_sca
 
 func has_dedication():
 	return dedication_stacks >= 1
+
