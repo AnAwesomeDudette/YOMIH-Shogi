@@ -18,6 +18,10 @@ func _tick():
 func _frame_44():
 	host.unlock_achievement("ACH_HUSTLE", true)
 
+func _frame_70():
+	if host.opponent.current_state().endless == true:
+		host.opponent.current_state().enable_interrupt()
+
 func is_usable():
 	var new_usable = host.supers_available >= super_level and host.Fear >= host.Fear_AMOUNT
 	return .is_usable() and (not new_usable or host.install_active)

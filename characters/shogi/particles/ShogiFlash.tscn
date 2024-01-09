@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fx/ParticleEffect.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="White Flash" type="Node2D"]
+script = ExtResource( 1 )
+lifetime = 0.25
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2( 9999, 9999 )
+amount = 1
+lifetime = 0.15
+gravity = Vector2( 0, 0 )
+color_ramp = SubResource( 1 )
