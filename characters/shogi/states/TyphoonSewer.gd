@@ -43,12 +43,28 @@ func _enter():
 	_add_f(d1, 5); _add_f(d2, 5); _add_f(d3, 5); _add_f(d4, 5); 
 	hit_opponent = false
 
+
+func on_got_hit():
+	host.gain_super_meter(50)
+
+func _frame_2():
+	if host.initiative:
+		host.start_throw_invulnerability()
+
+
 func _frame_10():
 	host.TIMEFREEZE = false
+	
+	if host.initiative:
+		host.armor_hits_remaining = 2
+
 
 func _frame_22():
 	host.global_hitlag(7)
 
+func _frame_23():
+	host.armor_hits_remaining = 0
+	host.end_throw_invulnerability()
 
 func _on_hit_something(obj, _hitbox):
 	._on_hit_something(obj, _hitbox)

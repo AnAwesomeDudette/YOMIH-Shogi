@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=447 format=2]
+[gd_resource type="SpriteFrames" load_steps=448 format=2]
 
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_MaelstromCatch_Sheet.png" type="Texture" id=1]
 [ext_resource path="res://characters/stickman/sprites/stickman35.png" type="Texture" id=2]
@@ -97,6 +97,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_Maelstrom_Sheet.png" type="Texture" id=95]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_Reminisce_Sheet.png" type="Texture" id=96]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_MountaintSlash_Sheet.png" type="Texture" id=97]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Shogiburst.png" type="Texture" id=98]
 
 [sub_resource type="AtlasTexture" id=225]
 atlas = ExtResource( 90 )
@@ -1526,7 +1527,7 @@ animations = [ {
 "name": "BalletAir",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 78 ) ],
+"frames": [ ExtResource( 98 ) ],
 "loop": true,
 "name": "Burst",
 "speed": 5.0

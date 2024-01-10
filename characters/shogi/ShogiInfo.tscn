@@ -18,10 +18,13 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
 unique_name_in_owner = true
+anchor_right = 0.064
 margin_left = 40.0
-margin_right = 260.0
+margin_right = 203.0
 margin_bottom = 27.0
 rect_scale = Vector2( 0.998801, 0.984485 )
+hint_tooltip = "- Dedication: Enables Dedication No limit, start with 1
+- Raid: Enables Raid Variants. Max of 4. Starts with 0"
 
 [node name="DedicationTex" type="TextureRect" parent="HBoxContainer" index="0"]
 margin_right = 16.0

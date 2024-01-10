@@ -96,10 +96,16 @@ func _frame_0():
 	hitbox2.to_y = -8
 	"""
 	
+func _frame_3():
+	if host.initiative:
+		host.start_throw_invulnerability()
 
 func _frame_4():
 	host.start_projectile_invulnerability()
-	
+
+func _frame_6():
+	host.end_throw_invulnerability()
+
 func _frame_13():
 	host.end_projectile_invulnerability()
 	

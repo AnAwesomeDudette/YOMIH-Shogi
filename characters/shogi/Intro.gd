@@ -5,6 +5,7 @@ var state_variables = {}
 
 func _enter():
 	game_time = Global.current_game.time
+	host.start_invulnerability()
 
 func _frame_0():
 	for v in host.opponent.state_variables:
@@ -34,3 +35,4 @@ func _frame_52():
 
 func _exit():
 	$"./Dialogue".hide()
+	host.end_invulnerability()

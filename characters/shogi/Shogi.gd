@@ -16,12 +16,18 @@ var got_hit = false # whether Shogi was hit this tick
 var damage_multiplier = 1
 var queue_damage_multiplier = 1
 var reset_damage_multiplier = false
-var dedication_stacks = 1
+var dedication_stacks = 2
 var super_until_dedication = MAX_SUPER_METER
 var TIMEFREEZE = false
 var maelstrom_projectile = null
 var Dialogue = preload("res://_Shogi/characters/shogi/ShogiDialogue.gd")
+onready var default_parry = preload("res://fx/ParryEffect.tscn")
+onready var custom_parry = preload("res://_Shogi/characters/shogi/ShogiVFX/ShogiParryEffect.tscn")
 
+func spawn_particle_effect(particle_effect:PackedScene, pos:Vector2, dir = Vector2.RIGHT):
+	if particle_effect == default_parry:
+		particle_effect = custom_parry
+	.spawn_particle_effect(particle_effect, pos, dir)
 
 
 
@@ -259,8 +265,9 @@ func launched_by(hitbox):
 		var host_hitlag_ticks = fixed.round(fixed.mul(str(hitbox.hitlag_ticks), global_hitstop_modifier))
 		
 		#the overwrite in question
+		# USE THIS FOR OPPONENT DELAY
 		if has_armor() and not hitbox.ignore_armor:
-			host_hitlag_ticks = 1
+			host_hitlag_ticks = 4
 		
 		if host.hitlag_ticks < host_hitlag_ticks:
 			host.hitlag_ticks = host_hitlag_ticks

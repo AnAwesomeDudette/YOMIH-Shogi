@@ -23,7 +23,7 @@ const Lines = {
 		"Intro": "Do not imitate me, fool...",
 		"Win": "Take my shape and take my pain.",
 	},
-#Base Roster Start
+# Base Roster Start
 	"Robot": {
 		"Intro":"Machine... Turn back now...",
 		"Win": "Your systems are outdated.",
@@ -43,7 +43,7 @@ const Lines = {
 		"Intro":"Parlor tricks only go so far.",
 		"Win": "You have impressive pocket size.",
 	},
-#Base Roster End. Lore Related Start
+# Base Roster End. Lore Related Start
 	"Royalty": {
 		"Intro": "What matters is we move on.",
 		"Win": "I wish you luck in your grievances",
@@ -63,7 +63,27 @@ const Lines = {
 		"Intro":"You resemble a companion...",
 		"Win": "You are, however, more aggressive",
 	},
-#Lore Related End. Large Swords Start
+
+	"TheSinReviver": {
+		"Intro":"Why do gods misunderstand humanity?",
+		"Win": "More than you have lost everything"
+	},
+
+	"SpaceJester": {
+		"Intro": "If only I could relish in simplicity...",
+		"Win": "I commend your freedom."
+	},
+
+	"RecordFuture": {
+		"Intro":"It seems we both strive for fair rule.",
+		"Win": "Your... future is bright. That was a pun."
+	},
+	"Jumbo Josh": {
+		"Intro":"My past self would have appreciated this humor",
+		"Win": "My past self was immature, I am not."
+	},
+
+# Lore Related End. Large Swords Start
 	"BigSword": {
 		"Intro":"Your Power Lacks Elegance",
 		"Win": "Might I suggest a smaller weapon?",
@@ -93,13 +113,13 @@ const Lines = {
 		"Intro":"Nothing Is unstoppable",
 		"Win": "recklessness doesn't go far...",
 	},
-#Rushdowns End, Underrateds Start
+# Rushdowns End, Underrateds Start
 
 	"Shen Nobi": {
 		"Intro":"Release your potential",
 		"Win": "You should have listended...",
 	},
-#Underrateds End, Personals Start
+# Underrateds End, Personals Start
 
 	"Omega": {
 		"Intro":"The real you is no Messiah",
@@ -120,13 +140,21 @@ const Lines = {
 		"Intro":"Much like me, you don't yield",
 		"Win": "I see much potential."
 	},
+
+	"Nobody": {
+		"Intro":"I assume you know Odysseus?",
+		"Win": "You don't have to hide your name..."
+	},
+
 }
 
+
+# STEAM USERS
 const UsernameLines = {
 	"SteamUsername": {
 		"Intro": "Example Intro"
 	},
-#Truly Special People Start
+# Truly Special People Start
 	"Piggyfriend1792": {
 		"Intro": "You remind me of an... Impostor."
 	},
@@ -152,19 +180,27 @@ const UsernameLines = {
 	},
 
 	"Cherry": {
-		"Intro": "Don't carry your burdens alone"
+		"Intro": "Your duty of keeping balance is honorable."
 	},
 
 	"Trinity": {
 		"Intro": "Fancy meeting you here, creator"
 	},
-#SUPPORTER DIALOGUE
+# SUPPORTER DIALOGUE
 	"Eminence": {
 		"Intro": "I know only one emperor and it's not you..."
 	},
 
 	"8BitClouds": {
 		"Intro": "Observant from the beginning, I see."
+	},
+
+	"Pres": {
+		"Intro": "Your Support will be remembered."
+	},
+
+	"Gabe": {
+		"Intro": "My systems shows signs of your work."
 	},
 
 }
