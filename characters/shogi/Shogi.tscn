@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -89,8 +89,6 @@
 [ext_resource path="res://_Shogi/characters/shogi/ReminisceTaunt.gd" type="Script" id=87]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Hustle_ShogiIcon.png" type="Texture" id=88]
 [ext_resource path="res://_Shogi/characters/shogi/particles/ShogiFlash.tscn" type="PackedScene" id=89]
-[ext_resource path="res://_Royalty/character/UI/EyeFlashUI.tscn" type="PackedScene" id=90]
-[ext_resource path="res://_Royalty/character/SFX/EyeFlash.wav" type="AudioStream" id=91]
 [ext_resource path="res://_Shogi/characters/shogi/ShogiVFX/ShogiParryEffect.tscn" type="PackedScene" id=92]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -202,9 +200,7 @@ particle_scene = ExtResource( 92 )
 particle_scene = ExtResource( 92 )
 
 [node name="Burst" parent="StateMachine" index="11"]
-enter_sfx = ExtResource( 91 )
 enter_sfx_volume = 1.0
-projectile_scene = ExtResource( 90 )
 button_texture = ExtResource( 59 )
 
 [node name="Hitbox" parent="StateMachine/Burst" index="0"]
@@ -212,7 +208,6 @@ hit_particle = ExtResource( 35 )
 replace_hit_particle = true
 
 [node name="DefensiveBurst" parent="StateMachine" index="12"]
-enter_sfx = ExtResource( 91 )
 enter_sfx_volume = 1.0
 button_texture = ExtResource( 59 )
 
@@ -221,7 +216,6 @@ hit_particle = ExtResource( 35 )
 replace_hit_particle = true
 
 [node name="OffensiveBurst" parent="StateMachine" index="13"]
-enter_sfx = ExtResource( 91 )
 enter_sfx_volume = 1.0
 button_texture = ExtResource( 60 )
 
