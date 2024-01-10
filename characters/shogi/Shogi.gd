@@ -248,3 +248,92 @@ func take_damage(damage:int, minimum = 0, meter_gain_modifier = "1.0", combo_sca
 func has_dedication():
 	return dedication_stacks >= 1
 
+#Hitlag armor alterations
+func launched_by(hitbox):
+	
+
+	apply_hitlag(hitbox)
+	
+	if objs_map.has(hitbox.host):
+		var host = objs_map[hitbox.host]
+		var host_hitlag_ticks = fixed.round(fixed.mul(str(hitbox.hitlag_ticks), global_hitstop_modifier))
+		
+		#the overwrite in question
+		if has_armor() and not hitbox.ignore_armor:
+			host_hitlag_ticks = 1
+		
+		if host.hitlag_ticks < host_hitlag_ticks:
+			host.hitlag_ticks = host_hitlag_ticks
+	
+	if hitbox.rumble:
+		rumble(hitbox.screenshake_amount, hitbox.victim_hitlag if hitbox.screenshake_frames < 0 else hitbox.screenshake_frames)
+	
+	nudge_amount = hitbox.sdi_modifier
+	
+	var host = objs_map[hitbox.host]
+	var projectile = not host.is_in_group("Fighter")
+	
+	var will_launch = hitbox.ignore_armor or not has_armor()
+	if not hitbox.ignore_armor:
+		if projectile and has_projectile_armor() and not hitbox.ignore_projectile_armor:
+			will_launch = false
+	var will_block = false
+	var autoblock = has_autoblock_armor()
+	if will_launch:
+		if autoblock:
+			if not hitbox.ignore_projectile_armor and not hitbox.ignore_armor:
+				will_launch = false
+				will_block = not projectile
+
+	var scaling_offset = hitbox.combo_scaling_amount - 1
+	
+
+	
+
+	if will_launch:
+		var state
+		if is_grounded():
+			state = hitbox.grounded_hit_state
+		else :
+			state = hitbox.aerial_hit_state
+
+		if state == "HurtGrounded":
+			grounded_hits_taken += 1
+			if grounded_hits_taken >= MAX_GROUNDED_HITS:
+				if not hitbox.force_grounded:
+					state = "HurtAerial"
+					grounded_hits_taken = 0
+
+		increment_opponent_combo(hitbox)
+		
+		
+		state_machine._change_state(state, {"hitbox":hitbox})
+		if hitbox.disable_collision:
+			colliding_with_opponent = false
+
+		busy_interrupt = true
+		can_nudge = true
+
+		if not projectile:
+			refresh_feints()
+			opponent.refresh_feints()
+
+
+		
+		on_launched()
+
+	elif will_block:
+		change_state("ParryHigh" if not autoblock else "ParryAuto")
+		block_hitbox(hitbox, false, true, false, autoblock)
+
+	if has_hyper_armor:
+		hit_during_armor = true
+
+	emit_hit_by_signal(hitbox)
+	var damage = hitbox.get_damage()
+	if will_block:
+		damage = fixed.round(fixed.mul(str(damage), "0.5"))
+	take_damage(damage, hitbox.minimum_damage, hitbox.meter_gain_modifier, scaling_offset)
+
+	if will_launch:
+		state_tick()
