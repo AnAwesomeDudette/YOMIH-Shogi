@@ -33,6 +33,9 @@ func _enter():
 	._enter()
 	if not host.is_ghost:
 		host.TIMEFREEZE = true
+	else:
+		current_tick += 10
+		host.current_tick += 10
 	_add(a1, 1, 1); _add(a2, 1, 1); _add(a3, 1, 1); _add(a4, 1, 1); _add(a5, 1, 1);
 	_add(b1, 1, 1); _add(b2, 1, 1); _add(b3, 1, 1); _add(b4, 1, 1);
 	_add(c1, 1, 1); _add(c2, 1, 1); _add(c3, 1, 1); _add(c4, 1, 1); _add(c5, 1, 1); _add(c6, 1, 1);
