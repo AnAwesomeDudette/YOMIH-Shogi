@@ -23,8 +23,13 @@ margin_left = 40.0
 margin_right = 203.0
 margin_bottom = 27.0
 rect_scale = Vector2( 0.998801, 0.984485 )
-hint_tooltip = "- Dedication: Enables Dedication No limit, start with 1
-- Raid: Enables Raid Variants. Max of 4. Starts with 0"
+hint_tooltip = "- Dedication: Enables movement option
+dedication. No max stack count.
+Start with 2.
+Get more through Conquer Stance.
+- Raid: Enables Raid Variants. Max of 4.
+Start with 0.
+Get more with Sacrifice or by comboing."
 
 [node name="DedicationTex" type="TextureRect" parent="HBoxContainer" index="0"]
 margin_right = 16.0

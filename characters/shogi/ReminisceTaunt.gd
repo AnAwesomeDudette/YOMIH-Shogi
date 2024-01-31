@@ -11,9 +11,12 @@ func _enter():
 	if not $"%ShogiTaunt".playing:
 		host.play_sound("ShogiTaunt")
 
+
+
 func _tick():
 	host.gain_super_meter(6)
 	#print(TauntSong.playing)
+	host.start_projectile_invulnerability()
 
 func _frame_44():
 	host.unlock_achievement("ACH_HUSTLE", true)
@@ -28,4 +31,5 @@ func is_usable():
 
 func _exit():
 	host.stop_sound("ShogiTaunt")
-
+	host.end_projectile_invulnerability()
+	

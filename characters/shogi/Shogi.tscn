@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=104 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_Shogi/characters/shogi/Shogi.gd" type="Script" id=2]
@@ -33,7 +33,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/states/Windmill.gd" type="Script" id=31]
 [ext_resource path="res://ui/ActionSelector/StateIcons/throw_forward.png" type="Texture" id=32]
 [ext_resource path="res://_Shogi/characters/shogi/states/Stomp.gd" type="Script" id=33]
-[ext_resource path="res://_Shogi/characters/shogi/sprites/Shogi_Portrait.png" type="Texture" id=34]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_Portrait_New.png" type="Texture" id=34]
 [ext_resource path="res://_Shogi/characters/shogi/particles/ShogiHit.tscn" type="PackedScene" id=35]
 [ext_resource path="res://_Shogi/characters/shogi/states/Sacrifice.gd" type="Script" id=36]
 [ext_resource path="res://_Shogi/characters/shogi/states/SwiftPunish.gd" type="Script" id=37]
@@ -43,9 +43,9 @@
 [ext_resource path="res://_Shogi/characters/shogi/states/Dedication.gd" type="Script" id=41]
 [ext_resource path="res://_Shogi/characters/shogi/ui/DedicationActionUIData.tscn" type="PackedScene" id=42]
 [ext_resource path="res://_Shogi/characters/shogi/states/ShogiState.gd" type="Script" id=43]
-[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Dedication.png" type="Texture" id=44]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/ShogiIcon_Dedication_Option.png" type="Texture" id=44]
 [ext_resource path="res://characters/states/Idle.gd" type="Script" id=45]
-[ext_resource path="res://ui/ActionSelector/StateIcons/wait.png" type="Texture" id=46]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Wait.png" type="Texture" id=46]
 [ext_resource path="res://HurtboxState.gd" type="Script" id=47]
 [ext_resource path="res://characters/UsableRequirement.gd" type="Script" id=48]
 [ext_resource path="res://characters/states/ThrowState.gd" type="Script" id=49]
@@ -89,7 +89,19 @@
 [ext_resource path="res://_Shogi/characters/shogi/ReminisceTaunt.gd" type="Script" id=87]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Hustle_ShogiIcon.png" type="Texture" id=88]
 [ext_resource path="res://_Shogi/characters/shogi/particles/ShogiFlash.tscn" type="PackedScene" id=89]
+[ext_resource path="res://_Shogi/characters/shogi/Wits End.gd" type="Script" id=90]
+[ext_resource path="res://_Shogi/characters/shogi/sfx/import/Slash_HitHeavy.wav" type="AudioStream" id=91]
 [ext_resource path="res://_Shogi/characters/shogi/ShogiVFX/ShogiParryEffect.tscn" type="PackedScene" id=92]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Shogi_ThinPatience_Icon.png" type="Texture" id=93]
+[ext_resource path="res://_Shogi/characters/shogi/Willpower Burst.gd" type="Script" id=94]
+[ext_resource path="res://sound/common/burst.wav" type="AudioStream" id=95]
+[ext_resource path="res://fx/BurstEffect.tscn" type="PackedScene" id=96]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Shogi_BurstVariant_Icon.png" type="Texture" id=97]
+[ext_resource path="res://_Shogi/characters/shogi/Thin Patience.gd" type="Script" id=98]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/parry_high.png" type="Texture" id=99]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/parry_super.png" type="Texture" id=100]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Jump.png" type="Texture" id=101]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/super_jump.png" type="Texture" id=102]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -141,9 +153,8 @@ extra_color_2 = Color( 0.270588, 0.270588, 0.286275, 1 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 1 )
 frames = ExtResource( 9 )
-animation = "Intro"
-frame = 27
-speed_scale = 6.0
+animation = "Thin Patience"
+speed_scale = 15.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
@@ -187,17 +198,25 @@ margin_bottom = -40.0
 theme = ExtResource( 55 )
 autowrap = true
 
+[node name="ParrySuper" parent="StateMachine" index="1"]
+button_texture = ExtResource( 100 )
+
 [node name="ParryHigh" parent="StateMachine" index="2"]
 particle_scene = ExtResource( 92 )
 
 [node name="ParryAuto" parent="StateMachine" index="3"]
 particle_scene = ExtResource( 92 )
+button_texture = ExtResource( 99 )
 
 [node name="ParryLow" parent="StateMachine" index="4"]
 particle_scene = ExtResource( 92 )
 
 [node name="ParryAir" parent="StateMachine" index="5"]
 particle_scene = ExtResource( 92 )
+button_texture = ExtResource( 99 )
+
+[node name="Wait" parent="StateMachine" index="10"]
+button_texture = ExtResource( 46 )
 
 [node name="Burst" parent="StateMachine" index="11"]
 enter_sfx_volume = 1.0
@@ -226,6 +245,7 @@ replace_hit_particle = true
 [node name="Fall" parent="StateMachine" index="17"]
 sprite_animation = "Fall"
 loop_animation = false
+button_texture = ExtResource( 46 )
 allowed_stances_string = "All"
 
 [node name="Landing" parent="StateMachine" index="18"]
@@ -316,9 +336,13 @@ __meta__ = {
 sprite_anim_length = 5
 ticks_per_frame = 3
 loop_animation = false
+button_texture = ExtResource( 101 )
 
 [node name="ChargeDash" parent="StateMachine" index="32"]
 show_in_menu = false
+
+[node name="SuperJump" parent="StateMachine" index="33"]
+button_texture = ExtResource( 102 )
 
 [node name="DoubleJump" parent="StateMachine" index="34"]
 script = ExtResource( 10 )
@@ -336,6 +360,7 @@ show_in_menu = false
 button_texture = ExtResource( 75 )
 
 [node name="WhiffInstantCancel" parent="StateMachine" index="37"]
+title = "Oh God Oh Fuck"
 button_texture = ExtResource( 74 )
 
 [node name="Grabbed" parent="StateMachine" index="42"]
@@ -471,6 +496,7 @@ __meta__ = {
 apply_forces = true
 apply_fric = true
 apply_grav = true
+sprite_animation = "Ballet"
 anim_length = 20
 enter_force_dir_x = "1.0"
 enter_force_speed = "3.0"
@@ -579,7 +605,7 @@ knockdown = true
 knockdown_extends_hitstun = false
 ground_bounce = false
 start_tick = 5
-active_ticks = 2
+active_ticks = 3
 
 [node name="HitboxOTG" type="Node2D" parent="StateMachine/Stomp" index="1"]
 z_index = 1000
@@ -613,7 +639,7 @@ grounded_hit_state = "HurtAerial"
 knockdown = true
 knockdown_extends_hitstun = false
 start_tick = 5
-active_ticks = 2
+active_ticks = 3
 
 [node name="GodsFavoriteAntiair" type="Node2D" parent="StateMachine" index="55"]
 script = ExtResource( 16 )
@@ -728,7 +754,7 @@ apply_forces = true
 apply_fric = true
 apply_grav = true
 sprite_animation = "Pommel"
-anim_length = 18
+anim_length = 16
 enter_force_dir_x = "1.0"
 enter_force_speed = "8.5"
 title = "Pommel"
@@ -796,7 +822,8 @@ title = "Swift Punish"
 type = 2
 button_texture = ExtResource( 66 )
 iasa_at = 30
-iasa_on_hit = 24
+iasa_on_hit = 25
+interruptible_on_opponent_turn = true
 self_hit_cancellable = false
 self_interruptable = false
 reversible = false
@@ -831,6 +858,7 @@ hits_vs_grounded = false
 di_modifier = "0.0"
 sdi_modifier = "0.0"
 parry_meter_gain = 125
+guard_break = true
 block_cancel_allowed = false
 plus_frames = -2
 hit_height = 0
@@ -864,6 +892,7 @@ cancellable = false
 di_modifier = "0.0"
 sdi_modifier = "0.0"
 parry_meter_gain = 125
+guard_break = true
 block_cancel_allowed = false
 plus_frames = 4
 hit_height = 2
@@ -897,6 +926,7 @@ cancellable = false
 di_modifier = "0.0"
 sdi_modifier = "0.0"
 parry_meter_gain = 125
+guard_break = true
 block_cancel_allowed = false
 plus_frames = 6
 hit_height = 0
@@ -930,6 +960,7 @@ victim_hitlag = 19
 damage_proration = 3
 cancellable = false
 parry_meter_gain = 125
+guard_break = true
 block_cancel_allowed = false
 hit_height = 0
 priority = 8
@@ -2133,40 +2164,23 @@ loop_inactive_ticks = 1
 
 [node name="Ender" type="Node2D" parent="StateMachine/Whirl" index="2"]
 z_index = 1000
-script = ExtResource( 12 )
-x = 21
-y = -40
-width = 36
-height = 43
-damage = 140
-minimum_damage = 75
-chip_damage_modifier = "2.2"
-hitstun_ticks = 32
-hitlag_ticks = 13
-victim_hitlag = 12
-damage_proration = 1
-cancellable = false
-di_modifier = "0.8"
-sdi_modifier = "0.8"
-parry_meter_gain = 125
-block_cancel_allowed = false
-plus_frames = 1
-hit_height = 0
-priority = 8
-group = 1
-screenshake_amount = 19
-hit_particle = ExtResource( 35 )
-replace_hit_particle = true
-whiff_sound = ExtResource( 27 )
-hit_sound = ExtResource( 24 )
-hit_sound_volume = -4.0
-dir_x = "0.5"
-dir_y = "-3.0"
-grounded_hit_state = "HurtAerial"
-knockdown_extends_hitstun = false
-wall_slam = true
-start_tick = 20
-active_ticks = 2
+script = ExtResource( 22 )
+x = 1
+y = -65
+width = 9
+height = 14
+to_x = 42
+to_y = 46
+
+[node name="Ender2" type="Node2D" parent="StateMachine/Whirl" index="3"]
+z_index = 1000
+script = ExtResource( 22 )
+x = 17
+y = -63
+width = 9
+height = 14
+to_x = 24
+to_y = 32
 
 [node name="Split" type="Node2D" parent="StateMachine" index="62"]
 script = ExtResource( 29 )
@@ -2451,6 +2465,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2490,6 +2505,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2529,6 +2545,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2568,6 +2585,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2607,6 +2625,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2646,6 +2665,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2686,6 +2706,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2725,6 +2746,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2764,6 +2786,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2803,6 +2826,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2842,6 +2866,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2881,6 +2906,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2920,6 +2946,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2959,6 +2986,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -2998,6 +3026,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3032,6 +3061,8 @@ force_dir_x = "2.5"
 force_dir_y = "-3.7"
 force_speed = "1.5"
 force_tick = 2
+enter_force_dir_y = "-1.0"
+enter_force_speed = "1.0"
 particle_scene = ExtResource( 35 )
 earliest_hitbox = 8
 title = "Windmill"
@@ -3074,6 +3105,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3113,6 +3145,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3152,6 +3185,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3191,6 +3225,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3229,6 +3264,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3267,6 +3303,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3306,6 +3343,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3344,6 +3382,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3382,6 +3421,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3420,6 +3460,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3458,6 +3499,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3496,6 +3538,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3534,6 +3577,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3572,6 +3616,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3610,6 +3655,7 @@ hitlag_ticks = 9
 victim_hitlag = 10
 damage_proration = 1
 cancellable = false
+sdi_modifier = "0.8"
 parry_meter_gain = 125
 block_cancel_allowed = false
 plus_frames = -1
@@ -3653,6 +3699,7 @@ Aerial"
 hit_cancel_into_string = "Grounded
 Aerial"
 allowed_stances_string = "All"
+change_stance_to = "Normal"
 is_raid_variant = true
 opposite_variant = "Windmill"
 has_maelstrom_penalty = true
@@ -3693,6 +3740,7 @@ hit_sound_volume = -4.0
 dir_x = "0.0"
 dir_y = "0.0"
 knockback = "1.0"
+pushback_x = "0.2"
 grounded_hit_state = "HurtAerial"
 minimum_grounded_frames = 2
 knockdown = true
@@ -3734,6 +3782,7 @@ hit_sound_volume = -4.0
 dir_x = "0.0"
 dir_y = "0.0"
 knockback = "1.0"
+pushback_x = "0.2"
 grounded_hit_state = "HurtAerial"
 minimum_grounded_frames = 2
 knockdown = true
@@ -3765,7 +3814,6 @@ type = 2
 button_texture = ExtResource( 4 )
 iasa_on_hit = 12
 iasa_on_hit_on_block = false
-reversible = false
 can_feint_if_possible = false
 interrupt_from_string = "GroundedSpecial
 Grounded
@@ -3786,7 +3834,7 @@ x = -8
 y = -21
 width = 4
 height = 4
-damage = 60
+damage = 69
 minimum_damage = 2
 chip_damage_modifier = "2.0"
 hitlag_ticks = 2
@@ -3821,11 +3869,13 @@ custom_x_fric = "0.25"
 custom_y_fric = "0.25"
 sprite_animation = "Dedication"
 anim_length = 11
+enter_force_dir_x = "1.0"
+enter_force_speed = "7.0"
 title = "Dedication"
 data_ui_scene = ExtResource( 42 )
 button_texture = ExtResource( 44 )
 air_type = 2
-iasa_at = 9
+iasa_at = 11
 interruptible_on_opponent_turn = true
 next_state_on_hold_on_opponent_turn = true
 reversible = false
@@ -3962,6 +4012,7 @@ title = "Gust"
 type = 2
 button_texture = ExtResource( 79 )
 air_type = 2
+iasa_on_hit_on_block = false
 self_hit_cancellable = false
 self_interruptable = false
 interrupt_from_string = "Grounded
@@ -3978,9 +4029,10 @@ GroundedAttack
 AerialAttack
 GroundedMovement
 AerialMovement"
+interrupt_exceptions_string = "Gust"
 hit_cancel_exceptions_string = "Gust"
-min_bounce_frame = 1
-bounce_frame = 20
+allowed_stances_string = "All"
+bounce_frame = 0
 x_modifier = "12.0"
 opposite_variant = "Maelstrom"
 has_maelstrom_penalty = true
@@ -3994,10 +4046,14 @@ y = -13
 width = 44
 height = 6
 damage = 105
-hitstun_ticks = 19
-hitlag_ticks = 7
+hitstun_ticks = 29
+hitlag_ticks = 10
 damage_proration = 2
+cancellable = false
+block_punishable = true
+block_cancel_allowed = false
 plus_frames = -2
+knockback = "8.5"
 start_tick = 6
 active_ticks = 2
 
@@ -4010,10 +4066,14 @@ width = 35
 height = 6
 damage = 105
 chip_damage_modifier = "1.7"
-hitstun_ticks = 19
-hitlag_ticks = 7
+hitstun_ticks = 29
+hitlag_ticks = 10
 damage_proration = 2
+cancellable = false
+block_punishable = true
+block_cancel_allowed = false
 plus_frames = 1
+knockback = "8.5"
 start_tick = 9
 active_ticks = 2
 
@@ -4052,6 +4112,7 @@ AerialAttack
 GroundedMovement
 AerialMovement"
 hit_cancel_exceptions_string = "Maelstrom"
+allowed_stances_string = "All"
 is_raid_variant = true
 opposite_variant = "HeNeedsIt"
 has_maelstrom_penalty = true
@@ -4071,6 +4132,8 @@ height = 16
 damage = 5
 minimum_damage = 5
 chip_damage_modifier = "1.6"
+di_modifier = "0"
+sdi_modifier = "0"
 dir_x = "-1.0"
 dir_y = "0.0"
 knockback = "100.0"
@@ -4094,6 +4157,8 @@ height = 16
 damage = 5
 minimum_damage = 5
 chip_damage_modifier = "1.6"
+di_modifier = "0"
+sdi_modifier = "0"
 dir_y = "0.0"
 knockback = "100.0"
 ground_bounce = false
@@ -4117,6 +4182,300 @@ self_hit_cancellable = false
 interrupt_into_string = "Grounded
 Aerial"
 change_stance_to = "Conquer"
+
+[node name="Wits End" type="Node2D" parent="StateMachine" index="77"]
+script = ExtResource( 90 )
+apply_forces = true
+apply_fric = true
+apply_grav = true
+sprite_animation = "WitsEnd"
+anim_length = 28
+ticks_per_frame = 2
+enter_sfx = ExtResource( 53 )
+type = 3
+button_texture = ExtResource( 73 )
+interrupt_from_string = "Grounded
+Aerial"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+super_level_ = 2
+
+[node name="WEHitSword2" type="Node2D" parent="StateMachine/Wits End" index="0"]
+z_index = 1000
+script = ExtResource( 22 )
+x = 42
+y = -48
+width = 18
+height = 3
+damage = 75
+hitstun_ticks = 18
+victim_hitlag = 6
+cancellable = false
+hits_otg = true
+guard_break = true
+plus_frames = 2
+group = 1
+screenshake_amount = 6
+hit_particle = ExtResource( 35 )
+hit_sound = ExtResource( 91 )
+dir_x = "0.4"
+dir_y = "1.0"
+knockback = "3.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 11
+active_ticks = 2
+to_x = -45
+to_y = -41
+
+[node name="WEHitSword" type="Node2D" parent="StateMachine/Wits End" index="1"]
+z_index = 1000
+script = ExtResource( 22 )
+x = 53
+y = -23
+width = 5
+damage = 75
+hitstun_ticks = 18
+victim_hitlag = 6
+cancellable = false
+hits_otg = true
+guard_break = true
+plus_frames = 2
+group = 1
+screenshake_amount = 6
+hit_particle = ExtResource( 35 )
+hit_sound = ExtResource( 91 )
+dir_x = "0.4"
+dir_y = "1.0"
+knockback = "3.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 11
+active_ticks = 2
+to_x = -79
+to_y = -47
+
+[node name="WEHitErase2" type="Node2D" parent="StateMachine/Wits End" index="2"]
+z_index = 1000
+script = ExtResource( 12 )
+x = 1
+y = -24
+width = 20000
+height = 20000
+hitbox_type = 5
+hitstun_ticks = 0
+combo_hitstun_ticks = 0
+hitlag_ticks = 0
+victim_hitlag = 0
+combo_scaling_amount = 0
+di_modifier = "0"
+sdi_modifier = "0"
+meter_gain_modifier = "0"
+can_clash = false
+block_cancel_allowed = false
+group = 2
+screenshake_amount = 7
+replace_hit_particle = true
+hit_sound = ExtResource( 91 )
+block_pushback_modifier = "0.0"
+knockdown_extends_hitstun = false
+start_tick = 13
+active_ticks = 2
+
+[node name="WEHitErase" type="Node2D" parent="StateMachine/Wits End" index="3"]
+z_index = 1000
+script = ExtResource( 12 )
+x = 1
+y = -24
+width = 20000
+height = 20000
+hitbox_type = 5
+hitstun_ticks = 0
+combo_hitstun_ticks = 0
+hitlag_ticks = 0
+victim_hitlag = 0
+combo_scaling_amount = 0
+cancellable = false
+di_modifier = "0"
+sdi_modifier = "0"
+meter_gain_modifier = "0"
+can_clash = false
+block_cancel_allowed = false
+screenshake_amount = 7
+replace_hit_particle = true
+hit_sound = ExtResource( 91 )
+knockback = "0.0"
+block_pushback_modifier = "0.0"
+knockdown_extends_hitstun = false
+start_tick = 11
+active_ticks = 2
+
+[node name="WEHitexplosion" type="Node2D" parent="StateMachine/Wits End" index="4"]
+z_index = 1000
+script = ExtResource( 12 )
+x = 1
+y = -24
+width = 38
+height = 24
+damage = 150
+hitstun_ticks = 20
+victim_hitlag = 8
+cancellable = false
+hits_otg = true
+guard_break = true
+plus_frames = 3
+screenshake_amount = 7
+hit_particle = ExtResource( 35 )
+hit_sound = ExtResource( 80 )
+dir_y = "11.0"
+knockback = "3.0"
+grounded_hit_state = "HurtAerial"
+knockdown_extends_hitstun = false
+start_tick = 11
+active_ticks = 4
+
+[node name="Willpower Burst" type="Node2D" parent="StateMachine" index="78"]
+script = ExtResource( 94 )
+__meta__ = {
+"_editor_description_": ""
+}
+reset_momentum = true
+sprite_animation = "Burst"
+anim_length = 25
+particle_scene = ExtResource( 96 )
+particle_position = Vector2( 0, -16 )
+spawn_particle_on_enter = true
+enter_sfx_volume = 1.0
+type = 3
+button_texture = ExtResource( 97 )
+air_type = 2
+dynamic_iasa = false
+busy_interrupt_type = 2
+burst_cancellable = false
+instant_cancellable = false
+can_feint_if_possible = false
+interrupt_from_string = "BusyHurt
+Burst"
+interrupt_into_string = "Grounded
+Aerial"
+allowed_stances_string = "All"
+change_stance_to = "Normal"
+release_opponent_on_startup = true
+super_level_ = 3
+
+[node name="Hitbox" type="Node2D" parent="StateMachine/Willpower Burst" index="0"]
+z_index = 1000
+script = ExtResource( 12 )
+y = -19
+width = 38
+height = 38
+hitbox_type = 4
+hitstun_ticks = 23
+victim_hitlag = 4
+cancellable = false
+hits_otg = true
+can_counter_hit = false
+sdi_modifier = "0.0"
+ignore_armor = true
+can_clash = false
+screenshake_amount = 2
+hit_particle = ExtResource( 35 )
+replace_hit_particle = true
+whiff_sound = ExtResource( 95 )
+hit_sound = ExtResource( 13 )
+dir_y = "-0.25"
+knockback = "14.0"
+launch_reversible = true
+start_tick = 2
+active_ticks = 1
+
+[node name="Thin Patience" type="Node2D" parent="StateMachine" index="79"]
+script = ExtResource( 98 )
+apply_forces = true
+apply_fric = true
+apply_grav = true
+apply_custom_grav = true
+custom_grav = "0.2"
+sprite_animation = "Thin Patience"
+anim_length = 26
+ticks_per_frame = 2
+type = 2
+button_texture = ExtResource( 93 )
+air_type = 1
+interrupt_from_string = "Grounded
+Aerial"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
+min_bounce_frame = 0
+bounce_frame = 100
+x_modifier = "1.5"
+
+[node name="HitboxThinPatience" type="Node2D" parent="StateMachine/Thin Patience" index="0"]
+z_index = 1000
+script = ExtResource( 22 )
+x = 32
+y = -2
+width = 18
+height = 3
+damage = 120
+hitstun_ticks = 18
+victim_hitlag = 6
+cancellable = false
+hits_otg = true
+guard_break = true
+plus_frames = 1
+group = 1
+screenshake_amount = 6
+hit_particle = ExtResource( 35 )
+replace_hit_particle = true
+hit_sound = ExtResource( 91 )
+dir_x = "0.4"
+dir_y = "1.0"
+knockback = "3.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 14
+active_ticks = 2
+to_x = -27
+to_y = -59
+
+[node name="HitboxThinPatience2" type="Node2D" parent="StateMachine/Thin Patience" index="1"]
+z_index = 1000
+script = ExtResource( 22 )
+x = 43
+y = -13
+width = 13
+height = 3
+damage = 120
+hitstun_ticks = 18
+victim_hitlag = 6
+cancellable = false
+hits_otg = true
+guard_break = true
+plus_frames = 1
+group = 1
+screenshake_amount = 6
+hit_particle = ExtResource( 35 )
+replace_hit_particle = true
+hit_sound = ExtResource( 91 )
+dir_x = "0.4"
+dir_y = "1.0"
+knockback = "3.0"
+grounded_hit_state = "HurtAerial"
+knockdown = true
+knockdown_extends_hitstun = false
+start_tick = 14
+active_ticks = 2
+to_x = -11
+to_y = -45
 
 [node name="GBLabel" type="Label" parent="." index="7"]
 visible = false

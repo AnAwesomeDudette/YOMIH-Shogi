@@ -7,6 +7,12 @@
 [ext_resource path="res://ui/HorizSlider/HorizSlider.tscn" type="PackedScene" id=5]
 
 [node name="ShogiExtra" instance=ExtResource( 1 )]
+hint_tooltip = "- Plummet: Enables fast fall.
+Use with Specials or Stomp
+to bounce.
+- Conquer: Delays moves for
+armor. Max delay enters
+Conquer Stance."
 theme = ExtResource( 4 )
 script = ExtResource( 2 )
 __meta__ = {

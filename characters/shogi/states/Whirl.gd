@@ -1,8 +1,9 @@
 extends "res://_Shogi/characters/shogi/states/ShogiState.gd"
 
-onready var flurry1 = $Flurry1
-onready var flurry2 = $Flurry2
-onready var ender = $Ender
+onready var Flurry1 = $Flurry1
+onready var Flurry2 = $Flurry2
+onready var Ender = $Ender
+onready var Ender2 = $Ender2
 export var _c_drag = 0
 export (bool) var drag = false
 export (int) var offset_x = 0
@@ -19,13 +20,15 @@ var reset_handler = false
 func _enter():
 	hit_opponent = false
 	._enter()
-	_add(flurry1, 1, 0)
-	_add(flurry2, 1, 0)
-	_add(ender, 3, 6)
+	_add(Flurry1, 1, 0)
+	_add(Flurry2, 1, 0)
+	_add(Ender, 3, 6)
+	_add(Ender2, 3, 6)
 	
-	_add_f(flurry1, 0)
-	_add_f(flurry2, 0)
-	_add_f(ender, 5)
+	_add(Flurry1, 1, 0)
+	_add(Flurry2, 1, 0)
+	_add(Ender, 3, 6)
+	_add(Ender2, 3, 6)
 	hit_opponent = false
 	"""
 	hitbox_register = {
@@ -35,8 +38,8 @@ func _enter():
 	}
 	"""
 	host.no_escape = 8
-	flurry1.scale_combo = true
-	flurry2.scale_combo = true
+	Flurry1.scale_combo = true
+	Flurry2.scale_combo = true
 	do_reset = 6
 	reset_handler = false
 
@@ -61,11 +64,11 @@ func _tick():
 	#host.apply_forces_no_limit()
 	if current_tick > 9:
 		do_reset -= 1
-		flurry1.dir_x = host.get_vel().x
-		flurry1.dir_y = fixed.add(host.get_vel().y, host.gravity)
+		Flurry1.dir_x = host.get_vel().x
+		Flurry1.dir_y = fixed.add(host.get_vel().y, host.gravity)
 		
-		flurry2.dir_x = host.get_vel().x
-		flurry2.dir_y = fixed.add(host.get_vel().y, host.gravity)
+		Flurry2.dir_x = host.get_vel().x
+		Flurry2.dir_y = fixed.add(host.get_vel().y, host.gravity)
 	if hit_opponent == true:
 		if current_tick < end_on_tick:
 			var pos = host.get_pos()
@@ -76,15 +79,15 @@ func _tick():
 	
 func _on_hit_something(obj, hitbox):
 	._on_hit_something(obj, hitbox)
-	if (hitbox != ender):
+	if (hitbox != Ender):
 		host.melee_attack_combo_scaling_applied = false
-	if obj is Fighter and (hitbox == flurry1 or hitbox == flurry2):
+	if obj is Fighter and (hitbox == Flurry1 or hitbox == Flurry2):
 		var vel = host.get_vel()
 		#if not fixed.eq(vel.x, "0") and fixed.sign(vel.x) != host.get_opponent_dir():
 			#host.update_facing()
 		host.update_facing()
-		flurry1.scale_combo = false
-		flurry2.scale_combo = false
+		Flurry1.scale_combo = false
+		Flurry2.scale_combo = false
 		host.visible_combo_count += 1
 		if not reset_handler:
 			reset_handler = true

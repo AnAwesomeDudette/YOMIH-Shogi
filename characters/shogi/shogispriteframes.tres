@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=448 format=2]
+[gd_resource type="SpriteFrames" load_steps=471 format=2]
 
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_MaelstromCatch_Sheet.png" type="Texture" id=1]
 [ext_resource path="res://characters/stickman/sprites/stickman35.png" type="Texture" id=2]
@@ -98,6 +98,8 @@
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_Reminisce_Sheet.png" type="Texture" id=96]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_MountaintSlash_Sheet.png" type="Texture" id=97]
 [ext_resource path="res://_Shogi/characters/shogi/sprites/Shogiburst.png" type="Texture" id=98]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_WitsEnd_Sheet.png" type="Texture" id=99]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/Unique/Shogi_ThinPatience_Sheet.png" type="Texture" id=100]
 
 [sub_resource type="AtlasTexture" id=225]
 atlas = ExtResource( 90 )
@@ -1091,6 +1093,50 @@ region = Rect2( 0, 0, 256, 256 )
 atlas = ExtResource( 96 )
 region = Rect2( 256, 0, 256, 256 )
 
+[sub_resource type="AtlasTexture" id=459]
+atlas = ExtResource( 100 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=460]
+atlas = ExtResource( 100 )
+region = Rect2( 256, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=461]
+atlas = ExtResource( 100 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=462]
+atlas = ExtResource( 100 )
+region = Rect2( 768, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=463]
+atlas = ExtResource( 100 )
+region = Rect2( 1024, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=464]
+atlas = ExtResource( 100 )
+region = Rect2( 0, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=465]
+atlas = ExtResource( 100 )
+region = Rect2( 256, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=466]
+atlas = ExtResource( 100 )
+region = Rect2( 512, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=467]
+atlas = ExtResource( 100 )
+region = Rect2( 768, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=468]
+atlas = ExtResource( 100 )
+region = Rect2( 1024, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=469]
+atlas = ExtResource( 100 )
+region = Rect2( 0, 512, 256, 256 )
+
 [sub_resource type="AtlasTexture" id=294]
 atlas = ExtResource( 92 )
 region = Rect2( 0, 0, 256, 256 )
@@ -1495,6 +1541,46 @@ region = Rect2( 0, 768, 256, 256 )
 atlas = ExtResource( 87 )
 region = Rect2( 256, 768, 256, 256 )
 
+[sub_resource type="AtlasTexture" id=449]
+atlas = ExtResource( 99 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=450]
+atlas = ExtResource( 99 )
+region = Rect2( 256, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=451]
+atlas = ExtResource( 99 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=452]
+atlas = ExtResource( 99 )
+region = Rect2( 768, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=453]
+atlas = ExtResource( 99 )
+region = Rect2( 0, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=454]
+atlas = ExtResource( 99 )
+region = Rect2( 256, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=455]
+atlas = ExtResource( 99 )
+region = Rect2( 512, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=456]
+atlas = ExtResource( 99 )
+region = Rect2( 768, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=457]
+atlas = ExtResource( 99 )
+region = Rect2( 0, 512, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=458]
+atlas = ExtResource( 99 )
+region = Rect2( 256, 512, 256, 256 )
+
 [resource]
 animations = [ {
 "frames": [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 6 ) ],
@@ -1767,7 +1853,7 @@ animations = [ {
 "name": "Split",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 192 ), SubResource( 193 ), SubResource( 194 ), SubResource( 195 ), SubResource( 196 ), SubResource( 196 ), SubResource( 197 ), SubResource( 197 ), SubResource( 198 ) ],
+"frames": [ SubResource( 192 ), SubResource( 193 ), SubResource( 194 ), SubResource( 195 ), SubResource( 196 ), SubResource( 196 ), SubResource( 196 ), SubResource( 196 ), SubResource( 197 ), SubResource( 198 ) ],
 "loop": true,
 "name": "Stomp",
 "speed": 5.0
@@ -1785,6 +1871,11 @@ animations = [ {
 "frames": [ SubResource( 432 ), SubResource( 432 ), SubResource( 432 ), SubResource( 433 ), SubResource( 433 ), SubResource( 433 ), SubResource( 434 ), SubResource( 434 ), SubResource( 434 ), SubResource( 435 ), SubResource( 435 ), SubResource( 435 ), SubResource( 435 ), SubResource( 436 ), SubResource( 436 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 440 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ), SubResource( 441 ) ],
 "loop": true,
 "name": "Taunt",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 459 ), SubResource( 460 ), SubResource( 461 ), SubResource( 462 ), SubResource( 463 ), SubResource( 464 ), SubResource( 465 ), SubResource( 466 ), SubResource( 467 ), SubResource( 468 ), SubResource( 469 ) ],
+"loop": true,
+"name": "Thin Patience",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 27 ) ],
@@ -1830,5 +1921,10 @@ animations = [ {
 "frames": [ SubResource( 174 ), SubResource( 175 ), SubResource( 176 ), SubResource( 177 ), SubResource( 178 ), SubResource( 179 ), SubResource( 179 ), SubResource( 180 ), SubResource( 180 ), SubResource( 181 ), SubResource( 181 ), SubResource( 182 ), SubResource( 182 ), SubResource( 183 ), SubResource( 183 ), SubResource( 184 ), SubResource( 184 ), SubResource( 185 ), SubResource( 185 ), SubResource( 186 ), SubResource( 186 ), SubResource( 187 ), SubResource( 187 ), SubResource( 188 ), SubResource( 189 ), SubResource( 190 ), SubResource( 190 ), SubResource( 188 ) ],
 "loop": true,
 "name": "Windmill",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 449 ), SubResource( 450 ), SubResource( 451 ), SubResource( 452 ), SubResource( 453 ), SubResource( 454 ), SubResource( 455 ), SubResource( 456 ), SubResource( 457 ), SubResource( 458 ) ],
+"loop": true,
+"name": "WitsEnd",
 "speed": 5.0
 } ]
