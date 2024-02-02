@@ -46,14 +46,11 @@ func _enter():
 	_add_f(c1, 5); _add_f(c2, 5); _add_f(c3, 5); _add_f(c4, 5); _add_f(c5, 5); _add_f(c6, 5); 
 	_add_f(d1, 5); _add_f(d2, 5); _add_f(d3, 5); _add_f(d4, 5); 
 	hit_opponent = false
-
+	if host.initiative:
+		host.start_throw_invulnerability()
 
 func on_got_hit():
 	host.gain_super_meter(50)
-
-func _frame_2():
-	if host.initiative:
-		host.start_throw_invulnerability()
 
 
 func _frame_10():
@@ -68,7 +65,6 @@ func _frame_22():
 
 func _frame_23():
 	host.armor_hits_remaining = 0
-	host.end_throw_invulnerability()
 
 func _on_hit_something(obj, _hitbox):
 	._on_hit_something(obj, _hitbox)
@@ -109,3 +105,4 @@ func _on_hit_something(obj, _hitbox):
 			
 func _exit():
 	host.TIMEFREEZE = false
+	host.end_throw_invulnerability()

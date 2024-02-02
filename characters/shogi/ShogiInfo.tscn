@@ -4,7 +4,7 @@
 [ext_resource path="res://_Shogi/characters/shogi/ShogiInfo.gd" type="Script" id=2]
 [ext_resource path="res://_Shogi/characters/shogi/ui/dedication_stacks.png" type="Texture" id=3]
 [ext_resource path="res://theme.tres" type="Theme" id=4]
-[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/Shogi_Awaken_Icon.png" type="Texture" id=5]
+[ext_resource path="res://_Shogi/characters/shogi/sprites/IconsMore/RaidStacksIcon.png" type="Texture" id=5]
 
 [node name="ShogiInfo" instance=ExtResource( 1 )]
 margin_top = -5.0
