@@ -220,6 +220,7 @@ button_texture = ExtResource( 99 )
 
 [node name="Roll" parent="StateMachine" index="6"]
 button_texture = ExtResource( 103 )
+allowed_stances_string = "All"
 
 [node name="Wait" parent="StateMachine" index="10"]
 button_texture = ExtResource( 46 )
@@ -2222,6 +2223,7 @@ height = 14
 damage = 95
 hitstun_ticks = 26
 victim_hitlag = 12
+cancellable = false
 screenshake_amount = 15
 screenshake_frames = 46
 start_tick = 20
@@ -2239,6 +2241,7 @@ height = 14
 damage = 95
 hitstun_ticks = 26
 victim_hitlag = 12
+cancellable = false
 screenshake_amount = 15
 screenshake_frames = 46
 start_tick = 20
@@ -3984,6 +3987,7 @@ interrupt_into_string = "Grounded
 Aerial
 GroundedMovement
 AerialMovement"
+allowed_stances_string = "All"
 
 [node name="Awaken" type="Node2D" parent="StateMachine" index="71"]
 script = ExtResource( 43 )
@@ -4245,6 +4249,7 @@ usable_from_whiff_cancel_if_possible = false
 self_hit_cancellable = false
 interrupt_into_string = "Grounded
 Aerial"
+allowed_stances_string = "All"
 change_stance_to = "Conquer"
 
 [node name="Wits End" type="Node2D" parent="StateMachine" index="77"]
